@@ -40,7 +40,7 @@ export const FINISHES = {
   cast: { label: 'As cast', make: () => new THREE.MeshPhysicalMaterial({ color: 0x5b6065, metalness: 0.9, roughness: 0.55, roughnessMap: castRough, bumpMap: castBump, bumpScale: 0.6, envMapIntensity: 1.0 }) },
   machined: { label: 'Machined', make: () => new THREE.MeshPhysicalMaterial({ color: 0xa9adb2, metalness: 1.0, roughness: 0.22, roughnessMap: machinedRough, clearcoat: 0.3, clearcoatRoughness: 0.3, envMapIntensity: 1.25 }) },
   primer: { label: 'Primer', make: () => new THREE.MeshPhysicalMaterial({ color: 0x8c2a1a, metalness: 0.15, roughness: 0.68, bumpMap: castBump, bumpScale: 0.25, envMapIntensity: 0.7 }) },
-  hot: { label: 'Fresh from the quench', make: () => new THREE.MeshPhysicalMaterial({ color: 0x2a1a14, metalness: 0.6, roughness: 0.5, emissive: 0xff5a14, emissiveIntensity: 1.2, bumpMap: castBump, bumpScale: 0.5 }) },
+  hot: { label: 'Fresh from the quench', make: () => new THREE.MeshPhysicalMaterial({ color: 0x1e1410, metalness: 0.7, roughness: 0.45, emissive: 0xff4a0c, emissiveIntensity: 0.9, emissiveMap: castRough, bumpMap: castBump, bumpScale: 0.6 }) },
 };
 
 // ---------- geometry ----------
@@ -184,7 +184,7 @@ export function createViewer(canvas, opts = {}) {
   new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(canvas);
   function frame() {
     requestAnimationFrame(frame);
-    if (!visible) return;
+    if (!visible || parseFloat(canvas.style.opacity) === 0) return;
     if (!dragging) { velY *= 0.94; rotY += velY; if (idle && !reduce) rotY += 0.0035; }
     curScale += (targetScale - curScale) * 0.08;
     holder.rotation.set(rotX + external * 0.4, rotY + external * 1.2, 0);
