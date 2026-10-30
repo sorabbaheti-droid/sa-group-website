@@ -18,6 +18,9 @@
   .c { background:#18181a; padding:28px; min-height:200px; display:flex; flex-direction:column; justify-content:space-between; }
   .c b { font-size:28px; letter-spacing:-.03em; }
   .c span { color:var(--dim); }
+  a.c { color:inherit; text-decoration:none; transition:background .2s; }
+  a.c:hover { background:#232326; }
+  a.c b::after { content:" →"; }
   footer { padding:0 clamp(20px,4vw,56px) 40px; color:var(--dim); font-size:15px; }
 </style>
 </head>
@@ -30,9 +33,9 @@
     </div>
   </section>
   <main>
-    <div class="c"><b>Concept A</b><span>In progress</span></div>
-    <div class="c"><b>Concept B</b><span>In progress</span></div>
-    <div class="c"><b>Concept C</b><span>In progress</span></div>
+    <a class="c" href="concepts/a/"><b>Concept A · The dark room</b><span>Black page, your film full screen, a 3D molten drop that cools as you scroll, and a grade finder where the metal changes with each grade. Open it.</span></a>
+    <a class="c" href="concepts/b/"><b>Concept B · The specimen</b><span>White page with a 3D crusher part you drag to turn (switch part and finish), product cut-outs, process verbs over film and engraved ISO certificates. Open it.</span></a>
+    <div class="c"><b>Concept C · Heat chart</b><span>In progress: the page cools from 1,600 °C to dispatch, one colour per section.</span></div>
   </main>
   <footer>Standard Alloys India Pvt. Ltd. · Surge Alloys Pvt. Ltd. · Ajmer, India</footer>
 </body>

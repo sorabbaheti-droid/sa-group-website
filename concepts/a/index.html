@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SA Group castings · Concept A · The dark room</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Wear- and heat-resistant steel and iron castings, 3 kg to 7 tonnes, poured in Ajmer, India since 1994.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a; --surface:#151515; --surface-2:#1d1d1d; --ink:#efefef; --muted:#a8a8a8; --accent:#b11226; --accent-ink:#fff;
+  --step-small:clamp(.8125rem,.79rem + .1vw,.875rem); --step-body:clamp(1.125rem,1.05rem + .3vw,1.3125rem);
+  --step-lead:clamp(1.25rem,1.1rem + .7vw,1.625rem); --step-head:clamp(2rem,1.3rem + 3.2vw,4rem);
+  --m:clamp(20px,2.4vw,32px); --ease:cubic-bezier(.2,.7,.1,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+body{font-family:"Newsreader",Georgia,serif;font-optical-sizing:auto;font-size:var(--step-body);line-height:1.6;overflow-x:hidden}
+img,video,canvas,iframe{display:block;max-width:100%}
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:.2em}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+::selection{background:var(--accent);color:#fff}
+.wrap{padding-inline:var(--m)}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);column-gap:clamp(12px,1.6vw,24px)}
+section{position:relative}
+.sec{padding-block:clamp(96px,14vw,200px)}
+h2{font-weight:300;font-size:var(--step-head);line-height:.98;letter-spacing:-.035em}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;font:500 var(--step-small)/1 "Newsreader",serif;font-size:17px;text-decoration:none;border:0;cursor:pointer;transition:transform .2s var(--ease),background .2s}
+.btn:active{transform:scale(.97)}
+.btn-accent{background:var(--accent);color:var(--accent-ink)}
+.btn-accent:hover{background:#c8162d}
+.btn-paper{background:var(--ink);color:var(--bg)}
+.btn-paper:hover{background:#fff}
+
+/* ---------- hero: film with the rail on the midline ---------- */
+.hero{position:relative}
+.hero-media{position:absolute;inset:0 0 auto 0;height:200svh;z-index:0}
+.film{position:relative;height:100svh;overflow:hidden;background:#000}
+.film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s ease}
+.film video.on{opacity:1}
+.film::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.22)}
+.detail{position:relative;height:100svh;overflow:hidden}
+.detail video{width:100%;height:100%;object-fit:cover;filter:brightness(.8)}
+.rail-space{height:calc(50svh - 32px)}
+.rail{position:sticky;top:0;z-index:20;height:64px;display:grid;grid-template-columns:repeat(12,1fr);column-gap:clamp(12px,1.6vw,24px);align-items:center;padding-inline:var(--m);background:rgba(0,0,0,.35);transition:background .5s}
+.rail.docked{background:var(--bg)}
+.rail h1{grid-column:1/5;font-weight:500;font-size:clamp(26px,2.3vw,36px);letter-spacing:-.02em;line-height:1;white-space:nowrap;display:flex;align-items:center;gap:14px}
+.rail h1 img{width:34px;height:auto}
+.rail p{grid-column:6/9;font-size:16px;line-height:1.35;max-width:44ch}
+.rail .drop{grid-column:9/10;width:100%;height:190px;align-self:center;margin-top:-118px;pointer-events:none}
+.rail .links{grid-column:10/13;justify-self:end;display:flex;align-items:center;gap:22px;font-size:15px}
+.rail .links a:not(.btn){text-decoration:none}
+.rail .links a:not(.btn):hover{text-decoration:underline}
+.rail .btn{min-height:40px;padding:0 16px;font-size:15px}
+.hero-after{height:calc(150svh - 32px)}
+.caption{position:absolute;left:var(--m);bottom:24px;z-index:2;font-size:15px;color:#ddd}
+
+/* ---------- intro: staircase ---------- */
+.stairs{min-height:100svh;display:grid;align-items:center}
+.stairs .grid{align-items:start}
+.stair{grid-column:1/10;font-size:clamp(24px,2.5vw,36px);line-height:1.12;font-weight:300;letter-spacing:-.015em;padding-left:2vw}
+.stair span{display:block}
+.stair span:nth-child(1){padding-left:0}
+.stair span:nth-child(2){padding-left:6vw;color:var(--muted)}
+.stair span:nth-child(3){padding-left:12vw}
+.stair span:nth-child(4){padding-left:18vw;color:var(--muted)}
+.stair span:nth-child(5){padding-left:24vw}
+.stair em{font-style:italic;color:#ff6a2b}
+.stair-pics{grid-column:10/13;display:grid;gap:16px}
+.stair-pics video{width:100%;aspect-ratio:3/2;object-fit:cover}
+.stair-note{grid-column:1/6;margin-top:72px;font-size:15px;color:var(--muted);padding-left:2vw}
+
+/* ---------- proof: names as one sentence ---------- */
+.names{font-size:clamp(22px,2.4vw,34px);line-height:1.25;font-weight:300;letter-spacing:-.01em;max-width:62ch}
+.names b{font-weight:400;color:var(--ink)}
+.names .n{color:#7d7d7d;transition:color .4s}
+.names .n.lit{color:var(--ink)}
+.names-foot{margin-top:28px;font-size:16px;color:var(--muted)}
+
+/* ---------- features: one-size name columns ---------- */
+.cols h2{font-size:28px;font-weight:400;letter-spacing:-.01em;margin-bottom:96px}
+.cols .grid{position:relative}
+.col{font-size:17px;line-height:1.25}
+.col:nth-of-type(1){grid-column:1/4}.col:nth-of-type(2){grid-column:4/7}.col:nth-of-type(3){grid-column:7/10}
+.col h3{font-size:17px;font-weight:500;margin-bottom:1.25em}
+.col button{all:unset;display:block;cursor:default;color:var(--muted);padding:3px 0;transition:color .2s}
+.col button:hover,.col button:focus-visible,.col button.on{color:var(--ink)}
+.col button:focus-visible{outline:1px solid var(--ink)}
+.desc{grid-column:10/13;grid-row:1;font-size:17px;line-height:1.45;align-self:start;min-height:9em}
+.desc b{display:block;font-weight:500;margin-bottom:.4em}
+.desc span{color:var(--muted)}
+.cols-note{margin-top:56px;font-size:16px;color:var(--muted)}
+
+/* ---------- live thing: grade finder ---------- */
+.finder .grid{align-items:center}
+.finder-text{grid-column:1/5}
+.finder-text h2{margin-bottom:28px}
+.finder-text>p{color:var(--ink);max-width:40ch;margin-bottom:36px}
+fieldset{border:0;margin-bottom:22px}
+legend{font-size:15px;color:var(--muted);margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{position:relative}
+.chips input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.chips span{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;background:var(--surface-2);font-size:16px;transition:background .2s,color .2s;cursor:pointer}
+.chips label:hover span{background:#2a2a2a}
+.chips input:checked+span{background:var(--ink);color:var(--bg)}
+.chips input:focus-visible+span{outline:2px solid var(--ink);outline-offset:2px}
+.finder-stage{grid-column:5/10;position:relative;aspect-ratio:1/1;max-height:80svh}
+.finder-stage canvas{position:absolute;inset:0;width:100%;height:100%}
+.result{grid-column:10/13;align-self:end;margin-bottom:6%;font-size:16px;line-height:1.45}
+.result h3{font-weight:400;font-size:clamp(28px,2.6vw,40px);line-height:1;letter-spacing:-.02em;margin-bottom:10px}
+.result .fam{color:var(--muted);margin-bottom:10px}
+.result .hb{margin-bottom:10px}
+.result small{display:block;margin-top:12px;font-size:14px;color:var(--muted)}
+
+/* ---------- showcase: cards over a held photograph ---------- */
+.show{height:300svh}
+.show-stage{position:sticky;top:0;height:100svh;overflow:hidden}
+.show-stage>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.42)}
+.show h2{position:absolute;left:var(--m);top:clamp(80px,12vh,120px);z-index:2;font-size:clamp(40px,4.4vw,68px);max-width:12ch}
+.track{position:absolute;top:50%;left:0;display:flex;gap:40px;transform:translateY(-50%);padding-left:58vw;will-change:transform}
+.card{flex:0 0 auto;width:min(720px,70vw);height:min(560px,64svh);display:grid;grid-template-rows:68% 32%;background:var(--surface)}
+.card .pic{background:#1b1b1b;display:grid;place-items:center;overflow:hidden}
+.card .pic img{max-height:90%;max-width:80%;object-fit:contain;filter:grayscale(1) brightness(.92) contrast(1.08);transition:transform .8s var(--ease)}
+.card:hover .pic img{transform:scale(1.05)}
+.card .panel{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding:28px}
+.card h3{font-weight:400;font-size:clamp(28px,2.6vw,44px);line-height:1;letter-spacing:-.02em}
+.card p{font-size:16px;line-height:1.4;text-align:right;max-width:30ch;color:#dcdcdc}
+
+/* ---------- how it works: diagonal ---------- */
+.diag .grid{row-gap:0}
+.diag h2{grid-column:7/13;grid-row:1;font-size:clamp(36px,4vw,64px)}
+.st{display:contents}
+.st1 video,.st2 video,.st3 video{width:100%;object-fit:cover}
+.st1 .m{grid-column:1/5;grid-row:1/3;aspect-ratio:3/4}
+.st1 .t{grid-column:5/8;grid-row:2;align-self:start;padding-top:24px}
+.st2 .m{grid-column:6/9;grid-row:3;aspect-ratio:1/1;margin-top:-60px}
+.st2 .t{grid-column:9/12;grid-row:3;align-self:start;padding-top:0;margin-top:-60px}
+.st3 .m{grid-column:8/13;grid-row:4;aspect-ratio:16/10;margin-top:180px}
+.st3 .t{grid-column:3/7;grid-row:4;align-self:start;margin-top:180px}
+.st video{height:100%}
+.t{font-size:17px;max-width:36ch;line-height:1.55}
+.t b{font-weight:500}
+
+/* ---------- testimonial ---------- */
+.quotes{min-height:100svh;display:grid;grid-template-rows:auto 1fr auto;padding:clamp(96px,12vw,160px) var(--m) 32px;background:#060606}
+.lead{justify-self:center;text-align:center;max-width:60vw;font-size:clamp(24px,2.5vw,36px);line-height:1.2;font-weight:300}
+.corner{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;font-size:16px;line-height:1.5}
+.corner blockquote:first-child{grid-column:1/4}
+.corner blockquote:last-child{grid-column:10/13}
+.corner cite{display:block;margin-top:12px;font-style:normal;color:var(--muted)}
+.ph{color:var(--muted)}
+
+/* ---------- stats ---------- */
+.stats .grid{align-items:start}
+.stats h2{grid-column:2/8;font-size:28px;font-weight:400;letter-spacing:-.01em;margin:0 0 56px 156px}
+.dl{grid-column:2/8;display:grid;row-gap:28px}
+.row{display:grid;grid-template-columns:132px 1fr;column-gap:24px;align-items:baseline}
+.row dt{text-align:right;font-size:clamp(26px,2.2vw,32px);font-weight:500;font-variant-numeric:tabular-nums lining-nums;letter-spacing:-.02em;white-space:nowrap}
+.row dd{font-size:17px;color:#cfcfcf;max-width:40ch}
+.stats video{grid-column:9/12;aspect-ratio:1/1;object-fit:cover;margin-top:80px;width:100%}
+
+/* ---------- faq ---------- */
+.faq .qa{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:baseline;margin-bottom:clamp(56px,6vw,84px)}
+.faq .qa h2,.faq .qa h3{grid-column:1/7;font-size:clamp(26px,2.6vw,40px);font-weight:500;line-height:1.1;letter-spacing:-.02em}
+.faq .qa h2{color:var(--muted)}
+.faq .qa p{grid-column:8/13;font-size:18px;line-height:1.55;max-width:40ch}
+
+/* ---------- cta: question at both edges ---------- */
+.ask{height:100svh;min-height:640px;background:#050505;display:grid;grid-template-rows:auto 1fr auto;justify-items:center;text-align:center;padding:32px var(--m) 24px;overflow:hidden}
+.ask h2,.ask .ask-h2{font-size:clamp(64px,10vw,168px);font-weight:300;line-height:1;letter-spacing:-.05em;max-width:13ch}
+.ask .mid{display:grid;place-items:center;gap:16px}
+.ask .row2{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:clamp(24px,5vw,72px)}
+.ask .row2>*:first-child{justify-self:end}.ask .row2>*:last-child{justify-self:start}
+.ask .or{color:var(--muted);font-size:18px}
+.ask .row2 .btn{min-width:220px;min-height:56px;font-size:18px}
+.lmb{width:420px;height:200px;border:0;margin:-111px -100px -25px;background:transparent}
+.ask .then{font-size:16px;color:var(--muted);max-width:56ch}
+
+/* ---------- rfq ---------- */
+.rfq .grid{align-items:start}
+.rfq-text{grid-column:1/5}
+.rfq-text h2{margin-bottom:28px}
+.rfq-text p{margin-bottom:18px;max-width:38ch}
+.rfq-text .mute{color:var(--muted);font-size:16px}
+.rfq-slot{grid-column:6/13;background:var(--surface);min-height:620px;display:grid;place-items:center;padding:40px;text-align:center}
+.rfq-slot iframe{width:100%;height:760px;border:0;background:#fff}
+.rfq-slot .empty{max-width:44ch}
+.rfq-slot .empty b{display:block;font-weight:500;font-size:var(--step-lead);margin-bottom:12px}
+.rfq-slot .empty p{color:var(--muted);font-size:16px;margin-bottom:24px}
+
+/* ---------- footer ---------- */
+footer{margin-top:30svh;display:grid;grid-template-columns:1fr auto 1fr;align-items:end;padding:0 var(--m) 30px;font-size:15px;color:var(--muted)}
+footer nav{display:flex;gap:24px}
+footer nav a{color:var(--ink);text-decoration:none}
+footer nav a:hover{text-decoration:underline}
+footer .r{justify-self:end}
+.credit{padding:0 var(--m) 24px;font-size:13px;color:#8a8a8a}
+
+/* reveal helpers (content stays visible without JS) */
+.js [data-r]{opacity:0;transform:translateY(24px)}
+
+@media (max-width:900px){
+  .rail{grid-template-columns:1fr auto;height:auto;min-height:64px;padding-block:10px}
+  .rail h1{grid-column:1;font-size:24px;white-space:normal}
+  .rail p,.rail .drop{display:none}
+  .rail .links{grid-column:2}
+  .rail .links a:not(.btn){display:none}
+  .mobile-lede{position:absolute;left:20px;right:20px;bottom:24px;z-index:3;font-size:17px;line-height:1.4}
+  .mobile-lede .btn{width:100%;margin-top:14px}
+  .stair{grid-column:1/13;font-size:clamp(22px,6vw,30px)}
+  .stair span:nth-child(n){padding-left:calc((var(--i,0)) * 5vw)}
+  .stair-pics{grid-column:1/13;grid-template-columns:1fr 1fr;margin-top:40px}
+  .stair-note{grid-column:1/13;margin-top:32px}
+  .col:nth-of-type(n),.desc{grid-column:1/13}
+  .col{margin-bottom:40px}.desc{display:none}
+  .finder-text,.finder-stage{grid-column:1/13}
+  .finder-stage{margin-top:24px}
+  .result{grid-column:1/13;margin-top:0}
+  .show{height:auto}
+  .show-stage{position:relative;height:auto;overflow:visible;padding-bottom:40px}
+  .show-stage>video{position:relative;height:auto;aspect-ratio:4/5}
+  .show h2{position:relative;top:auto;left:auto;padding:0 var(--m) 24px;font-size:9vw}
+  .track{position:static;transform:none!important;flex-direction:column;padding:0 16px;gap:24px;margin-top:24px}
+  .card{width:100%;height:auto;grid-template-rows:auto auto}
+  .card .pic{aspect-ratio:4/3}
+  .card .panel{flex-direction:column;align-items:flex-start;min-height:140px}
+  .card p{text-align:left}
+  .diag h2{grid-column:1/13;grid-row:auto;margin-bottom:40px}
+  .st .m,.st .t{grid-row:auto!important;margin-top:0!important}
+  .st1 .m{grid-column:1/13}.st2 .m{grid-column:6/13}.st3 .m{grid-column:1/11}
+  .st .t{grid-column:1/13!important;padding:16px 0 56px}
+  .lead{max-width:none;text-align:left;justify-self:start}
+  .corner blockquote:first-child{grid-column:1/13;margin-bottom:32px}.corner blockquote:last-child{grid-column:4/13}
+  .stats h2{grid-column:1/13;margin-left:112px}.dl{grid-column:1/13}
+  .row{grid-template-columns:88px 1fr}.row dt{font-size:24px}
+  .stats video{grid-column:6/13}
+  .faq .qa h2,.faq .qa h3,.faq .qa p{grid-column:1/13}.faq .qa p{margin-top:12px}
+  .ask h2,.ask .ask-h2{font-size:15vw}
+  .ask .row2{grid-template-columns:1fr;justify-items:center}
+  .ask .row2>*{justify-self:center!important}
+  .rfq-text,.rfq-slot{grid-column:1/13}.rfq-slot{margin-top:40px;min-height:420px}
+  footer{grid-template-columns:1fr;gap:8px}footer .r{justify-self:start}
+}
+@media (min-width:901px){.mobile-lede{display:none}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.js [data-r]{opacity:1;transform:none}}
+</style>
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+
+<header class="hero" id="top">
+  <div class="hero-media" aria-hidden="true">
+    <div class="film" id="film">
+      <video class="on" src="../../assets/media/pit.mp4" poster="../../assets/media/pit.jpg" muted loop playsinline autoplay></video>
+      <video src="../../assets/media/pour.mp4" muted loop playsinline preload="none"></video>
+      <video src="../../assets/media/quench.mp4" muted loop playsinline preload="none"></video>
+      <video src="../../assets/media/furnace.mp4" muted loop playsinline preload="none"></video>
+    </div>
+    <div class="detail"><video src="../../assets/media/sparks.mp4" poster="../../assets/media/sparks.jpg" muted loop playsinline autoplay></video></div>
+  </div>
+  <div class="rail-space"></div>
+  <div class="rail" id="rail">
+    <h1><img src="../../assets/saipl-logo.png" alt="" width="34" height="30">SA Group castings</h1>
+    <p>Wear- and heat-resistant castings from 3 kg to 7 tonnes, poured in Ajmer since 1994.</p>
+    <canvas class="drop" id="drop" aria-hidden="true"></canvas>
+    <div class="links">
+      <a href="#parts">Parts</a>
+      <a href="#grade">Grade finder</a>
+      <a class="btn btn-accent" href="#rfq">Send a drawing</a>
+    </div>
+  </div>
+  <div class="hero-after"></div>
+  <div class="mobile-lede">Wear- and heat-resistant castings from 3 kg to 7 tonnes, poured in Ajmer since 1994.<a class="btn btn-accent" href="#rfq">Send a drawing</a></div>
+</header>
+
+<main>
+<section class="stairs wrap" aria-label="About SA Group">
+  <div class="grid">
+    <p class="stair" data-split>
+      <span style="--i:0">Since 1991, three foundries in Ajmer</span>
+      <span style="--i:1">have poured the parts that crushers,</span>
+      <span style="--i:2">mills and kilns wear out, crack or warp.</span>
+      <span style="--i:3">We pour them again, in the right grade,</span>
+      <span style="--i:4">so they <em>last longer</em> on your plant.</span>
+    </p>
+    <div class="stair-pics" data-r>
+      <video src="../../assets/media/aerial.mp4" poster="../../assets/media/aerial.jpg" muted loop playsinline autoplay aria-label="Aerial view of the SA Group plants in Ajmer"></video>
+      <video src="../../assets/media/meltshop.mp4" poster="../../assets/media/meltshop.jpg" muted loop playsinline autoplay aria-label="Induction furnaces in the melt shop"></video>
+    </div>
+    <p class="stair-note" data-r>Standard Alloys India and Surge Alloys, together SA Group.<br>ISO 9001, 14001 and 45001 certified. About 14,000 tonnes a year.</p>
+  </div>
+</section>
+
+<section class="sec wrap" aria-labelledby="names-h">
+  <p class="names" id="names"><b id="names-h">Running on the plants of</b> <span class="n">FLSmidth</span>, <span class="n">Metso</span>, <span class="n">Larsen &amp; Toubro</span>, <span class="n">KHD</span>, <span class="n">UltraTech</span>, <span class="n">Ambuja</span>, <span class="n">ACC</span>, <span class="n">Vicat</span>, <span class="n">Dalmia Bharat</span>, <span class="n">Shree Cement</span>, <span class="n">Hindustan Zinc</span>, <span class="n">JSW Energy</span> and <span class="n">National Cement Kenya</span>.</p>
+  <p class="names-foot" data-r>Over 500 customers. Castings shipped to four continents.</p>
+</section>
+
+<section class="sec wrap cols" aria-labelledby="fail-h">
+  <h2 id="fail-h" data-r>Why castings fail early</h2>
+  <div class="grid" id="cols">
+    <div class="col" data-r>
+      <h3>Seven common mistakes</h3>
+      <button data-d="Grade picked by habit, not by the duty.|We match the grade to your feed, impact and temperature.">Early wear</button>
+      <button data-d="Slow quench on manganese steel.|Water quench in about 45 seconds from the furnace.">Cracks in service</button>
+      <button data-d="No method design, no internal check.|Simulation-backed method and UT on critical sections.">Hidden shrinkage</button>
+      <button data-d="Wrong alloy for the hot zone.|Cr-Ni chemistry verified on our spectrometer.">Warping in the kiln</button>
+      <button data-d="Raw casting tolerances.|Proof and finish machining, with an assembly fit-up check.">Will not fit on site</button>
+      <button data-d="No in-house laboratory.|Chemistry, hardness, microstructure and UTS tested in-house.">No data on the heat</button>
+      <button data-d="Overseas OEM lead times.|Over 10,000 patterns already in our store.">Months waiting for spares</button>
+    </div>
+    <div class="col" data-r>
+      <h3>Grades we pour</h3>
+      <button data-d="Austenitic Mn steel, 13 to 22% Mn.|Work-hardens under impact: jaws, mantles, concaves, big hammers.">Manganese steel</button>
+      <button data-d="White iron, 15 to 28% Cr.|For sliding abrasion with low impact: VRM rollers and table liners.">High chrome iron</button>
+      <button data-d="Ni-Cr white iron.|Abrasion resistance with a long record in mill and chute liners.">Ni-Hard</button>
+      <button data-d="Martensitic or pearlitic Cr-Mo steel.|Toughness and wear for medium impact: blow bars, mill liners, grates.">Cr-Mo steel</button>
+      <button data-d="Cr-Ni stainless, HH and HK types.|Holds its shape in kiln and cooler hot zones.">Heat-resistant steel</button>
+      <button data-d="Cast carbon and low alloy steel.|Strength and weldability for structural and conveying parts.">Carbon and low alloy</button>
+    </div>
+    <div class="col" data-r id="parts">
+      <h3>Parts we make</h3>
+      <button data-d="Impact crushers.|Hammers, beaters, blow bars, impact plates, grizzly bars.">Impact crusher parts</button>
+      <button data-d="Jaw and cone crushers.|Jaw and side plates, toggles, concaves, mantles, bowl liners.">Jaw and cone parts</button>
+      <button data-d="Mills and VRMs.|Rollers, table liners, clamps, mill liners, diaphragms, trunnions.">Mill and VRM parts</button>
+      <button data-d="Kiln and cooler.|Tip castings, sectors, BRD segments, dip tubes, grate bars and plates.">Kiln and cooler parts</button>
+      <button data-d="Critical spares.|Track shoes, apron pans, sprockets, wheels, rollers, chute liners.">Critical spares</button>
+    </div>
+    <p class="desc" id="desc" aria-live="polite"><b>Early wear</b><span>Grade picked by habit, not by the duty. We match the grade to your feed, impact and temperature.</span></p>
+  </div>
+  <p class="cols-note" data-r>Get the full guide, <a href="#rfq">Seven mistakes when buying wear castings</a>, with your quote.</p>
+</section>
+
+<section class="sec wrap finder" id="grade" aria-labelledby="grade-h">
+  <div class="grid">
+    <form class="finder-text" id="finder" onsubmit="return false">
+      <h2 id="grade-h" data-r>Find the grade for your duty</h2>
+      <p data-r>Tell us where the part works. The metal on the right takes on the grade we would start from.</p>
+      <fieldset data-r><legend>Where it works</legend><div class="chips">
+        <label><input type="radio" name="app" value="impact" checked><span>Impact crusher</span></label>
+        <label><input type="radio" name="app" value="jaw-cone"><span>Jaw or cone crusher</span></label>
+        <label><input type="radio" name="app" value="mill"><span>Mill or VRM</span></label>
+        <label><input type="radio" name="app" value="kiln"><span>Kiln or cooler</span></label>
+        <label><input type="radio" name="app" value="spares"><span>Other spares</span></label>
+      </div></fieldset>
+      <fieldset data-r><legend>What wears it</legend><div class="chips">
+        <label><input type="radio" name="duty" value="impact" checked><span>Heavy impact</span></label>
+        <label><input type="radio" name="duty" value="mixed"><span>Impact and abrasion</span></label>
+        <label><input type="radio" name="duty" value="abrasion"><span>Sliding abrasion</span></label>
+      </div></fieldset>
+      <fieldset data-r><legend>How hot it runs</legend><div class="chips">
+        <label><input type="radio" name="temp" value="ambient" checked><span>Below 400 °C</span></label>
+        <label><input type="radio" name="temp" value="hot"><span>Hot zone</span></label>
+      </div></fieldset>
+    </form>
+    <div class="finder-stage">
+      <canvas id="blob" aria-hidden="true"></canvas>
+    </div>
+      <div class="result" aria-live="polite">
+        <h3 id="g-name">Manganese steel</h3>
+        <p class="fam" id="g-fam">Austenitic Mn steel, 13 to 22% Mn</p>
+        <p class="hb" id="g-hb">About 200 HB as cast, work-hardens past 450 HB at the face</p>
+        <p id="g-why">Tough under heavy impact. The surface hardens as it is hit.</p>
+        <small>Typical guidance. Our metallurgist confirms the grade with your quote.</small>
+      </div>
+  </div>
+</section>
+
+<section class="show" aria-labelledby="show-h">
+  <div class="show-stage">
+    <video src="../../assets/media/moulds.mp4" poster="../../assets/media/moulds.jpg" muted loop playsinline autoplay aria-hidden="true"></video>
+    <h2 id="show-h">Five families of parts</h2>
+    <div class="track" id="track">
+      <article class="card"><div class="pic"><img src="../../assets/cutouts/hammers.png" alt="Cast crusher hammers and beaters" loading="lazy"></div><div class="panel" style="background:#3a2b23"><h3>Impact crushers</h3><p>Hammers, beaters, blow bars, impact plates and grizzly bars.</p></div></article>
+      <article class="card"><div class="pic"><img src="../../assets/cutouts/concave-mantle.png" alt="Cone crusher concaves and mantles" loading="lazy"></div><div class="panel" style="background:#2c3330"><h3>Jaw and cone</h3><p>Jaw and side plates, toggles, concaves, mantles and bowl liners.</p></div></article>
+      <article class="card"><div class="pic"><img src="../../assets/cutouts/table-liner.png" alt="VRM table liner ring" loading="lazy"></div><div class="panel" style="background:#33302a"><h3>Mills and VRMs</h3><p>Rollers, table liners, clamps, mill liners, diaphragms and trunnions.</p></div></article>
+      <article class="card"><div class="pic"><img src="../../assets/cutouts/grate-plate.png" alt="Heat-resistant cooler grate plate" loading="lazy"></div><div class="panel" style="background:#3a2626"><h3>Kiln and cooler</h3><p>Tip castings, sectors, BRD segments, dip tubes, grate bars and plates.</p></div></article>
+      <article class="card"><div class="pic"><img src="../../assets/cutouts/sprocket.png" alt="Cast sprocket" loading="lazy"></div><div class="panel" style="background:#2a2f38"><h3>Critical spares</h3><p>Track shoes, apron pans, sprockets, wheels, rollers and chute liners.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap diag" aria-labelledby="how-h">
+  <div class="grid">
+    <h2 id="how-h" data-r>From your drawing to dispatch</h2>
+    <div class="st st1"><div class="m" data-r><video src="../../assets/media/pour2.mp4" poster="../../assets/media/pour2.jpg" muted loop playsinline autoplay aria-label="Pouring molten steel from the ladle"></video></div>
+      <p class="t" data-r><b>First, the melt.</b> Your drawing becomes a pattern, or comes off one of our 10,000 in store. Induction crucibles up to 6 tonnes pour up to 10 tonnes of metal into no-bake Alphaset moulds.</p></div>
+    <div class="st st2"><div class="m" data-r><video src="../../assets/media/quench.mp4" poster="../../assets/media/quench.jpg" muted loop playsinline autoplay aria-label="Glowing castings entering the quench tank"></video></div>
+      <p class="t" data-r><b>Then, the heat.</b> Box and bogie-hearth furnaces up to 12 tonnes, with water and oil quench. Manganese steel goes from furnace to water in about 45 seconds.</p></div>
+    <div class="st st3"><div class="m" data-r><video src="../../assets/media/vtl.mp4" poster="../../assets/media/vtl.jpg" muted loop playsinline autoplay aria-label="A casting being machined on a vertical turret lathe"></video></div>
+      <p class="t" data-r><b>Finally, the proof.</b> CNC and conventional VTLs machine up to 6,500 mm. Dimensions, DPT, MPI and UT are checked, and the report travels with the casting.</p></div>
+  </div>
+</section>
+
+<section class="quotes" aria-label="What customers say">
+  <blockquote class="lead" data-r><p class="ph">[A customer's words go here: one line from a plant or OEM buyer on how long our parts last. SB to supply.]</p></blockquote>
+  <div></div>
+  <div class="corner">
+    <blockquote data-r><p class="ph">[Second quote, about delivery or support.]</p><cite>[Name, role, company]</cite></blockquote>
+    <blockquote data-r><p class="ph">[Third quote, about quality reports or fit on site.]</p><cite>[Name, role, company]</cite></blockquote>
+  </div>
+</section>
+
+<section class="sec wrap stats" aria-labelledby="stats-h">
+  <div class="grid">
+    <h2 id="stats-h" data-r>The plant, in figures</h2>
+    <dl class="dl">
+      <div class="row" data-r><dt>14,000 t</dt><dd>Installed melting capacity a year, across three foundries in Ajmer.</dd></div>
+      <div class="row" data-r><dt>7,000 kg</dt><dd>Our heaviest single piece. The lightest is 3 kg.</dd></div>
+      <div class="row" data-r><dt>6,500 mm</dt><dd>The largest diameter we machine, on our special-purpose machine.</dd></div>
+      <div class="row" data-r><dt>10,000+</dt><dd>Patterns in store, so repeat orders skip the pattern shop.</dd></div>
+      <div class="row" data-r><dt>630 kW</dt><dd>Rooftop solar, with SBTi targets to cut Scope 1 emissions by 19.4%.</dd></div>
+    </dl>
+    <video src="../../assets/media/solar.mp4" poster="../../assets/media/solar.jpg" muted loop playsinline autoplay aria-label="Solar panels on the plant roof" data-r></video>
+  </div>
+</section>
+
+<section class="sec wrap faq" aria-label="Questions">
+  <div class="qa"><h2 data-r>Questions buyers ask</h2></div>
+  <div class="qa" data-r><h3>What do you need to quote?</h3><p>A drawing (PDF, DWG, DXF or STEP), the grade or the duty, quantity and yearly volume, and whether you need it machined. No drawing? Send the old part or photos with key dimensions and we reverse-engineer it.</p></div>
+  <div class="qa" data-r><h3>What sizes can you make?</h3><p>Single pieces from 3 kg to 7,000 kg, with machining up to 6,500 mm diameter, from about 14,000 tonnes a year across three foundries.</p></div>
+  <div class="qa" data-r><h3>Which grades do you pour?</h3><p>Manganese steel, high chrome iron, Ni-Hard, Cr-Mo steel, heat-resistant stainless (HRCS, HH, HK), carbon and low alloy steel, to IS, ASTM or your own specification.</p></div>
+  <div class="qa" data-r><h3>Do you supply outside India?</h3><p>Yes. Castings ship from Ajmer to customers on four continents, packed and documented for export.</p></div>
+  <div class="qa" data-r><h3>What reports come with the castings?</h3><p>Chemistry, hardness, UTS and impact, microstructure, dimensional and NDT reports. Every casting is traceable to its heat.</p></div>
+  <div class="qa" data-r><h3>How do I know when it ships?</h3><p>The date is confirmed with the order, and you get production updates until dispatch, with final QC clearance before the truck leaves.</p></div>
+</section>
+
+<section class="ask" aria-labelledby="ask-h">
+  <h2 id="ask-h">Have a drawing</h2>
+  <div class="mid">
+    <div class="row2">
+      <iframe class="lmb" id="lmb" title="Upload a drawing" src="../../assets/threeui/liquid-metal-button.html?label=Upload%20drawing&amp;h=64&amp;bg=050505&amp;id=rfq" loading="lazy"></iframe>
+      <span class="or">or</span>
+      <a class="btn btn-paper" href="#rfq" data-call>Book a discovery call</a>
+    </div>
+    <p class="then">Either way, a metallurgist reads it and replies with a quote or questions. On a call we walk you through the plant in four short parts.</p>
+  </div>
+  <p class="ask-h2" aria-hidden="true">or a worn part?</p>
+</section>
+
+<section class="sec wrap rfq" id="rfq" aria-labelledby="rfq-h">
+  <div class="grid">
+    <div class="rfq-text">
+      <h2 id="rfq-h" data-r>Request a quote</h2>
+      <p data-r>Attach your drawing, tell us the grade or the duty, the quantity and whether it should be machined.</p>
+      <p data-r>You get a thank-you email at once, then a reply from a metallurgist. After the order, you get production updates until the truck leaves.</p>
+      <p class="mute" data-r>SAIPL: F-26B &amp; 27, Parbatpura Industrial Area, Ajmer 305002 · <a href="mailto:sales@standardalloysindia.com">sales@standardalloysindia.com</a> · <a href="tel:+911452695110">+91 145 269 5110</a></p>
+      <p class="mute" data-r>Surge Alloys: F-95 &amp; 96, Ajaymeru Industrial Area, Palra, Ajmer 305025 · <a href="mailto:sales@surgealloys.com">sales@surgealloys.com</a> · <a href="tel:+911452970095">+91 145 297 0095</a></p>
+    </div>
+    <!-- ERPNext Web Form embed slot: set data-webform to the Web Form URL on saconnect.frappe.cloud -->
+    <div class="rfq-slot" data-webform="" id="rfq-slot">
+      <div class="empty"><b>The RFQ form goes here</b><p>This space holds the ERPNext Web Form from saconnect.frappe.cloud. Submissions become Leads with the drawing attached.</p><a class="btn btn-accent" href="mailto:sales@standardalloysindia.com?subject=RFQ%20with%20drawing&amp;body=Part%3A%0AGrade%20or%20duty%3A%0AQuantity%20and%20yearly%20volume%3A%0AMachined%3F%0A%0A(Please%20attach%20your%20drawing)">Email a drawing for now</a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span>SA Group, Ajmer · castings since 1994</span>
+  <nav><a href="#parts">Parts</a><a href="#grade">Grades</a><a href="#rfq">Quote</a><a href="https://surgealloys.com">Surge Alloys</a></nav>
+  <span class="r">© 2026 · <a href="#top">Back to top</a></span>
+</footer>
+<p class="credit">Concept A. Footage from the SA Group company film. Product cut-outs from the SA Group brochure (to be replaced by new photographs). Molten drop shader adapted from ThreeUI Liquid Form; button from ThreeUI Liquid Metal Button (MIT, Meng To).</p>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script>
+/* ======= Molten drop: ThreeUI "Liquid Form" ray-marched blob, re-lit as hot steel ======= */
+const MOLTEN_FS = `
+precision highp float;
+uniform vec2 u_res; uniform float u_time; uniform vec2 u_mouse; uniform float u_heat; uniform float u_rough; uniform vec3 u_tint; uniform float u_morph;
+#define MAX_STEPS 64
+vec3 mod289(vec3 x){return x-floor(x*(1.0/289.0))*289.0;}
+vec4 mod289(vec4 x){return x-floor(x*(1.0/289.0))*289.0;}
+vec4 permute(vec4 x){return mod289(((x*34.0)+1.0)*x);}
+vec4 taylorInvSqrt(vec4 r){return 1.79284291400159-0.85373472095314*r;}
+float snoise(vec3 v){const vec2 C=vec2(1.0/6.0,1.0/3.0);const vec4 D=vec4(0.0,0.5,1.0,2.0);vec3 i=floor(v+dot(v,C.yyy));vec3 x0=v-i+dot(i,C.xxx);vec3 g=step(x0.yzx,x0.xyz);vec3 l=1.0-g;vec3 i1=min(g.xyz,l.zxy);vec3 i2=max(g.xyz,l.zxy);vec3 x1=x0-i1+C.xxx;vec3 x2=x0-i2+C.yyy;vec3 x3=x0-D.yyy;i=mod289(i);vec4 p=permute(permute(permute(i.z+vec4(0.0,i1.z,i2.z,1.0))+i.y+vec4(0.0,i1.y,i2.y,1.0))+i.x+vec4(0.0,i1.x,i2.x,1.0));float n_=0.142857142857;vec3 ns=n_*D.wyz-D.xzx;vec4 j=p-49.0*floor(p*ns.z*ns.z);vec4 x_=floor(j*ns.z);vec4 y_=floor(j-7.0*x_);vec4 x=x_*ns.x+ns.yyyy;vec4 y=y_*ns.x+ns.yyyy;vec4 h=1.0-abs(x)-abs(y);vec4 b0=vec4(x.xy,y.xy);vec4 b1=vec4(x.zw,y.zw);vec4 s0=floor(b0)*2.0+1.0;vec4 s1=floor(b1)*2.0+1.0;vec4 sh=-step(h,vec4(0.0));vec4 a0=b0.xzyw+s0.xzyw*sh.xxyy;vec4 a1=b1.xzyw+s1.xzyw*sh.zzww;vec3 p0=vec3(a0.xy,h.x);vec3 p1=vec3(a0.zw,h.y);vec3 p2=vec3(a1.xy,h.z);vec3 p3=vec3(a1.zw,h.w);vec4 norm=taylorInvSqrt(vec4(dot(p0,p0),dot(p1,p1),dot(p2,p2),dot(p3,p3)));p0*=norm.x;p1*=norm.y;p2*=norm.z;p3*=norm.w;vec4 m=max(0.6-vec4(dot(x0,x0),dot(x1,x1),dot(x2,x2),dot(x3,x3)),0.0);m=m*m;return 42.0*dot(m*m,vec4(dot(p0,x0),dot(p1,x1),dot(p2,x2),dot(p3,x3)));}
+float map(vec3 p,float t){float m=snoise(p*0.8+t*0.1)*0.2;m+=snoise(p*1.5-t*0.05+10.0)*0.08;m+=snoise(p*3.0+t*0.02)*0.02;
+  p.y*=1.0-0.08*clamp(-p.y,0.0,2.0); return length(p)-1.8+m*u_morph;}
+vec3 nrm(vec3 p,float t){vec2 e=vec2(0.002,0.0);return normalize(vec3(map(p+e.xyy,t)-map(p-e.xyy,t),map(p+e.yxy,t)-map(p-e.yxy,t),map(p+e.yyx,t)-map(p-e.yyx,t)));}
+vec3 env(vec3 rd,vec2 m){vec3 c=vec3(0.02);c+=vec3(0.95,0.93,0.9)*pow(max(dot(rd,normalize(vec3(0.5+m.x,1.0+m.y*0.5,1.2))),0.0),12.0)*1.5;
+  c+=vec3(1.0,0.45,0.15)*pow(max(dot(rd,normalize(vec3(-0.8,-0.6,-1.0))),0.0),5.0)*0.9; c+=vec3(0.18)*pow(max(dot(rd,normalize(vec3(-1.0,0.5,0.5))),0.0),3.0)*0.6;
+  c+=vec3(0.12)*exp(-pow((rd.y-0.2)*4.0,2.0))*smoothstep(-0.5,0.5,rd.z);return c;}
+vec3 heatCol(float h){vec3 c=mix(vec3(0.0),vec3(0.55,0.04,0.0),smoothstep(0.0,0.25,h));c=mix(c,vec3(1.0,0.32,0.02),smoothstep(0.2,0.55,h));c=mix(c,vec3(1.0,0.78,0.35),smoothstep(0.55,0.85,h));return mix(c,vec3(1.0,0.97,0.88),smoothstep(0.85,1.0,h));}
+void main(){vec2 uv=(gl_FragCoord.xy-u_res*0.5)/min(u_res.x,u_res.y);float t=u_time*0.8;vec2 m=u_mouse*0.15;
+  vec3 ro=vec3(0.0,0.0,5.6);vec3 fw=normalize(vec3(m,0.0)-ro);vec3 rt=normalize(cross(vec3(0.0,1.0,0.0),fw));vec3 up=cross(fw,rt);vec3 rd=normalize(fw+uv.x*rt+uv.y*up);
+  float d=0.0;for(int i=0;i<MAX_STEPS;i++){float ds=map(ro+rd*d,t);d+=ds;if(d>20.0||abs(ds)<0.002)break;}
+  vec4 o=vec4(0.0);
+  if(d<20.0){vec3 p=ro+rd*d;vec3 n=nrm(p,t);vec3 r=reflect(rd,n);float fr=mix(0.4,1.0,pow(1.0-max(dot(n,-rd),0.0),4.0));
+    vec3 col=env(r,u_mouse)*fr*1.8*u_tint;col+=vec3(1.0)*pow(max(dot(r,normalize(vec3(0.5+u_mouse.x,1.0,1.0))),0.0),mix(60.0,14.0,u_rough))*2.0*(1.0-u_rough*0.7);
+    float crust=snoise(p*2.2+vec3(0.0,t*0.18,0.0))*0.5+0.5; float h=u_heat*(0.55+0.45*crust)*(0.6+0.4*(1.0-max(dot(n,vec3(0.0,1.0,0.0)),0.0)));
+    col=mix(col,heatCol(h)*1.6,clamp(u_heat*1.2,0.0,1.0)*smoothstep(0.05,0.5,h)); col=col/(col+0.5); col=pow(col,vec3(1.0/2.2)); o=vec4(col,1.0);}
+  gl_FragColor=o;}`;
+function molten(canvas, opts){
+  const gl = canvas.getContext('webgl',{alpha:true,premultipliedAlpha:false,antialias:false});
+  if(!gl) return null;
+  const sh=(t,s)=>{const o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);return o};
+  const pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,'attribute vec2 a;void main(){gl_Position=vec4(a,0.,1.);}'));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,MOLTEN_FS));gl.linkProgram(pr);gl.useProgram(pr);
+  const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+  const a=gl.getAttribLocation(pr,'a');gl.enableVertexAttribArray(a);gl.vertexAttribPointer(a,2,gl.FLOAT,false,0,0);
+  const U=n=>gl.getUniformLocation(pr,n); const u={res:U('u_res'),time:U('u_time'),mouse:U('u_mouse'),heat:U('u_heat'),rough:U('u_rough'),tint:U('u_tint'),morph:U('u_morph')};
+  const s={heat:opts.heat,rough:opts.rough??.2,tint:opts.tint??[1,1,1],morph:opts.morph??1,tx:0,ty:0,mx:0,my:0};
+  const target={...s}; let vis=true; const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const rs=()=>{const r=canvas.getBoundingClientRect(),k=Math.min(devicePixelRatio||1,opts.dpr||1.5)*(/lite/.test(location.search)?.3:1);canvas.width=Math.max(1,r.width*k|0);canvas.height=Math.max(1,r.height*k|0);gl.viewport(0,0,canvas.width,canvas.height)};
+  new ResizeObserver(rs).observe(canvas);rs();
+  new IntersectionObserver(([e])=>vis=e.isIntersecting).observe(canvas);
+  addEventListener('pointermove',e=>{target.tx=e.clientX/innerWidth*2-1;target.ty=-(e.clientY/innerHeight*2-1)},{passive:true});
+  const t0=performance.now();
+  (function f(now){requestAnimationFrame(f);if(!vis)return;
+    for(const k of ['heat','rough','morph'])s[k]+=(target[k]-s[k])*.06; s.tint=s.tint.map((v,i)=>v+(target.tint[i]-v)*.06);
+    s.mx+=(target.tx-s.mx)*.05;s.my+=(target.ty-s.my)*.05;
+    gl.uniform2f(u.res,canvas.width,canvas.height);gl.uniform1f(u.time,reduce?3:(now-t0)/1000);gl.uniform2f(u.mouse,s.mx,s.my);
+    gl.uniform1f(u.heat,s.heat);gl.uniform1f(u.rough,s.rough);gl.uniform3fv(u.tint,s.tint);gl.uniform1f(u.morph,s.morph);
+    gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);})(t0);
+  return target;
+}
+
+/* hero drop stands on the rail, glowing; it cools as the page scrolls past the pictures */
+const drop = molten(document.getElementById('drop'),{heat:1,rough:.1,dpr:1.25});
+
+/* grade finder: the same metal takes on each grade's look */
+const blob = molten(document.getElementById('blob'),{heat:0,rough:.25});
+const GRADES={
+  mn:{name:'Manganese steel',family:'Austenitic Mn steel, 13 to 22% Mn',hardness:'About 200 HB as cast, work-hardens past 450 HB at the face',why:'Tough under heavy impact. The surface hardens as it is hit, so it suits jaws, mantles, concaves and big hammers.',look:{heat:0,rough:.15,tint:[1,1,1.03],morph:1}},
+  crmo:{name:'Cr-Mo steel',family:'Martensitic or pearlitic Cr-Mo steel',hardness:'Typically 300 to 550 HB, set by heat treatment',why:'A balance of toughness and wear for medium impact: blow bars, mill liners and grates in mixed duty.',look:{heat:.12,rough:.35,tint:[.95,.9,.86],morph:.8}},
+  hicr:{name:'High chrome iron',family:'White iron, 15 to 28% Cr',hardness:'Typically 550 to 700 HB',why:'Best where sliding abrasion dominates and impact is low: VRM rollers and table liners, blow bars on soft feed.',look:{heat:0,rough:.05,tint:[.82,.86,.92],morph:.55}},
+  nihard:{name:'Ni-Hard',family:'Ni-Cr white iron',hardness:'Typically 550 to 650 HB',why:'Abrasion resistance with a proven record in mill liners, chute liners and pump parts.',look:{heat:0,rough:.5,tint:[.78,.8,.8],morph:.7}},
+  hrcs:{name:'Heat-resistant steel',family:'Cr-Ni stainless, HH and HK types',hardness:'Chosen for strength and scaling resistance, not hardness',why:'Keeps its shape and resists scaling in kiln and cooler hot zones, up to about 1,100 °C depending on grade.',look:{heat:.85,rough:.4,tint:[1,.9,.85],morph:1.3}},
+  cs:{name:'Carbon or low alloy steel',family:'Cast carbon steel and low alloy steel',hardness:'Typically 150 to 300 HB',why:'Strength and weldability for structural and conveying parts where wear is not the main load.',look:{heat:0,rough:.6,tint:[.9,.88,.86],morph:.9}}};
+function pick(app,duty,temp){if(temp==='hot')return 'hrcs';if(app==='spares'&&duty!=='abrasion')return duty==='impact'?'mn':'cs';if(duty==='impact')return 'mn';if(duty==='mixed')return 'crmo';if(app==='spares')return 'nihard';return 'hicr';}
+const form=document.getElementById('finder');
+function upd(){const f=new FormData(form);const g=GRADES[pick(f.get('app'),f.get('duty'),f.get('temp'))];
+  if(blob)Object.assign(blob,g.look);
+  for(const [id,k] of [['g-name','name'],['g-fam','family'],['g-hb','hardness'],['g-why','why']]){const el=document.getElementById(id);if(el.textContent!==g[k]){el.textContent=g[k];el.animate?.([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'none'}],{duration:420,easing:'cubic-bezier(.2,.7,.1,1)'});}}}
+form.addEventListener('change',upd);upd();
+
+/* feature columns: hover or focus shows the line in the empty columns */
+const desc=document.getElementById('desc');
+document.querySelectorAll('#cols button').forEach(b=>{const show=()=>{document.querySelectorAll('#cols button.on').forEach(x=>x.classList.remove('on'));b.classList.add('on');const [a,c]=b.dataset.d.split('|');desc.innerHTML=`<b>${b.textContent}</b><span>${a} ${c}</span>`;};b.addEventListener('mouseenter',show);b.addEventListener('focus',show);b.addEventListener('click',show);});
+document.querySelector('#cols button').classList.add('on');
+
+/* names: one lit at a time */
+const ns=[...document.querySelectorAll('#names .n')];let ni=0;
+const lit=()=>{ns.forEach((n,i)=>n.classList.toggle('lit',i===ni));ni=(ni+1)%ns.length;};lit();
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches)setInterval(()=>{if(!document.hidden)lit()},2000);
+
+/* liquid metal button talks to the page */
+addEventListener('message',e=>{if(e.data&&e.data.threeui==='liquid-metal-click')document.getElementById('rfq').scrollIntoView({behavior:'smooth'});});
+
+/* webform slot: drop the ERPNext URL into data-webform and the form appears */
+const slot=document.getElementById('rfq-slot');if(slot.dataset.webform){slot.innerHTML=`<iframe src="${slot.dataset.webform}" title="Request a quote"></iframe>`;}
+
+/* ======= motion ======= */
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const LITE=/lite/.test(location.search);
+if(LITE){const l=document.getElementById('lmb');l.removeAttribute('src');l.style.background='#333';}
+if(LITE)document.querySelectorAll('video').forEach(v=>{v.removeAttribute('autoplay');v.pause();v.preload='none';});
+if(!reduce&&!LITE){
+  const lenis=new Lenis({lerp:.1});
+  lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
+  document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t,{offset:-64});}}));
+}
+gsap.registerPlugin(ScrollTrigger,SplitText);
+
+/* signature: slow crossfade of the hero film */
+const vids=[...document.querySelectorAll('#film video')];let vi=0;
+if(!reduce)setInterval(()=>{if(document.hidden)return;const next=vids[(vi+1)%vids.length];next.preload='auto';next.play().catch(()=>{});vids[vi].classList.remove('on');vi=(vi+1)%vids.length;next.classList.add('on');},6200);
+
+/* rail docks once the pictures have passed */
+const rail=document.getElementById('rail');
+ScrollTrigger.create({trigger:'.hero-after',start:'bottom top+=64',onEnter:()=>rail.classList.add('docked'),onLeaveBack:()=>rail.classList.remove('docked')});
+if(drop)ScrollTrigger.create({trigger:'.hero',start:'top top',end:'bottom top',scrub:true,onUpdate:s=>{drop.heat=1-s.progress*.9;drop.rough=.1+s.progress*.4;}});
+
+if(!reduce){
+  /* entrances: heading, text, picture, staggered */
+  gsap.utils.toArray('[data-r]').forEach(el=>gsap.to(el,{opacity:1,y:0,duration:.9,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}}));
+  document.querySelectorAll('[data-split]').forEach(p=>{
+    gsap.from(p.querySelectorAll('span'),{yPercent:60,opacity:0,duration:1.1,ease:'power3.out',stagger:.09,scrollTrigger:{trigger:p,start:'top 80%',once:true}});
+  });
+  ['#grade-h','#how-h','#show-h','#rfq-h'].forEach(sel=>{const el=document.querySelector(sel);const sp=SplitText.create(el,{type:'words',mask:'words'});gsap.from(sp.words,{yPercent:110,duration:.9,ease:'power4.out',stagger:.06,scrollTrigger:{trigger:el,start:'top 85%',once:true}});});
+  const ask=document.querySelectorAll('.ask h2,.ask .ask-h2');gsap.from(ask,{yPercent:30,opacity:0,duration:1.2,ease:'power3.out',stagger:.15,scrollTrigger:{trigger:'.ask',start:'top 70%',once:true}});
+  /* showcase: cards cross the held photograph */
+  const mm=gsap.matchMedia();
+  mm.add('(min-width:901px)',()=>{const track=document.getElementById('track');
+    gsap.to(track,{x:()=>-(track.scrollWidth-innerWidth*.5),ease:'none',scrollTrigger:{trigger:'.show',start:'top top',end:'bottom bottom',scrub:.6,invalidateOnRefresh:true}});
+    gsap.to('#show-h',{x:-200,opacity:0,ease:'none',scrollTrigger:{trigger:'.show',start:'top top',end:'20% top',scrub:true}});
+    gsap.from('.stairs .stair-pics video',{yPercent:12,ease:'none',scrollTrigger:{trigger:'.stairs',start:'top bottom',end:'bottom top',scrub:true}});
+  });
+}else{document.querySelectorAll('[data-r]').forEach(e=>{e.style.opacity=1;e.style.transform='none'});}
+</script>
+</body>
+</html>
