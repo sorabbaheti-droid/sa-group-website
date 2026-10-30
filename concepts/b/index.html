@@ -430,7 +430,7 @@ const names=['FLSmidth','Metso','Larsen & Toubro','KHD','UltraTech','Ambuja','AC
 const mq=document.getElementById('mq');mq.innerHTML=[...names,...names].map(n=>`<span>${n.replace('&','&amp;')}</span>`).join('');
 
 /* hero viewer */
-const v=createViewer(document.getElementById('hero3d'),{part:'mantle',finish:'cast',distance:6.4,preserve:LITE});
+const v=createViewer(document.getElementById('hero3d'),{part:'mantle',finish:'cast',distance:6.4,exposure:.85,preserve:LITE});
 const now=document.getElementById('now');
 document.querySelectorAll('[data-part]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-part]').forEach(x=>x.setAttribute('aria-pressed',x===b));v.setPart(b.dataset.part);now.textContent=PARTS[b.dataset.part].label;}));
 document.querySelectorAll('[data-finish]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-finish]').forEach(x=>x.setAttribute('aria-pressed',x===b));v.setFinish(b.dataset.finish);}));
@@ -450,7 +450,7 @@ addEventListener('pointermove',e=>{if(dn)strip.scrollLeft=sl-(e.clientX-sx)});
 const io=new IntersectionObserver(es=>es.forEach(e=>{const vd=e.target;if(LITE)return;if(e.isIntersecting){vd.preload='auto';vd.play().catch(()=>{})}else vd.pause()}),{rootMargin:'200px'});
 document.querySelectorAll('video').forEach(x=>io.observe(x));
 
-gsap.registerPlugin(ScrollTrigger,SplitText);
+gsap.registerPlugin(ScrollTrigger,SplitText);gsap.ticker.lagSmoothing(0);
 if(!reduce&&!LITE){const lenis=new Lenis({lerp:.1});lenis.on('scroll',ScrollTrigger.update);gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0);
   document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();lenis.scrollTo(t)}}));}
 
