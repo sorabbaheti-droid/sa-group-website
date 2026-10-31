@@ -118,10 +118,10 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 .pgrid{perspective:1100px}
 .pgrid a{background:#fff;padding:26px 22px 22px;text-decoration:none;display:grid;grid-template-rows:180px auto auto;gap:6px;transition:background .3s,transform .5s var(--ease),box-shadow .5s var(--ease);transform-style:preserve-3d}
 .pgrid a:hover{box-shadow:0 30px 60px -30px rgba(0,0,0,.35);position:relative;z-index:2}
-.pgrid img{transform:translateZ(30px)}
+.pgrid img{transform:none}
 .pgrid a:hover{background:var(--soft)}
 .pgrid img{width:100%;height:100%;object-fit:contain;filter:grayscale(1);transition:transform .6s var(--ease)}
-.pgrid a:hover img{transform:translateZ(50px) scale(1.04)}
+.pgrid a:hover img{transform:scale(1.05)}
 .pgrid b{margin-top:12px;font-size:14px;font-weight:600;color:var(--ink);text-transform:uppercase;letter-spacing:.03em}
 .pgrid span{font-size:14px;color:var(--muted)}
 .products .after{margin-top:32px;text-align:center}
@@ -226,8 +226,8 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
 .part-card{background:#fff;border:1px solid var(--line);display:grid;grid-template-rows:200px auto;transition:transform .5s var(--ease),box-shadow .5s var(--ease);transform-style:preserve-3d}
 .part-card:hover{box-shadow:0 30px 60px -32px rgba(0,0,0,.35)}
 .part-card .pic{background:var(--soft);display:grid;place-items:center;overflow:hidden}
-.part-card .pic img{max-height:80%;max-width:80%;object-fit:contain;filter:grayscale(1);transform:translateZ(30px);transition:transform .6s var(--ease)}
-.part-card:hover .pic img{transform:translateZ(50px) scale(1.05)}
+.part-card .pic img{max-height:80%;max-width:80%;object-fit:contain;filter:grayscale(1);transition:transform .6s var(--ease)}
+.part-card:hover .pic img{transform:scale(1.05)}
 .part-card .pic.none{color:var(--muted);font-size:13px;text-align:center;padding:24px}
 .part-card .body{padding:22px 22px 20px;display:grid;gap:10px;align-content:start}
 .part-card h3{font-size:16px;font-weight:600;color:var(--ink);text-transform:uppercase;letter-spacing:.03em}
@@ -255,3 +255,7 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
 
 .cta .btn+.btn{margin-left:10px}
 .ihero .crumbs a{color:#fff}
+
+.pgrid a{overflow:hidden;min-width:0}
+.pgrid a>img{width:100%;height:180px;min-height:0;object-fit:contain}
+.part-card{overflow:hidden}

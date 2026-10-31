@@ -294,7 +294,7 @@ if (!reduce) { let x = 0, vel = 0; ScrollTrigger.create({ trigger: '.photos', st
   gsap.ticker.add(() => { x -= .4 + Math.abs(vel) * .0025; vel *= .9; const half = drift.scrollWidth / 2; if (-x >= half) x += half; drift.style.transform = `translate3d(${x}px,0,0)`; }); }
 /* product cards tilt toward the pointer */
 document.querySelectorAll('.pgrid a').forEach(c => {
-  c.addEventListener('pointermove', e => { const r = c.getBoundingClientRect(); const dx = (e.clientX - r.left) / r.width - .5, dy = (e.clientY - r.top) / r.height - .5; c.style.transform = `rotateY(${dx * 14}deg) rotateX(${-dy * 14}deg)`; });
+  c.addEventListener('pointermove', e => { const r = c.getBoundingClientRect(); const dx = (e.clientX - r.left) / r.width - .5, dy = (e.clientY - r.top) / r.height - .5; c.style.transform = `rotateY(${dx * 6}deg) rotateX(${-dy * 6}deg)`; });
   c.addEventListener('pointerleave', () => c.style.transform = '');
 });
 /* buttons lean toward the pointer */
