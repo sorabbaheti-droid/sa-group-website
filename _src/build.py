@@ -653,30 +653,18 @@ whywork = ''.join(f'<li data-r><span class="n">{i:02d}</span><b>{a}</b>{b}</li>'
 TEAMS = [('Melting and moulding', 'meltshop'), ('Metallurgy and laboratory', 'micro'), ('Heat treatment', 'quench'), ('Machining', 'drill'),
          ('Quality and NDT', 'mpi'), ('Engineering and patterns', 'moulds'), ('Sales and export', 'jaws'), ('Maintenance', 'cnc')]
 teams = ''.join(f'<figure data-r><video src="~A~assets/media/{v}.mp4" poster="~A~assets/media/{v}.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><figcaption>{t}</figcaption></figure>' for t, v in TEAMS)
-LIFE = [  # (file, kind, category, caption, size)  size: big | tall | wide | ''
- ('v-firedrill', 'clip', 'training', 'Fire safety drill on the shop floor', 'big'),
- ('cricket-team', 'photo', 'sports', 'Our cricket team', 'wide'),
- ('training-session', 'photo', 'training', 'Training session', ''),
- ('v-safa', 'clip', 'celebrations', 'Celebration on the shop floor', 'wide'),
- ('plant-visit-1', 'photo', 'training', 'Students on a plant visit', ''),
- ('cricket-awards', 'photo', 'sports', 'Cricket league felicitation', ''),
- ('v-festival', 'clip', 'celebrations', 'Festival celebrations', 'wide'),
- ('team-meeting', 'photo', 'team', 'Team meeting', ''),
- ('cricket-ground', 'photo', 'sports', 'Match day', ''),
- ('shopfloor-assembly', 'photo', 'team', 'Shop-floor assembly', 'wide'),
- ('v-games', 'clip', 'celebrations', 'Team games in the office', ''),
- ('student-briefing', 'photo', 'training', 'Briefing before the plant tour', ''),
- ('office-celebration', 'photo', 'celebrations', 'Celebrating together', ''),
- ('plant-visit-2', 'photo', 'training', 'Shop-floor walk-through', ''),
- ('cricket-league', 'photo', 'sports', 'The league, all teams', 'wide'),
-]
-def _tile(f, k, c, cap, sz):
-    if k == 'clip':
-        m = f'<video src="~A~assets/life/{f}.mp4" poster="~A~assets/life/{f}.jpg" muted loop playsinline preload="none" disablepictureinpicture controlslist="nodownload noplaybackrate noremoteplayback" aria-hidden="true"></video>'
-    else:
-        m = f'<img src="~A~assets/life/{f}-s.jpg" alt="{cap}" loading="lazy" draggable="false">'
-    return f'<figure class="lt {sz}" data-cat="{c}">{m}<figcaption class="cap">{cap}</figcaption></figure>'
-wall = '<div class="chips lchips" role="group" aria-label="Filter">' + ''.join(f'<button class="chip{" on" if v == "all" else ""}" data-l="{v}">{t}</button>' for v, t in [('all', 'All'), ('training', 'Training and safety'), ('sports', 'Sports'), ('celebrations', 'Celebrations'), ('team', 'Team')]) + '</div><div class="lwall" oncontextmenu="return false">' + ''.join(_tile(*x) for x in LIFE) + '</div>'
+ROW1 = [('cricket-team', 'p'), ('v-safa', 'c'), ('training-session', 'p'), ('plant-visit-1', 'p'), ('v-games', 'c'), ('cricket-awards', 'p'), ('team-meeting', 'p')]
+ROW2 = [('shopfloor-assembly', 'p'), ('cricket-ground', 'p'), ('v-festival', 'c'), ('student-briefing', 'p'), ('cricket-league', 'p'), ('office-celebration', 'p'), ('plant-visit-2', 'p')]
+def _t(f, k):
+    if k == 'c':
+        return f'<figure class="lt"><video src="~A~assets/life/{f}.mp4" poster="~A~assets/life/{f}.jpg" muted loop playsinline preload="none" disablepictureinpicture controlslist="nodownload" aria-hidden="true"></video></figure>'
+    return f'<figure class="lt"><img src="~A~assets/life/{f}-s.jpg" alt="" loading="lazy" draggable="false"></figure>'
+def _row(r, d):
+    t = ''.join(_t(*x) for x in r)
+    t2 = t.replace('<figure', '<figure aria-hidden="true"')
+    return f'<div class="lrow {d}"><div class="ltrack">{t}{t2}</div></div>'
+wall = '<div class="lscroll" oncontextmenu="return false" role="img" aria-label="Photographs and short clips of training, cricket, festivals and team life">' + _row(ROW1, 'l') + _row(ROW2, 'r') + '</div>'
+
 STREAMS = [('Technical roles', 'Melting, moulding, heat treatment, machining, metallurgy and laboratory, quality and NDT, engineering and patterns, maintenance.', 'Technical role'),
            ('Commercial roles', 'Sales and export, purchase, planning, accounts, human resources and administration.', 'Commercial role')]
 streams = ''.join(f'<article class="stream" data-r><h3>{t}</h3><p>{d}</p><a class="btn" href="#apply" data-role="{r}">Apply for a {r.lower()}</a></article>' for t, d, r in STREAMS)
@@ -692,10 +680,8 @@ FORM = """<form class="rfqf jobf" data-job novalidate aria-label="Job applicatio
   </fieldset>
   <div class="sub"><button class="btn" type="submit">Prepare my application</button><p class="msg" role="status">Your email app opens with these details filled in. Attach your CV before sending.</p></div>
 </form>"""
-CAREER_JS = r"""const lchips=[...document.querySelectorAll('.lchips .chip')],tiles=[...document.querySelectorAll('.lt')];
-lchips.forEach(c=>c.addEventListener('click',()=>{lchips.forEach(x=>x.classList.toggle('on',x===c));tiles.forEach(t=>t.hidden=!(c.dataset.l==='all'||t.dataset.cat===c.dataset.l));ScrollTrigger.refresh();}));
-tiles.forEach(t=>{const v=t.querySelector('video');if(v&&!/lite/.test(location.search))new IntersectionObserver(([e])=>{e.isIntersecting?(v.preload='auto',v.play().catch(()=>{})):v.pause()}).observe(t);});
-document.querySelector('.lwall').addEventListener('dragstart',e=>e.preventDefault());
+CAREER_JS = r"""document.querySelectorAll('.lscroll video').forEach(v=>{if(/lite/.test(location.search))return;new IntersectionObserver(([e])=>{e.isIntersecting?(v.preload='auto',v.play().catch(()=>{})):v.pause()}).observe(v);});
+document.querySelector('.lscroll').addEventListener('dragstart',e=>e.preventDefault());
 const MAIL='sales@standardalloysindia.com', f=document.querySelector('[data-job]');
 document.querySelectorAll('[data-role]').forEach(a=>a.addEventListener('click',()=>{f.area.value=a.dataset.role;}));
 f.addEventListener('submit',e=>{e.preventDefault();let ok=true;['name','email'].forEach(n=>{const el=f[n],bad=!el.value.trim()||(n==='email'&&!/^\S+@\S+\.\S+$/.test(el.value));el.setAttribute('aria-invalid',bad);if(bad&&ok){el.focus();ok=false}});
@@ -717,7 +703,7 @@ page('careers', 'Careers', 'Careers at Standard Alloys India: technical and comm
   <div class="streams">{streams}
     <article class="stream intern" data-r><h3>Internships and industrial training</h3><p>For engineering, metallurgy and management students who want to see a working foundry from method to dispatch.</p><a class="btn ghost" href="#apply" data-role="Internship or industrial training">Ask about an internship</a></article></div>
 </div></section>
-<section class="psec soft" aria-labelledby="lf-h"><div class="wrap"><div class="sh" data-r><h2 id="lf-h">Life at Standard Alloys India</h2></div>{wall}</div></section>
+<section class="psec soft lifesec" aria-labelledby="lf-h"><div class="wrap"><div class="sh" data-r><h2 id="lf-h">Life at Standard Alloys India</h2></div></div>{wall}</section>
 <section class="psec" id="apply" aria-labelledby="ap-h"><div class="wrap">
   <div class="sh" data-r><h2 id="ap-h">Apply</h2><p>A few details and your CV. No vacancy listed for you? Apply anyway.</p></div>
   <!-- ERPNext Job Applicant web form: put its URL in data-webform to replace the email composer -->
