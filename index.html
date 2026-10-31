@@ -10,6 +10,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
+@view-transition{navigation:auto}
+::view-transition-group(film){animation-duration:.9s;animation-timing-function:cubic-bezier(.7,0,.2,1)}
 :root{
   --paper:#fbfaf7; --ink:#15171c; --ink-2:#3b3f47; --muted:#6a6e76; --line:#e6e3dc; --accent:#e8541b; --accent-ink:#fff;
   --scrim:rgba(10,10,12,.62); --door-ink:#fff;
@@ -89,7 +91,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--accent)}
   </section>
 
   <nav class="doors" aria-label="Choose a company">
-    <a class="door" href="standard-alloys/" data-door>
+    <a class="door" href="standard-alloys/" data-door style="view-transition-name:film">
       <video src="assets/media/pit.mp4" poster="assets/media/pit.jpg" muted loop playsinline autoplay aria-hidden="true"></video>
       <canvas aria-hidden="true"></canvas>
       <div class="txt">
