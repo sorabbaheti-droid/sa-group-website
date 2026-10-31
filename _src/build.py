@@ -54,7 +54,7 @@ def footer(r, a):
   <div class="wrap fgrid">
     <div class="fb">
       <a class="brand" href="{r}"><img src="{a}assets/saipl-logo.png" alt="" width="34" height="30">STANDARD ALLOYS INDIA</a>
-      <p>Wear- and heat-resistant steel castings from 3 kg to 7 tonnes, poured and machined in Ajmer, India, and shipped worldwide.</p>
+      <p>Wear- and heat-resistant steel castings from 3 kg to 7 tonnes, engineered, cast and machined in India for plants worldwide.</p>
       <address>F-26B &amp; 27, Parbatpura Industrial Area<br>Ajmer 305002, Rajasthan, India</address>
       <p class="fc"><a href="{TEL}">{PHONE}</a><a href="mailto:{MAIL}">{MAIL}</a></p>
     </div>
@@ -232,8 +232,8 @@ def rfq_html(title='Get a quote, or discuss your part'):
   </form>
 </div>"""
 
-WHY = [('35+', 'years', 'Foundry experience in Ajmer, since 1991.'),
-       ('~14,000', 't a year', 'Installed capacity across our three Ajmer facilities.'),
+WHY = [('35+', 'years', 'Of foundry experience, since 1991.'),
+       ('~14,000', 't a year', 'Installed capacity across three foundry facilities.'),
        ('3 kg–7 t', '', 'Single pieces, with up to 10 tonnes of metal in one pour.'),
        ('500+', 'customers', 'Industrial customers in cement, mining, aggregate, power and steel.'),
        ('10,000+', 'patterns', 'Already on file, so repeat orders start at moulding.'),
@@ -437,7 +437,7 @@ if (vb) vb.addEventListener('click', () => { const photo = img.hidden; img.hidde
     ld = {'@context': 'https://schema.org', '@type': 'Product', 'name': p['name'], 'description': p['summary'], 'category': F['name'],
           'brand': {'@type': 'Brand', 'name': 'Standard Alloys India'}, 'manufacturer': {'@type': 'Organization', 'name': 'Standard Alloys India Pvt. Ltd.'},
           'material': ', '.join(GRADES[g]['name'] for g, _ in p['grades'])}
-    page(f'products/{p["slug"]}', f'{p["name"]}: {F["name"].lower()}', f'{p["summary"].split(". ")[0]}. Cast in {gnames(p).lower()} by Standard Alloys India, Ajmer.', 'Products', body, js=js, three=bool(p.get('m3d')), ld=ld)
+    page(f'products/{p["slug"]}', f'{p["name"]}: {F["name"].lower()}', f'{p["summary"].split(". ")[0]}. Cast in {gnames(p).lower()} by Standard Alloys India.', 'Products', body, js=js, three=bool(p.get('m3d')), ld=ld)
 
 # ---------------------------------------------------------------- grades
 def uses(g): return ''.join(f'<a href="~R~products/{p["slug"]}/">{p["name"]}</a>' for p in PRODUCTS if any(x == g for x, _ in p['grades']))
@@ -559,14 +559,14 @@ UNITS = [('Unit 1', '150', 'Smaller and mid-size castings, where precision and s
          ('Unit SP75', '600', 'Heavy castings to 7 tonnes, with heat treatment and machining on site.',
           ['Crucibles of 3,000 and 6,000 kg; 10 t per pour', '20 t/h Alphaset mixer and mould pre-heater', '12 t/h sand reclamation', 'Box and bogie-hearth furnaces; machine shop'])]
 units = ''.join(f'''<article class="unit" data-r><h3>{n}</h3><p class="cap"><b>{c}</b> tonnes a month</p><p>{d}</p><ul>{''.join(f'<li>{x}</li>' for x in l)}</ul></article>''' for n, c, d, l in UNITS)
-page('capabilities', 'Capabilities', 'Engineering, pattern making, induction melting, no-bake moulding, heat treatment and machining in two foundry units in Ajmer.', 'Capabilities',
-     hero('Capabilities', 'Everything that decides the life of a casting', 'From the method to the machined part, in our own plants in Ajmer.', 'furnace') + chain_html() + f'''
+page('capabilities', 'Capabilities', 'Engineering, pattern making, induction melting, no-bake moulding, heat treatment and machining, in our own plants.', 'Capabilities',
+     hero('Capabilities', 'Everything that decides the life of a casting', 'From the method to the machined part, in our own plants.', 'furnace') + chain_html() + f'''
 <section class="caps"><div class="wrap capgrid">
   <div class="capmedia"><div class="frame">{vids}</div></div>
   <div class="capblocks">{blocks}</div>
 </div></section>
 <section class="psec soft" aria-labelledby="u-h"><div class="wrap">
-  <div class="sh" data-r><h2 id="u-h">Standard Alloys India units</h2><p>Two of our three Ajmer facilities, pouring about 750 tonnes a month between them.</p></div>
+  <div class="sh" data-r><h2 id="u-h">Standard Alloys India units</h2><p>Two of our three facilities, pouring about 750 tonnes a month between them.</p></div>
   <div class="units">{units}</div>
 </div></section>
 <section class="psec" aria-labelledby="f-h"><div class="wrap"><div class="sh" data-r><h2 id="f-h">In figures</h2></div>
@@ -603,7 +603,7 @@ INIT = [('Water scrubber', 'Cleans the fume from the induction furnaces.'),
         ('Rainwater harvesting', 'Rainwater collected and returned to the ground.'),
         ('Active melt management', 'Melting monitored and controlled to cut energy per tonne.')]
 init = ''.join(f'<li data-r><span class="n">{i:02d}</span><b>{a}</b>{b}</li>' for i, (a, b) in enumerate(INIT, 1))
-page('sustainability', 'Sustainability', 'Absolute emission-reduction targets on a 1.5 °C pathway, 630 kW of rooftop solar and seven initiatives in our Ajmer foundry.', 'About',
+page('sustainability', 'Sustainability', 'Absolute emission-reduction targets on a 1.5 °C pathway, 630 kW of rooftop solar and seven initiatives across our plants.', 'About',
      hero('<a href="~R~about/">About</a> / Sustainability', 'Responsible foundry', 'A casting that lasts longer is the first saving. We are also cutting the energy and emissions behind every tonne we pour.', 'solar') + '''
 <section class="intro"><div class="wrap narrow" data-r><p class="lit">A casting that lasts longer means fewer parts melted, shipped and replaced. That is where our work on grades and methods starts. In the plant, we have set absolute targets for our own emissions and put seven initiatives to work.</p></div></section>
 <section class="psec soft"><div class="wrap"><div class="sh" data-r><h2>Emission targets</h2><p>Absolute reduction targets, set on a 1.5 °C pathway using the Science Based Targets initiative method.</p></div><ul class="figs">
@@ -623,11 +623,11 @@ LEAD = [('Shiv Das Baheti', 'Founder and Managing Director', 'More than 50 years
         ('Gaurav Baheti', 'Director', 'More than 15 years in the business. BITS Pilani; SP Jain Institute of Management.'),
         ('Sorab Baheti', 'Director', 'More than 8 years in the business. IIT Kanpur, materials science; earlier with Tonbo Imaging and on thyssenkrupp cement plant projects.')]
 lead = ''.join(f'<article class="person" data-r><h3>{n}</h3><p class="role">{r}</p><p>{d}</p></article>' for n, r, d in LEAD)
-page('about', 'About us', 'Standard Alloys India: a steel and iron foundry in Ajmer since 1991, making wear- and heat-resistant castings for plants worldwide.', 'About',
-     hero('About', 'Since 1991', 'A fabrication shop in Ajmer that became a specialist foundry for the parts that wear out first.', 'aerial') + '''
-<section class="intro"><div class="wrap narrow" data-r><p class="lit">Standard Alloys India began in 1991 as a fabrication shop in Ajmer, Rajasthan, and lit its first induction furnace in 1994. Over three decades we have built a foundry around one idea: a casting should be specified for the duty it will meet. Today our three facilities in Ajmer have about 14,000 tonnes a year of installed capacity, pouring single pieces from 3 kg to 7 tonnes for more than 500 industrial customers, in plants anywhere in the world.</p></div></section>
+page('about', 'About us', 'Standard Alloys India: a steel foundry since 1991, making wear- and heat-resistant castings for plants worldwide.', 'About',
+     hero('About', 'Since 1991', 'A fabrication shop that became a specialist foundry for the parts that wear out first.', 'aerial') + '''
+<section class="intro"><div class="wrap narrow" data-r><p class="lit">Standard Alloys India began in 1991 as a fabrication shop in Ajmer, Rajasthan, and lit its first induction furnace in 1994. Over three decades we have built a foundry around one idea: a casting should be specified for the duty it will meet. Today our three facilities have about 14,000 tonnes a year of installed capacity, pouring single pieces from 3 kg to 7 tonnes for more than 500 industrial customers, in plants anywhere in the world.</p></div></section>
 <section><div class="wrap timeline">
-<div data-r><b>1991</b><span>Starts as a fabrication shop in Ajmer</span></div>
+<div data-r><b>1991</b><span>Starts as a fabrication shop in Rajasthan, India</span></div>
 <div data-r><b>1994</b><span>First induction furnace, the start of the foundry</span></div>
 <div data-r><b>Today</b><span>About 14,000 t a year of capacity, castings to 7 tonnes, shipped worldwide</span></div></div></section>
 <section class="why"><div class="wrap"><div class="narrow" data-r><h2>How we work</h2></div>
@@ -646,7 +646,7 @@ page('about', 'About us', 'Standard Alloys India: a steel and iron foundry in Aj
 TEAMS = [('Melting and moulding', 'meltshop'), ('Metallurgy and laboratory', 'micro'), ('Heat treatment', 'quench'), ('Machining', 'drill'),
          ('Quality and NDT', 'mpi'), ('Engineering and patterns', 'moulds'), ('Sales and export', 'jaws'), ('Maintenance', 'cnc')]
 teams = ''.join(f'<figure data-r><video src="~A~assets/media/{v}.mp4" poster="~A~assets/media/{v}.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><figcaption>{t}</figcaption></figure>' for t, v in TEAMS)
-page('careers', 'Careers', 'Careers at Standard Alloys India: foundry, metallurgy, machining, quality, engineering and export roles in Ajmer.', 'About',
+page('careers', 'Careers', 'Careers at Standard Alloys India: foundry, metallurgy, machining, quality, engineering and export roles in India.', 'About',
      hero('<a href="~R~about/">About</a> / Careers', 'Make castings that matter', 'Join the people who melt, mould, treat, machine and test the parts that keep plants running.', 'sparks') + f'''
 <section class="intro"><div class="wrap narrow" data-r><p class="lit">A foundry runs on skill. We look for people who take pride in exact work, from the melt shop to the laboratory, and we train them on real parts for real plants.</p></div></section>
 <section class="teams"><div class="wrap"><div class="narrow" data-r><h2>Where you could work</h2></div><div class="tg">{teams}</div></div></section>
