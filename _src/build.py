@@ -708,24 +708,21 @@ page('careers', 'Careers', 'Careers at Standard Alloys India: technical and comm
 <section class="psec"><div class="wrap cg">
   <figure data-r><video src="~A~assets/media/pour2.mp4" poster="~A~assets/media/pour2.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></figure>
   <div data-r><div class="sh"><h2>A culture of craft, rigour and responsibility</h2></div>
-    <p>A foundry runs on skill. We look for people who take pride in exact work, from the melt shop to the laboratory, and who want to understand why a casting lasts, not only how it is made.</p>
-    <p style="margin-top:14px">You learn on real parts for real plants, alongside metallurgists and engineers, with every step of the process under one roof.</p>
+    <p>A foundry runs on skill. We look for people who take pride in exact work, from the melt shop to the laboratory, and we train them on real parts for real plants.</p>
     <div class="acts" style="margin-top:28px"><a class="btn" href="#openings">Explore openings</a><a class="btn ghost" href="#apply">Apply now</a></div></div>
 </div></section>
 <section class="psec soft" aria-labelledby="ww-h"><div class="wrap"><div class="sh" data-r><h2 id="ww-h">Why work with us</h2></div><ul class="inits six">{whywork}</ul></div></section>
-<section class="psec" aria-labelledby="tm-h"><div class="wrap"><div class="sh" data-r><h2 id="tm-h">Where you could work</h2></div><div class="tg">{teams}</div></div></section>
-<section class="psec soft" id="openings" aria-labelledby="op-h"><div class="wrap">
+<section class="psec" id="openings" aria-labelledby="op-h"><div class="wrap">
   <div class="sh" data-r><h2 id="op-h">Current openings</h2><p>Specific vacancies will be listed here. Until then, apply in the stream that suits you and we will contact you when a matching role opens.</p></div>
   <div class="streams">{streams}
     <article class="stream intern" data-r><h3>Internships and industrial training</h3><p>For engineering, metallurgy and management students who want to see a working foundry from method to dispatch.</p><a class="btn ghost" href="#apply" data-role="Internship or industrial training">Ask about an internship</a></article></div>
 </div></section>
-<section class="psec" aria-labelledby="lf-h"><div class="wrap"><div class="sh" data-r><h2 id="lf-h">Life at Standard Alloys India</h2></div>{wall}</div></section>
-<section class="psec soft" id="apply" aria-labelledby="ap-h"><div class="wrap">
+<section class="psec soft" aria-labelledby="lf-h"><div class="wrap"><div class="sh" data-r><h2 id="lf-h">Life at Standard Alloys India</h2></div>{wall}</div></section>
+<section class="psec" id="apply" aria-labelledby="ap-h"><div class="wrap">
   <div class="sh" data-r><h2 id="ap-h">Apply</h2><p>A few details and your CV. No vacancy listed for you? Apply anyway.</p></div>
   <!-- ERPNext Job Applicant web form: put its URL in data-webform to replace the email composer -->
   <div data-webform="" data-title="Job application">{FORM}</div>
-</div></section>
-<section class="psec"><div class="wrap"><ul class="figs"><li data-r><b>35+</b>Years in the foundry business</li><li data-r><b>~14,000 t</b>Installed capacity a year</li><li data-r><b>500+</b>Industrial customers</li><li data-r><b>Worldwide</b>Plants our castings run in</li></ul></div></section>""", js=CAREER_JS)
+</div></section>""", js=CAREER_JS)
 
 # ---------------------------------------------------------------- contact
 page('contact', 'Get a quote', 'Get a quote or discuss your part with Standard Alloys India. A drawing, photographs or only the equipment model is enough to start.', 'Contact',
