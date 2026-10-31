@@ -1,6 +1,6 @@
 # sa-group-website
 
-New website for SA Group (Standard Alloys India Pvt. Ltd. and Surge Alloys Pvt. Ltd.), Ajmer, India.
+New website for Standard Alloys India Pvt. Ltd. and Surge Alloys Pvt. Ltd., Ajmer, India.
 
 **Review link:** https://sorabbaheti-droid.github.io/sa-group-website/
 

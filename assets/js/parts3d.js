@@ -1,4 +1,4 @@
-// Procedural 3D castings for the SA Group concepts (three.js r170).
+// Procedural 3D castings for the Standard Alloys website (three.js r170).
 // Shapes are simplified stand-ins for real parts (cone crusher mantle, concave ring,
 // impact crusher blow bar, crusher hammer, VRM table liner) until CAD/scan models arrive.
 import * as THREE from 'three';
