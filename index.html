@@ -3,41 +3,173 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SA Group website · review</title>
+<title>SA Group · Standard Alloys India and Surge Alloys, Ajmer</title>
+<meta name="description" content="SA Group: Standard Alloys India and Surge Alloys. Engineered steel and iron castings from Ajmer, India, since 1991.">
 <meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root { --bg:#0d0d0e; --ink:#f2efe9; --dim:#8d8a85; --hot:#ff6a1f; }
-  * { box-sizing:border-box; margin:0; }
-  body { background:var(--bg); color:var(--ink); font:400 18px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif; min-height:100svh; }
-  .hero { position:relative; height:70svh; overflow:hidden; }
-  .hero video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.55; }
-  .hero .t { position:absolute; left:clamp(20px,4vw,56px); bottom:clamp(24px,5vw,64px); }
-  h1 { font-size:clamp(48px,10vw,150px); line-height:.88; letter-spacing:-.05em; font-weight:800; text-transform:uppercase; }
-  .hero p { margin-top:18px; max-width:40ch; font-size:clamp(17px,1.6vw,22px); }
-  main { padding:clamp(40px,6vw,96px) clamp(20px,4vw,56px); display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
-  .c { background:#18181a; padding:28px; min-height:200px; display:flex; flex-direction:column; justify-content:space-between; }
-  .c b { font-size:28px; letter-spacing:-.03em; }
-  .c span { color:var(--dim); }
-  a.c { color:inherit; text-decoration:none; transition:background .2s; }
-  a.c:hover { background:#232326; }
-  a.c b::after { content:" →"; }
-  footer { padding:0 clamp(20px,4vw,56px) 40px; color:var(--dim); font-size:15px; }
+:root{
+  --paper:#fbfaf7; --ink:#15171c; --ink-2:#3b3f47; --muted:#6a6e76; --line:#e6e3dc; --accent:#e8541b; --accent-ink:#fff;
+  --scrim:rgba(10,10,12,.62); --door-ink:#fff;
+  --m:clamp(20px,3vw,48px); --ease:cubic-bezier(.16,1,.3,1);
+  --display:"Inter Tight",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:clip}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100svh;display:flex;flex-direction:column}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+header{display:flex;justify-content:space-between;align-items:center;padding:22px var(--m);font-size:14px;color:var(--ink-2)}
+.mark{display:flex;align-items:center;gap:10px;text-decoration:none;font:600 18px/1 var(--display);color:var(--ink);letter-spacing:-.01em}
+.mark img{width:30px;height:auto}
+header .r{display:flex;gap:28px}
+header .r a{text-decoration:none}header .r a:hover{color:var(--accent)}
+
+.intro{padding:clamp(24px,4vh,56px) var(--m) clamp(24px,3.5vh,40px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;align-items:end}
+h1{font:500 clamp(40px,5.4vw,84px)/.98 var(--display);letter-spacing:-.035em;max-width:14ch}
+.intro p{font-size:clamp(17px,1.25vw,19px);color:var(--ink-2);max-width:40ch;justify-self:end}
+
+.doors{flex:1;display:flex;gap:14px;padding:0 var(--m);min-height:min(66svh,720px)}
+.door{position:relative;flex:1 1 0;min-width:0;border-radius:10px;overflow:hidden;text-decoration:none;color:var(--door-ink);isolation:isolate;transition:flex-grow .8s var(--ease)}
+.door video,.door img.poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transform:scale(1.06);transition:transform 1.4s var(--ease),filter .8s var(--ease)}
+.door::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,10,12,.05) 30%,var(--scrim) 100%)}
+.door canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;mix-blend-mode:screen}
+.door .txt{position:absolute;left:clamp(20px,2.4vw,40px);right:clamp(20px,2.4vw,40px);bottom:clamp(20px,2.4vw,36px);display:grid;gap:14px}
+.door .co{font:500 13px/1 var(--body);opacity:.86}
+.door h2{font:500 clamp(36px,4.2vw,68px)/.96 var(--display);letter-spacing:-.035em}
+.door p{font-size:clamp(15px,1.1vw,17px);max-width:38ch;opacity:.92}
+.door .go{display:inline-flex;align-items:center;gap:10px;justify-self:start;margin-top:6px;padding:13px 20px;border-radius:999px;background:var(--door-ink);color:var(--ink);font:500 15px/1 var(--body);transition:background .3s var(--ease),color .3s var(--ease),gap .3s var(--ease)}
+.door .go svg{width:16px;height:16px;transition:transform .4s var(--ease)}
+@media (hover:hover){
+  .doors:hover .door{flex-grow:.82}
+  .doors:hover .door:hover{flex-grow:1.45}
+  .doors:hover .door:not(:hover) video{filter:saturate(.35) brightness(.78)}
+  .door:hover video{transform:scale(1.01)}
+  .door:hover .go{background:var(--accent);color:var(--accent-ink)}
+  .door:hover .go svg{transform:translateX(4px)}
+}
+.door:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+
+.facts{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 32px;padding:28px var(--m) 8px;font-size:14px;color:var(--ink-2)}
+.facts b{display:block;font:500 clamp(20px,1.8vw,26px)/1.1 var(--display);letter-spacing:-.02em;color:var(--ink);margin-bottom:4px;font-variant-numeric:tabular-nums}
+footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 32px;padding:22px var(--m) 26px;font-size:13px;color:var(--muted);border-top:1px solid var(--line);margin:24px var(--m) 0;padding-inline:0}
+footer a{text-decoration:none}footer a:hover{color:var(--accent)}
+
+.js .rise{opacity:0;transform:translateY(18px)}
+.js .door{clip-path:inset(100% 0 0 0 round 10px)}
+@media (max-width:820px){
+  header .r a:first-child{display:none}
+  .intro{grid-template-columns:1fr;gap:14px}.intro p{justify-self:start}
+  .doors{flex-direction:column;min-height:0}
+  .door{min-height:56svh;flex:none}
+  .facts{justify-content:flex-start}
+  .facts>div{flex:1 1 40%}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important}
+  .js .rise{opacity:1;transform:none}.js .door{clip-path:none}
+  .door video{transform:none}
+}
 </style>
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
-  <section class="hero">
-    <video src="assets/pour.mp4" poster="assets/pour.jpg" autoplay muted loop playsinline></video>
-    <div class="t">
-      <h1>SA Group<br>website</h1>
-      <p><a href="site/" style="color:inherit">Open the new website (home page) →</a></p>
-    </div>
+<header>
+  <a class="mark" href="./"><img src="assets/saipl-logo.png" alt="" width="30" height="27">SA Group</a>
+  <div class="r"><a href="mailto:sales@standardalloysindia.com">sales@standardalloysindia.com</a><a href="tel:+911452695110">+91 145 269 5110</a></div>
+</header>
+
+<main>
+  <section class="intro">
+    <h1 class="rise">Engineered castings from Ajmer, since 1991</h1>
+    <p class="rise">SA Group brings together two companies and three foundries. Choose the company you would like to visit.</p>
   </section>
-  <main>
-    <a class="c" href="site/" style="grid-column:1/-1;background:#f4f1ea;color:#16181d"><b>The website · Home</b><span style="color:#444">White, engineering-drawing look built with Hallmark (Formwork theme). Film in black and white, the seven failure modes, process, the 3 kg to 7 t range scene, grades, quality, plant facts and the quote request. Open it.</span></a>
-    <a class="c" href="concepts/a/"><b>Earlier concept A · The dark room</b><span>Black page, your film full screen, a 3D molten drop that cools as you scroll, and a grade finder where the metal changes with each grade. Open it.</span></a>
-    <a class="c" href="concepts/b/"><b>Earlier concept B · The specimen</b><span>White page with a 3D crusher part you drag to turn (switch part and finish), product cut-outs, process verbs over film and engraved ISO certificates. Open it.</span></a>
-    <a class="c" href="concepts/c/"><b>Earlier concept C · Heat chart</b><span>Bold wildcard: each section is the colour of steel at a temperature, so the page cools from 1,600 °C to dispatch. Includes a part-weight slider with a 3D part and a person for scale. Open it.</span></a>
-  </main>
-  <footer>Standard Alloys India Pvt. Ltd. · Surge Alloys Pvt. Ltd. · Ajmer, India</footer>
+
+  <nav class="doors" aria-label="Choose a company">
+    <a class="door" href="standard-alloys/" data-door>
+      <video src="assets/media/pit.mp4" poster="assets/media/pit.jpg" muted loop playsinline autoplay aria-hidden="true"></video>
+      <canvas aria-hidden="true"></canvas>
+      <div class="txt">
+        <span class="co">Standard Alloys India Pvt. Ltd.</span>
+        <h2>Standard Alloys</h2>
+        <p>Wear- and heat-resistant castings for cement, mining, aggregate and power plants, from 3 kg to 7 tonnes.</p>
+        <span class="go">Visit Standard Alloys <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+    </a>
+    <a class="door" href="https://surgealloys.com" data-door>
+      <video src="assets/media/pour.mp4" poster="assets/media/pour.jpg" muted loop playsinline autoplay aria-hidden="true"></video>
+      <canvas aria-hidden="true"></canvas>
+      <div class="txt">
+        <span class="co">Surge Alloys Pvt. Ltd.</span>
+        <h2>Surge Alloys</h2>
+        <p>Castings and critical mechanical spares from a modern foundry at Palra, Ajmer.</p>
+        <span class="go">Visit Surge Alloys <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+    </a>
+  </nav>
+
+  <section class="facts" aria-label="SA Group in figures">
+    <div class="rise"><b>1991</b>Founded in Ajmer</div>
+    <div class="rise"><b>3 foundries</b>About 14,000 t a year</div>
+    <div class="rise"><b>3 kg to 7 t</b>Single-piece castings</div>
+    <div class="rise"><b>ISO 9001, 14001, 45001</b>Certified systems</div>
+    <div class="rise"><b>Worldwide</b>Shipped to plants anywhere</div>
+  </section>
+</main>
+
+<footer>
+  <span>Standard Alloys India · F-26B &amp; 27, Parbatpura Industrial Area, Ajmer 305002</span>
+  <span>Surge Alloys · F-95 &amp; 96, Ajaymeru Industrial Area, Palra, Ajmer 305025</span>
+  <span>© 2026 SA Group</span>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script>
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const doors = [...document.querySelectorAll('[data-door]')];
+
+/* entrance: the two doors open from the floor, then the words settle */
+if (!reduce && window.gsap) {
+  gsap.ticker.lagSmoothing(0);
+  const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+  tl.to('.intro .rise', { opacity: 1, y: 0, duration: .9, stagger: .08 })
+    .to(doors, { clipPath: 'inset(0% 0 0 0 round 10px)', duration: 1.3, stagger: .12 }, '-=.6')
+    .from('.door .txt > *', { y: 24, opacity: 0, duration: .8, stagger: .05 }, '-=.7')
+    .to('.facts .rise', { opacity: 1, y: 0, duration: .7, stagger: .05 }, '-=.5');
+} else {
+  document.querySelectorAll('.rise').forEach(e => { e.style.opacity = 1; e.style.transform = 'none'; });
+  doors.forEach(d => d.style.clipPath = 'none');
+}
+
+/* each door: the film drifts with the pointer and embers rise from the melt */
+doors.forEach(door => {
+  const v = door.querySelector('video'), c = door.querySelector('canvas'), g = c.getContext('2d');
+  if (reduce) { v.pause(); return; }
+  let W = 0, H = 0, dpr = Math.min(devicePixelRatio || 1, 2), mx = .5, my = .5, hot = 0, target = 0;
+  const fit = () => { const r = door.getBoundingClientRect(); W = r.width; H = r.height; c.width = W * dpr; c.height = H * dpr; g.setTransform(dpr, 0, 0, dpr, 0, 0); };
+  new ResizeObserver(fit).observe(door); fit();
+  const sparks = Array.from({ length: 70 }, () => ({ x: Math.random(), y: Math.random(), v: .0008 + Math.random() * .0024, s: .6 + Math.random() * 1.8, w: Math.random() * 6.28 }));
+  door.addEventListener('pointermove', e => { const r = door.getBoundingClientRect(); mx = (e.clientX - r.left) / r.width; my = (e.clientY - r.top) / r.height; });
+  door.addEventListener('pointerenter', () => target = 1);
+  door.addEventListener('pointerleave', () => { target = 0; mx = .5; my = .5; });
+  door.addEventListener('focus', () => target = 1); door.addEventListener('blur', () => target = 0);
+  let vis = true; new IntersectionObserver(([e]) => { vis = e.isIntersecting; vis ? v.play().catch(() => {}) : v.pause(); }).observe(door);
+  let px = 0, py = 0;
+  (function f(t) {
+    requestAnimationFrame(f); if (!vis || document.hidden) return;
+    hot += (target - hot) * .06; px += ((mx - .5) * -18 - px) * .06; py += ((my - .5) * -12 - py) * .06;
+    v.style.translate = `${px}px ${py}px`;
+    g.clearRect(0, 0, W, H);
+    for (const s of sparks) {
+      s.y -= s.v * (1 + hot * 2.2); s.w += .03; if (s.y < -.02) { s.y = 1.02; s.x = Math.random(); }
+      const x = (s.x + Math.sin(s.w) * .01) * W, y = s.y * H, a = Math.min(1, (1 - s.y) * 1.4) * (.35 + hot * .65);
+      g.fillStyle = `rgba(255,${150 + (s.s * 40 | 0)},70,${a})`; g.beginPath(); g.arc(x, y, s.s * (1 + hot * .5), 0, 6.283); g.fill();
+    }
+  })();
+});
+</script>
 </body>
 </html>
