@@ -719,7 +719,7 @@ page('careers', 'Careers', 'Careers at Standard Alloys India: technical and comm
   <div class="streams">{streams}
     <article class="stream intern" data-r><h3>Internships and industrial training</h3><p>For engineering, metallurgy and management students who want to see a working foundry from method to dispatch.</p><a class="btn ghost" href="#apply" data-role="Internship or industrial training">Ask about an internship</a></article></div>
 </div></section>
-<section class="psec" aria-labelledby="lf-h"><div class="wrap"><div class="sh" data-r><h2 id="lf-h">Life at Standard Alloys India</h2><p>Short glimpses of work and life with us: training and safety, cricket, festivals and the people who make the castings.</p></div>{wall}</div></section>
+<section class="psec" aria-labelledby="lf-h"><div class="wrap"><div class="sh" data-r><h2 id="lf-h">Life at Standard Alloys India</h2></div>{wall}</div></section>
 <section class="psec soft" id="apply" aria-labelledby="ap-h"><div class="wrap">
   <div class="sh" data-r><h2 id="ap-h">Apply</h2><p>A few details and your CV. No vacancy listed for you? Apply anyway.</p></div>
   <!-- ERPNext Job Applicant web form: put its URL in data-webform to replace the email composer -->
