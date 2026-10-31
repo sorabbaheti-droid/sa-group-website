@@ -416,4 +416,5 @@ GKEYS = {
  'steel': 'carbon steel low alloy cast steel a27 a148 is 1030 is 2644 en 10293',
 }
 for _p in PRODUCTS:
-    _p['search'] = ' '.join([_p['name'], _p['where'], KEYS.get(_p['slug'], '')] + [GKEYS[g] + ' ' + GRADES[g]['short'] for g, _ in _p['grades']]).lower()
+    # search is by type of casting for now; equipment, model and grade search can be added later
+    _p['search'] = ' '.join([_p['name'], KEYS.get(_p['slug'], ''), FAMILIES[_p['fam']]['name']]).lower()

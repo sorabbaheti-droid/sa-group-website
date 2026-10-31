@@ -316,13 +316,13 @@ for k in FAMILY_ORDER:
   <div class="fam-h"><h2 id="f-{k}">{FAMILIES[k]['name']}</h2><p>{FAMILIES[k]['text']}</p></div>
   <div class="pcards">{''.join(pcard(p) for p in ps)}</div>
 </section>'''
-page('products', 'Products', 'Every wear- and heat-resistant part we cast, searchable by part, equipment or grade.', 'Products',
-     hero('Products', 'Products', f'{len(PRODUCTS)} parts in five families. Search by part, equipment or grade, or browse by industry.', 'rings') + f'''
+page('products', 'Products', 'Every wear- and heat-resistant part we cast, searchable by type of casting.', 'Products',
+     hero('Products', 'Products', f'{len(PRODUCTS)} parts in five families. Search by type of casting, or browse by industry.', 'rings') + f'''
 <section class="catalogue"><div class="wrap">
   <form class="bigsearch" role="search" onsubmit="return false" data-r>
-    <label for="q">Search by part, equipment or grade</label>
-    <div class="bs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" placeholder="Try: mantle, jaw plate, VRM roller, dip tube, HK40" autocomplete="off"></div>
-    <p class="eg">Popular: <button type="button">Jaw plate</button><button type="button">Mantle</button><button type="button">Bowl liner</button><button type="button">VRM roller</button><button type="button">Dip tube</button><button type="button">Grate plate</button><button type="button">HK40</button></p>
+    <label for="q">Search by type of casting</label>
+    <div class="bs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" type="search" placeholder="Try: jaw plate, mantle, blow bar, dip tube, grate plate" autocomplete="off"></div>
+    <p class="eg">Popular: <button type="button">Jaw plate</button><button type="button">Mantle</button><button type="button">Bowl liner</button><button type="button">VRM roller</button><button type="button">Dip tube</button><button type="button">Grate plate</button></p>
   </form>
   <div class="tools" data-r>
     <div class="chips" role="group" aria-label="Filter by family">{chips}</div>
