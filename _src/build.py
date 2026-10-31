@@ -479,7 +479,7 @@ SEL = '''<div class="selector" id="selector" data-r>
 SEL_JS = r'''const S={hot:'no',job:'wear',imp:'mod',tramp:'no'};
 const N={mn:'Austenitic manganese steel',crmo:'Cr-Mo and martensitic steels',hicr:'High-chromium white iron',heat:'Heat-resistant steels',steel:'Carbon and low-alloy steels'};
 function pick(){
-  if(S.hot==='yes')return['heat','HH type where metal temperatures stay lower; HK type for the hottest positions and severe thermal cycling, such as the kiln outlet and the lowest cyclones.'];
+  if(S.hot==='yes')return['heat','HH type where metal temperatures stay lower; HK type for the hottest positions and severe thermal cycling, such as the kiln outlet and the lowest cyclones; HP40Nb or a tailored nickel–chromium balance where even HK falls short.'];
   if(S.job==='load')return['steel','Parts that carry load or locate others need strength, toughness and machinability more than hardness. Normalised, or quenched and tempered.'];
   if(S.imp==='heavy')return['mn','Heavy blows work-harden manganese steel at the face while the core stays tough. Choose 18% or 22% manganese for hard, abrasive rock.'];
   if(S.imp==='low'&&S.tramp==='no')return['hicr','With little impact and no tramp metal, the hard carbides of white iron give the longest life. Ni-Hard is the usual alternative in coal grinding.'];
@@ -495,7 +495,7 @@ const GL={mn:['ASTM A128','Hadfield steel','Mn13','Mn14','Mn18','Mn22','IS 276',
 crmo:['IS 4896','Cr-Mo steel','CrMo','Martensitic steel','Pearlitic Cr-Mo steel','Chrome-moly steel'],
 hicr:['ASTM A532 Class II','ASTM A532 Class III','Cr15','Cr20','Cr26','Cr27','High chrome iron','High chromium white iron','IS 4771','EN 12513','ISO 21988'],
 nihard:['ASTM A532 Class I','Ni-Hard 1','Ni-Hard 2','Ni-Hard 4','Ni-Hard'],
-heat:['HH','HK','HK30','HK40','ASTM A297','ASTM A447','IS 4522','EN 10295','25Cr-12Ni','25Cr-20Ni','HRCS','Heat-resistant steel','Stainless steel'],
+heat:['HH','HK','HK30','HK40','HP40Nb','HP40','HP','ASTM A297','ASTM A447','IS 4522','IS 519','EN 10295','25Cr-12Ni','25Cr-20Ni','HRCS','Heat-resistant steel','Stainless steel'],
 steel:['ASTM A27','ASTM A148','IS 1030','IS 2644','EN 10293','Carbon steel','Low-alloy steel','Cast steel']};
 const USE={mn:'jaw plates, cone liners, hammers, apron pans and track shoes',crmo:'mill liners, diaphragms, blow bars and grizzly bars',hicr:'VRM rollers, table liners, blow bars on clean feed and chute liners',nihard:'coal mill rolls, bull ring segments, mill and chute liners',heat:'dip tubes, kiln tip castings, cooler grate plates and spouts in hot service',steel:'crusher heads, sockets, trunnions, toggles, wheels and sprockets'};
 const dl=document.getElementById('glist');Object.values(GL).flat().forEach(x=>{const o=document.createElement('option');o.value=x;dl.appendChild(o)});
@@ -662,11 +662,14 @@ page('contact', 'Get a quote', 'Get a quote or discuss your part with Standard A
   <div data-webform="" data-title="Request for quotation">{rfq_html()}</div>
 </div></section>
 {EXPORT}
-<section class="visit"><div class="wrap vg">
-  <div data-r><h2 style="text-align:left">Visit the foundry</h2>
-    <address><b>Standard Alloys India Pvt. Ltd.</b><br>F-26B &amp; 27, Parbatpura Industrial Area<br>Ajmer 305002, Rajasthan, India</address>
-    <p><a href="{TEL}">{PHONE}</a><br><a href="mailto:{MAIL}">{MAIL}</a></p></div>
-  <iframe data-r title="Map of Standard Alloys India, Parbatpura Industrial Area, Ajmer" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Parbatpura%20Industrial%20Area%2C%20Ajmer%20305002&amp;z=14&amp;output=embed"></iframe>
+<section class="visit"><div class="wrap">
+  <div class="sh" data-r><h2>Visit the foundry</h2><p><a href="{TEL}">{PHONE}</a> · <a href="mailto:{MAIL}">{MAIL}</a></p></div>
+  <div class="maps">
+    <figure data-r><iframe title="Map of Standard Alloys India Unit 1, Parbatpura Industrial Area, Ajmer" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=26.4138148,74.662982&amp;z=15&amp;output=embed"></iframe>
+      <figcaption><b>Unit 1</b><address>F-26B &amp; 27, Parbatpura Industrial Area<br>Ajmer 305002, Rajasthan, India</address><a href="https://maps.app.goo.gl/eiyeFoDQeCdKW6zdA" target="_blank" rel="noopener">Open in Google Maps</a></figcaption></figure>
+    <figure data-r><iframe title="Map of Standard Alloys India Unit SP75, Ajmer" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=26.4351518,74.6963154&amp;z=15&amp;output=embed"></iframe>
+      <figcaption><b>Unit SP75</b><address>Standard Alloys India Pvt. Ltd., Unit SP75<br>Ajmer, Rajasthan, India</address><a href="https://maps.app.goo.gl/sSciMavsfMzPz3A56" target="_blank" rel="noopener">Open in Google Maps</a></figcaption></figure>
+  </div>
 </div></section>""")
 
 # ---------------------------------------------------------------- keep the hand-written home in step

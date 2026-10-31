@@ -56,9 +56,9 @@ GRADES = {
  ),
  'heat': dict(
     name='Heat-resistant steels', short='Heat-resistant steel',
-    aka='Cr-Ni types HH (25Cr-12Ni) and HK (25Cr-20Ni), high-chromium heat-resistant steels and stainless grades.',
-    standards=['ASTM A297', 'ASTM A447', 'IS 4522', 'EN 10295'],
-    chem='HH: about 25% chromium and 12% nickel. HK: about 25% chromium and 20% nickel. Chromium forms the protective oxide; nickel keeps the structure austenitic and strong at temperature.',
+    aka='Cr-Ni types HH (25Cr-12Ni), HK (25Cr-20Ni) and HP40Nb (25Cr-35Ni, niobium-modified), high-chromium heat-resistant steels and stainless grades. Nickel and chromium can be tailored to the duty, subject to a feasibility review.',
+    standards=['IS 4522', 'IS 519', 'ASTM A297', 'ASTM A447', 'EN 10295'],
+    chem='HH: about 25% chromium and 12% nickel. HK: about 25% chromium and 20% nickel. HP40Nb: about 25% chromium and 35% nickel with niobium, for the highest temperatures and carburising gas. Where the duty needs it, we tailor nickel and chromium beyond the standard ranges after a feasibility review. Chromium forms the protective oxide; nickel keeps the structure austenitic and strong at temperature.',
     temp=[('HH', 1100), ('HK', 1150)],
     hardness='Chosen for strength, scaling and creep resistance at temperature rather than hardness.',
     treat='Usually supplied as cast. Chemistry is held to tight limits because it sets life at temperature.',
