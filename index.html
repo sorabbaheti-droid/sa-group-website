@@ -13,7 +13,7 @@
 @view-transition{navigation:auto}
 ::view-transition-group(film){animation-duration:.9s;animation-timing-function:cubic-bezier(.7,0,.2,1)}
 :root{
-  --paper:#fbfaf7; --ink:#15171c; --ink-2:#3b3f47; --muted:#6a6e76; --line:#e6e3dc; --accent:#e8541b; --accent-ink:#fff;
+  --paper:#fbfaf7; --ink:#15171c; --ink-2:#3b3f47; --muted:#6a6e76; --line:#e6e3dc; --accent:#d42a2a; --accent-ink:#fff;
   --scrim:rgba(10,10,12,.62); --door-ink:#fff;
   --m:clamp(20px,3vw,48px); --ease:cubic-bezier(.16,1,.3,1);
   --display:"Inter Tight",system-ui,sans-serif; --body:"Inter",system-ui,sans-serif;
@@ -78,6 +78,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--accent)}
 
 /* logo intro: plays once per visit, then the mark flies to the header */
 .intro-ov{position:fixed;inset:0;z-index:200;background:#fff;display:grid;place-items:center}
+.intro-ov[hidden]{display:none}
 .intro-ov video{width:min(46vmin,360px);height:auto}
 .intro-ov button{position:absolute;right:var(--m);bottom:24px;background:none;border:0;font:500 13px/1 var(--body);color:var(--muted);cursor:pointer;padding:10px 0}
 .intro-ov button:hover{color:var(--ink)}
@@ -121,8 +122,8 @@ html.intro-on body{overflow:hidden}
 
   <section class="facts" aria-label="In figures">
     <div class="rise"><b>1991</b>Founded in Ajmer</div>
-    <div class="rise"><b>14,000 t</b>Installed capacity a year</div>
     <div class="rise"><b>3 kg to 7 t</b>Single-piece castings</div>
+    <div class="rise"><b>10 t</b>Liquid metal in one pour</div>
     <div class="rise"><b>ISO 9001, 14001, 45001</b>Certified systems</div>
     <div class="rise"><b>Worldwide</b>Shipped to plants anywhere</div>
   </section>
@@ -156,7 +157,7 @@ function entrance() {
 /* logo intro: once per visit, the logo is poured, then flies into the header mark */
 (function intro() {
   const root = document.documentElement, ov = document.getElementById('introOv'), v = document.getElementById('introV');
-  if (!root.classList.contains('intro-on') || !window.gsap) { root.classList.remove('intro-on'); entrance(); return; }
+  if (!root.classList.contains('intro-on') || !window.gsap) { ov.remove(); root.classList.remove('intro-on'); entrance(); return; }
   ov.hidden = false;
   let done = false;
   const finish = () => {
