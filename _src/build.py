@@ -11,7 +11,7 @@ from catalogue import GRADES, GRADE_ORDER, FAMILIES, FAMILY_ORDER, CONTROL, CONT
 OUT = 'standard-alloys'
 SITE = 'https://sorabbaheti-droid.github.io/sa-group-website/'   # change to the live domain at launch
 NAV = [('About', 'about/'), ('Capabilities', 'capabilities/'), ('Industries', 'industries/'),
-       ('Products', 'products/'), ('Grades', 'grades/'), ('Quality', 'quality/'), ('Contact', 'contact/')]
+       ('Products', 'products/'), ('Grades', 'grades/'), ('Quality', 'quality/'), ('Careers', 'careers/'), ('Contact', 'contact/')]
 MAIL = 'sales@standardalloysindia.com'
 PHONE = '+91 145 269 5110'
 TEL = 'tel:+911452695110'
@@ -703,7 +703,7 @@ f.addEventListener('submit',e=>{e.preventDefault();let ok=true;['name','email'].
  const v=n=>f[n].value.trim()||'-';const body=[`Area: ${v('area')}`,`Role: ${v('role')}`,`Experience: ${v('exp')}`,`Qualification: ${v('qual')}`,'',`Name: ${v('name')}`,`Email: ${v('email')}`,`Phone: ${v('phone')}`,`City: ${v('city')}`,'',v('notes'),'','CV attached.'].join('\n');
  location.href=`mailto:${MAIL}?subject=${encodeURIComponent('Job application: '+(f.area.value||'General')+(f.role.value?' – '+f.role.value:''))}&body=${encodeURIComponent(body)}`;
  f.querySelector('.msg').textContent='Your email app should now be open. Attach your CV and press send.';});"""
-page('careers', 'Careers', 'Careers at Standard Alloys India: technical and commercial roles, internships and industrial training in foundry, metallurgy, machining, quality and export.', 'About',
+page('careers', 'Careers', 'Careers at Standard Alloys India: technical and commercial roles, internships and industrial training in foundry, metallurgy, machining, quality and export.', 'Careers',
      hero('<a href="~R~about/">About</a> / Careers', 'Careers at Standard Alloys India', 'Join the people who melt, mould, treat, machine and test the castings that keep plants running around the world.', 'sparks') + f"""
 <section class="psec"><div class="wrap cg">
   <figure data-r><video src="~A~assets/media/pour2.mp4" poster="~A~assets/media/pour2.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></figure>
