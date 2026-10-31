@@ -232,8 +232,8 @@ def rfq_html(title='Get a quote, or discuss your part'):
   </form>
 </div>"""
 
-WHY = [('35+', 'years', 'Of foundry experience, since 1991.'),
-       ('~14,000', 't a year', 'Installed capacity across three foundry facilities.'),
+WHY = [('35+', 'years', 'Foundry experience in Ajmer, since 1991.'),
+       ('~14,000', 't a year', 'Installed capacity across our three Ajmer facilities.'),
        ('3 kg–7 t', '', 'Single pieces, with up to 10 tonnes of metal in one pour.'),
        ('500+', 'customers', 'Industrial customers in cement, mining, aggregate, power and steel.'),
        ('10,000+', 'patterns', 'Already on file, so repeat orders start at moulding.'),
@@ -627,7 +627,7 @@ page('about', 'About us', 'Standard Alloys India: a steel foundry since 1991, ma
      hero('About', 'Since 1991', 'A fabrication shop that became a specialist foundry for the parts that wear out first.', 'aerial') + '''
 <section class="intro"><div class="wrap narrow" data-r><p class="lit">Standard Alloys India began in 1991 as a fabrication shop in Ajmer, Rajasthan, and lit its first induction furnace in 1994. Over three decades we have built a foundry around one idea: a casting should be specified for the duty it will meet. Today our three facilities have about 14,000 tonnes a year of installed capacity, pouring single pieces from 3 kg to 7 tonnes for more than 500 industrial customers, in plants anywhere in the world.</p></div></section>
 <section><div class="wrap timeline">
-<div data-r><b>1991</b><span>Starts as a fabrication shop in Rajasthan, India</span></div>
+<div data-r><b>1991</b><span>Starts as a fabrication shop in Ajmer</span></div>
 <div data-r><b>1994</b><span>First induction furnace, the start of the foundry</span></div>
 <div data-r><b>Today</b><span>About 14,000 t a year of capacity, castings to 7 tonnes, shipped worldwide</span></div></div></section>
 <section class="why"><div class="wrap"><div class="narrow" data-r><h2>How we work</h2></div>
@@ -643,15 +643,63 @@ page('about', 'About us', 'Standard Alloys India: a steel foundry since 1991, ma
 </div></section>''' + cta('Work with us', 'Send a drawing, a sample or a worn part, and we will take it from there.'))
 
 # ---------------------------------------------------------------- careers
+WHYWORK = [('Learn on real parts', 'Training on the shop floor and in the laboratory, on castings that go into working plants.'),
+           ('Metallurgy at the core', 'Work next to metallurgists who choose grades, design methods and read microstructures every day.'),
+           ('Safety first', 'Health and safety run to a certified ISO 45001:2018 system, in every unit.'),
+           ('Room to grow', 'People who learn the process end to end take on more responsibility, from cell to shift to department.'),
+           ('A global customer base', 'Parts you make run in cement, mining, power and steel plants anywhere in the world.'),
+           ('Thirty-five years of craft', 'A family-run foundry since 1991, investing in new furnaces, machines and methods.')]
+whywork = ''.join(f'<li data-r><span class="n">{i:02d}</span><b>{a}</b>{b}</li>' for i, (a, b) in enumerate(WHYWORK, 1))
 TEAMS = [('Melting and moulding', 'meltshop'), ('Metallurgy and laboratory', 'micro'), ('Heat treatment', 'quench'), ('Machining', 'drill'),
          ('Quality and NDT', 'mpi'), ('Engineering and patterns', 'moulds'), ('Sales and export', 'jaws'), ('Maintenance', 'cnc')]
 teams = ''.join(f'<figure data-r><video src="~A~assets/media/{v}.mp4" poster="~A~assets/media/{v}.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><figcaption>{t}</figcaption></figure>' for t, v in TEAMS)
-page('careers', 'Careers', 'Careers at Standard Alloys India: foundry, metallurgy, machining, quality, engineering and export roles in India.', 'About',
-     hero('<a href="~R~about/">About</a> / Careers', 'Make castings that matter', 'Join the people who melt, mould, treat, machine and test the parts that keep plants running.', 'sparks') + f'''
-<section class="intro"><div class="wrap narrow" data-r><p class="lit">A foundry runs on skill. We look for people who take pride in exact work, from the melt shop to the laboratory, and we train them on real parts for real plants.</p></div></section>
-<section class="teams"><div class="wrap"><div class="narrow" data-r><h2>Where you could work</h2></div><div class="tg">{teams}</div></div></section>
-<section class="quote" id="quote"><div class="wrap"><div class="narrow" data-r><h2>Current openings</h2><p>Openings and the application form will appear here.</p></div>
-<div class="rfq" data-webform="" data-title="Job application" style="margin-top:40px"><div><h3>Apply or send your CV</h3><p>The online application form will appear here. Until then, write to us with the role you are interested in.</p><div class="acts"><a class="btn" href="{mailto('Career enquiry')}">Email your CV</a></div></div></div></div></section>''')
+WALL = ['pour', 'sparks', 'moulds', 'vtl', 'quench', 'ut', 'furnace', 'grind', 'aerial']
+wall = ''.join(f'<figure class="w{i % 5}" data-r><img src="~A~assets/media/{v}.jpg" alt="" loading="lazy"></figure>' for i, v in enumerate(WALL))
+STREAMS = [('Technical roles', 'Melting, moulding, heat treatment, machining, metallurgy and laboratory, quality and NDT, engineering and patterns, maintenance.', 'Technical role'),
+           ('Commercial roles', 'Sales and export, purchase, planning, accounts, human resources and administration.', 'Commercial role')]
+streams = ''.join(f'<article class="stream" data-r><h3>{t}</h3><p>{d}</p><a class="btn" href="#apply" data-role="{r}">Apply for a {r.lower()}</a></article>' for t, d, r in STREAMS)
+FORM = """<form class="rfqf jobf" data-job novalidate aria-label="Job application">
+  <fieldset><legend><span>1</span>What would you like to do?</legend>
+    <div class="row"><select name="area" aria-label="Area of work"><option value="">Choose an area</option><option>Technical role</option><option>Commercial role</option><option>Internship or industrial training</option><option>Not sure yet</option></select><input name="role" aria-label="Role" placeholder="Role you are interested in (optional)"></div>
+    <div class="row"><input name="exp" aria-label="Experience" placeholder="Years of experience, or your course and year"><input name="qual" aria-label="Qualification" placeholder="Highest qualification"></div>
+  </fieldset>
+  <fieldset><legend><span>2</span>About you</legend>
+    <div class="row"><input name="name" aria-label="Name" placeholder="Name" autocomplete="name" required><input name="email" type="email" aria-label="Email" placeholder="Email" autocomplete="email" required></div>
+    <div class="row"><input name="phone" aria-label="Phone" placeholder="Phone" autocomplete="tel"><input name="city" aria-label="Current city" placeholder="Current city"></div>
+    <textarea name="notes" rows="3" aria-label="Message" placeholder="Tell us a little about yourself (optional)"></textarea>
+  </fieldset>
+  <div class="sub"><button class="btn" type="submit">Prepare my application</button><p class="msg" role="status">Your email app opens with these details filled in. Attach your CV before sending.</p></div>
+</form>"""
+CAREER_JS = r"""const MAIL='sales@standardalloysindia.com', f=document.querySelector('[data-job]');
+document.querySelectorAll('[data-role]').forEach(a=>a.addEventListener('click',()=>{f.area.value=a.dataset.role;}));
+f.addEventListener('submit',e=>{e.preventDefault();let ok=true;['name','email'].forEach(n=>{const el=f[n],bad=!el.value.trim()||(n==='email'&&!/^\S+@\S+\.\S+$/.test(el.value));el.setAttribute('aria-invalid',bad);if(bad&&ok){el.focus();ok=false}});
+ if(!ok){f.querySelector('.msg').textContent='Please add your name and email. Everything else is optional.';return}
+ const v=n=>f[n].value.trim()||'-';const body=[`Area: ${v('area')}`,`Role: ${v('role')}`,`Experience: ${v('exp')}`,`Qualification: ${v('qual')}`,'',`Name: ${v('name')}`,`Email: ${v('email')}`,`Phone: ${v('phone')}`,`City: ${v('city')}`,'',v('notes'),'','CV attached.'].join('\n');
+ location.href=`mailto:${MAIL}?subject=${encodeURIComponent('Job application: '+(f.area.value||'General')+(f.role.value?' – '+f.role.value:''))}&body=${encodeURIComponent(body)}`;
+ f.querySelector('.msg').textContent='Your email app should now be open. Attach your CV and press send.';});"""
+page('careers', 'Careers', 'Careers at Standard Alloys India: technical and commercial roles, internships and industrial training in foundry, metallurgy, machining, quality and export.', 'About',
+     hero('<a href="~R~about/">About</a> / Careers', 'Careers at Standard Alloys India', 'Join the people who melt, mould, treat, machine and test the castings that keep plants running around the world.', 'sparks') + f"""
+<section class="psec"><div class="wrap cg">
+  <figure data-r><video src="~A~assets/media/pour2.mp4" poster="~A~assets/media/pour2.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></figure>
+  <div data-r><div class="sh"><h2>A culture of craft, rigour and responsibility</h2></div>
+    <p>A foundry runs on skill. We look for people who take pride in exact work, from the melt shop to the laboratory, and who want to understand why a casting lasts, not only how it is made.</p>
+    <p style="margin-top:14px">You learn on real parts for real plants, alongside metallurgists and engineers, with every step of the process under one roof.</p>
+    <div class="acts" style="margin-top:28px"><a class="btn" href="#openings">Explore openings</a><a class="btn ghost" href="#apply">Apply now</a></div></div>
+</div></section>
+<section class="psec soft" aria-labelledby="ww-h"><div class="wrap"><div class="sh" data-r><h2 id="ww-h">Why work with us</h2></div><ul class="inits six">{whywork}</ul></div></section>
+<section class="psec" aria-labelledby="tm-h"><div class="wrap"><div class="sh" data-r><h2 id="tm-h">Where you could work</h2></div><div class="tg">{teams}</div></div></section>
+<section class="psec soft" id="openings" aria-labelledby="op-h"><div class="wrap">
+  <div class="sh" data-r><h2 id="op-h">Current openings</h2><p>Specific vacancies will be listed here. Until then, apply in the stream that suits you and we will contact you when a matching role opens.</p></div>
+  <div class="streams">{streams}
+    <article class="stream intern" data-r><h3>Internships and industrial training</h3><p>For engineering, metallurgy and management students who want to see a working foundry from method to dispatch.</p><a class="btn ghost" href="#apply" data-role="Internship or industrial training">Ask about an internship</a></article></div>
+</div></section>
+<section class="psec" aria-labelledby="lf-h"><div class="wrap"><div class="sh" data-r><h2 id="lf-h">Life at Standard Alloys India</h2></div><div class="wall">{wall}</div></div></section>
+<section class="psec soft" id="apply" aria-labelledby="ap-h"><div class="wrap">
+  <div class="sh" data-r><h2 id="ap-h">Apply</h2><p>A few details and your CV. No vacancy listed for you? Apply anyway.</p></div>
+  <!-- ERPNext Job Applicant web form: put its URL in data-webform to replace the email composer -->
+  <div data-webform="" data-title="Job application">{FORM}</div>
+</div></section>
+<section class="psec"><div class="wrap"><ul class="figs"><li data-r><b>35+</b>Years in the foundry business</li><li data-r><b>~14,000 t</b>Installed capacity a year</li><li data-r><b>500+</b>Industrial customers</li><li data-r><b>Worldwide</b>Plants our castings run in</li></ul></div></section>""", js=CAREER_JS)
 
 # ---------------------------------------------------------------- contact
 page('contact', 'Get a quote', 'Get a quote or discuss your part with Standard Alloys India. A drawing, photographs or only the equipment model is enough to start.', 'Contact',
