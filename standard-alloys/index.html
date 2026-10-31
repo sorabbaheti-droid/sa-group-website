@@ -102,6 +102,29 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 .stage canvas{position:absolute;inset:0;width:100%;height:100%}
 .stage small{position:absolute;left:0;right:0;bottom:6px;text-align:center;font-size:12px;color:var(--muted)}
 
+
+/* ---------- industries: expanding film tiles ---------- */
+.sectors{padding:clamp(80px,10vw,130px) 0 0}
+.tiles{margin-top:48px;display:flex;gap:8px;height:min(70svh,620px);padding:0 8px}
+.tile{position:relative;flex:1 1 0;min-width:0;overflow:hidden;color:#fff;text-decoration:none;background:#111;transition:flex-grow .7s var(--ease)}
+.tile video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 1.2s var(--ease),filter .6s}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.72))}
+.tile .t{position:absolute;z-index:1;left:24px;right:24px;bottom:24px}
+.tile h3{font-size:20px;font-weight:600;text-transform:uppercase;letter-spacing:.03em;display:flex;align-items:center;gap:10px}
+.tile h3 i{width:30px;height:30px;border-radius:50%;background:var(--red);display:grid;place-items:center;flex:0 0 30px;transition:transform .4s var(--ease)}
+.tile h3 svg{width:14px;height:14px}
+.tile p{max-height:0;opacity:0;overflow:hidden;font-size:15px;line-height:1.55;transition:max-height .6s var(--ease),opacity .4s,margin .4s;max-width:34ch}
+@media (hover:hover){
+  .tiles:hover .tile{flex-grow:.7}.tiles .tile:hover{flex-grow:2.4}
+  .tiles:hover .tile:not(:hover) video{filter:grayscale(1) brightness(.6)}
+  .tile:hover video{transform:scale(1)}
+  .tile:hover p{max-height:8em;opacity:1;margin-top:10px}
+  .tile:hover h3 i{transform:rotate(-45deg)}
+}
+.tile:focus-visible{outline:3px solid var(--red);outline-offset:-3px}
+/* ---------- sticky side tab ---------- */
+.sidetab{position:fixed;right:0;top:50%;z-index:40;translate:0 -50%;writing-mode:vertical-rl;transform:rotate(180deg);background:var(--red);color:#fff;text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:18px 12px;transition:background .25s,padding .3s var(--ease)}
+.sidetab:hover{background:var(--red-deep);padding-right:18px}
 /* ---------- products ---------- */
 .products{padding:clamp(80px,10vw,130px) 0}
 .pgrid{margin-top:56px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
@@ -166,6 +189,8 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
   .timeline{grid-template-columns:1fr;gap:24px}
   .range .grid{grid-template-columns:1fr;gap:24px}
   .range-pin{min-height:0;padding:80px 0}
+  .tiles{flex-direction:column;height:auto}.tile{flex:none;height:220px}.tile p{max-height:none;opacity:1;margin-top:8px}
+  .sidetab{display:none}
   .pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .qcols,.icons{grid-template-columns:1fr}
   .factory{grid-template-columns:1fr}
@@ -184,7 +209,7 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
     <nav id="nav" aria-label="Main">
       <a href="#hero" class="on">Home</a>
       <a href="#about">About</a>
-      <a href="#range">Range</a>
+            <a href="#industries">Industries</a>
       <a href="#products">Products</a>
       <a href="#quality">Quality</a>
       <a href="#contact">Contact</a>
@@ -272,6 +297,17 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
     </div>
   </section>
 
+  <section class="sectors" id="industries" aria-labelledby="ind-h">
+    <div class="wrap"><div class="narrow" data-r><h2 id="ind-h">Industries we serve</h2><p>Parts for the equipment that runs around the clock, where an early failure stops a whole line.</p></div></div>
+    <div class="tiles">
+      <a class="tile" href="#products" data-r><video src="../assets/media/cement.mp4" poster="../assets/media/cement.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><div class="t"><h3><i><svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Cement</h3><p>Kiln and cooler castings, VRM rollers and table liners, mill liners and diaphragms.</p></div></a>
+      <a class="tile" href="#products" data-r><video src="../assets/media/mining.mp4" poster="../assets/media/mining.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><div class="t"><h3><i><svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Mining</h3><p>Crusher liners, mill liners and wear parts for primary and secondary crushing.</p></div></a>
+      <a class="tile" href="#products" data-r><video src="../assets/media/aggregate.mp4" poster="../assets/media/aggregate.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><div class="t"><h3><i><svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Aggregate</h3><p>Jaw plates, concaves, mantles, blow bars and hammers for quarries.</p></div></a>
+      <a class="tile" href="#products" data-r><video src="../assets/media/sparks.mp4" poster="../assets/media/sparks.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><div class="t"><h3><i><svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Steel and power</h3><p>Heat-resistant castings for furnaces and grinding parts for coal mills.</p></div></a>
+      <a class="tile" href="#products" data-r><video src="../assets/media/machined.mp4" poster="../assets/media/machined.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><div class="t"><h3><i><svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Equipment makers</h3><p>Castings machined to drawing for crusher, mill and kiln manufacturers.</p></div></a>
+    </div>
+  </section>
+
   <section class="products" id="products" aria-labelledby="prod-h">
     <div class="wrap">
       <div class="narrow" data-r>
@@ -353,6 +389,8 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
     </div>
   </section>
 </main>
+
+<a class="sidetab" href="#quote">Send a drawing</a>
 
 <footer>
   <div class="wrap">
