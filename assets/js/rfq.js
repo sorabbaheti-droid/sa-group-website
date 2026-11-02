@@ -1,5 +1,5 @@
 // Quote request: works with a drawing, photographs, or only the equipment model.
-// Until the ERPNext Web Form is connected, it prepares an email with everything filled in.
+// Until the ERPNext Web Form is connected, it prepares the enquiry and offers Gmail, Outlook, email app or copy.
 (function () {
   const MAIL = 'sales@standardalloysindia.com';
   const part = new URLSearchParams(location.search).get('part');
@@ -36,8 +36,21 @@
         '',
         'Drawing, photographs or other files attached.'
       ].join('\n');
-      location.href = `mailto:${MAIL}?subject=${encodeURIComponent('Request for quotation: ' + v('part'))}&body=${encodeURIComponent(body)}`;
-      f.querySelector('.msg').textContent = 'Your email app should now be open with the enquiry filled in. Attach your drawing or photographs and press send. If nothing opened, write to ' + MAIL + '.';
+      const sub = 'Request for quotation: ' + v('part'), eS = encodeURIComponent(sub), eB = encodeURIComponent(body);
+      let box = f.querySelector('.sendbox');
+      if (!box) { box = document.createElement('div'); box.className = 'sendbox'; f.querySelector('.msg').after(box); }
+      box.innerHTML = `<p><b>Your enquiry is ready.</b> Send it from your email, then attach your drawing or photographs.</p>
+        <div class="sendrow"><a class="btn" target="_blank" rel="noopener" href="https://mail.google.com/mail/?view=cm&fs=1&to=${MAIL}&su=${eS}&body=${eB}">Gmail</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://outlook.office.com/mail/deeplink/compose?to=${MAIL}&subject=${eS}&body=${eB}">Outlook</a>
+        <a class="btn ghost" href="mailto:${MAIL}?subject=${eS}&body=${eB}">Email app</a>
+        <button type="button" class="btn ghost" data-copy>Copy enquiry</button></div>
+        <p class="sendalt">Or write to <a href="mailto:${MAIL}">${MAIL}</a> and paste the enquiry.</p>`;
+      box.querySelector('[data-copy]').addEventListener('click', ev => {
+        const t = `To: ${MAIL}\nSubject: ${sub}\n\n${body}`;
+        (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => { ev.target.textContent = 'Copied'; }, () => { const ta = document.createElement('textarea'); ta.value = t; document.body.append(ta); ta.select(); document.execCommand('copy'); ta.remove(); ev.target.textContent = 'Copied'; });
+      });
+      f.querySelector('.msg').textContent = '';
+      box.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
     });
   });
 })();
