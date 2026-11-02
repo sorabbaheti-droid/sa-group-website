@@ -206,7 +206,7 @@ PRODUCTS = [
           ('Cracking near the seat or at the feed end', 'Sound sections from method design, and a fast water quench.'),
           ('Movement on the head', 'Seating surfaces machined, with the backing space kept to drawing.')],
    grades=[('mn', 'The standard for cone liners; 18% and 22% manganese types for hard, abrasive ore.')]),
- P(slug='bowl-liners', name='Bowl liners', fam='jawcone', img='concave-mantle', m3d='concave',
+ P(slug='bowl-liners', name='Bowl liners', fam='jawcone', img='bowl-liner', m3d='concave',
    inds=['mining', 'aggregate'],
    where='The bowl of a cone crusher, opposite the mantle.',
    summary='The bowl liner is the stationary crushing surface of a cone crusher. It is matched to the mantle profile and the crusher setting, and changed with the mantle or on its own cycle.',
