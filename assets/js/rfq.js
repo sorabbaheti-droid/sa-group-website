@@ -3,7 +3,7 @@
 (function () {
   const MAIL = 'sales@standardalloysindia.com';
   // ERPNext web form: our form collects the details, then hands them over to be filed as a Lead
-  const WEBFORM = 'https://saconnect.frappe.cloud/request-a-quote/new', NOTE_FIELD = 'custom_enquiry_details';
+  const WEBFORM = 'https://saconnect.frappe.cloud/request-a-quote/new', NOTE_FIELD = 'notes';
   const part = new URLSearchParams(location.search).get('part');
   document.querySelectorAll('[data-rfq]').forEach(f => {
     if (part && f.part) f.part.value = part;
