@@ -725,3 +725,6 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 .ticks{position:relative;display:block;height:16px}
 .ticks span{position:absolute;transform:translateX(-50%)}
 .ticks span:nth-child(1){left:0;transform:none}.ticks span:nth-child(2){left:25%}.ticks span:nth-child(3){left:62.5%}.ticks span:nth-child(4){left:87.5%}.ticks span:nth-child(5){left:auto;right:0;transform:none}
+
+/* desktop: the side tab is the quote button; the menu keeps it on mobile */
+@media (min-width:981px){#nav>a.btn{display:none}}
