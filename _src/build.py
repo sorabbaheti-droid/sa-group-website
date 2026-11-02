@@ -685,7 +685,7 @@ FORM = """<form class="rfqf jobf" data-job novalidate aria-label="Job applicatio
 CAREER_JS = r"""document.querySelectorAll('.lscroll video').forEach(v=>{if(/lite/.test(location.search))return;new IntersectionObserver(([e])=>{e.isIntersecting?(v.preload='auto',v.play().catch(()=>{})):v.pause()}).observe(v);});
 document.querySelector('.lscroll').addEventListener('dragstart',e=>e.preventDefault());
 const MAIL='hr@standardalloysindia.com', wf=document.querySelector('[data-webform]');
-if(wf&&wf.dataset.webform){wf.innerHTML=`<div class="wfcard"><p>Our application form opens in a new tab. Fill in your details and upload your CV there.</p><a class="btn" href="${wf.dataset.webform}" target="_blank" rel="noopener">Open the application form</a><p class="wfalt">Or email your CV to <a href="mailto:${MAIL}?subject=Job%20application">${MAIL}</a>.</p></div>`;}
+if(wf&&wf.dataset.webform){wf.innerHTML=`<iframe src="${wf.dataset.webform}" title="${wf.dataset.title}" loading="lazy"></iframe><p class="wfalt">Form not showing? <a href="${wf.dataset.webform}" target="_blank" rel="noopener">Open it in a new tab</a>, or email your CV to <a href="mailto:${MAIL}?subject=Job%20application">${MAIL}</a>.</p>`;}
 const f=document.querySelector('[data-job]');
 if(f){document.querySelectorAll('[data-role]').forEach(a=>a.addEventListener('click',()=>{f.area.value=a.dataset.role;}));
 f.addEventListener('submit',e=>{e.preventDefault();let ok=true;['name','email'].forEach(n=>{const el=f[n],bad=!el.value.trim()||(n==='email'&&!/^\S+@\S+\.\S+$/.test(el.value));el.setAttribute('aria-invalid',bad);if(bad&&ok){el.focus();ok=false}});
@@ -710,7 +710,7 @@ page('careers', 'Careers', 'Careers at Standard Alloys India: technical and comm
 <section class="psec soft" id="apply" aria-labelledby="ap-h"><div class="wrap">
   <div class="sh" data-r><h2 id="ap-h">Apply</h2><p>A few details and your CV. No vacancy listed for you? Apply anyway.</p></div>
   <!-- ERPNext Job Applicant web form: put its URL in data-webform to replace the email composer -->
-  <div class="webform" data-webform="https://saconnect.frappe.cloud/job_application" data-title="Job application">{FORM}</div>
+  <div class="webform" data-webform="https://saconnect.frappe.cloud/website-job-form" data-title="Job application">{FORM}</div>
 </div></section>
 <section class="psec" aria-labelledby="ww-h"><div class="wrap"><div class="sh" data-r><h2 id="ww-h">Why work with us</h2></div><ul class="inits six">{whywork}</ul></div></section>""", js=CAREER_JS)
 
