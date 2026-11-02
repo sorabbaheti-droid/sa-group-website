@@ -684,13 +684,15 @@ FORM = """<form class="rfqf jobf" data-job novalidate aria-label="Job applicatio
 </form>"""
 CAREER_JS = r"""document.querySelectorAll('.lscroll video').forEach(v=>{if(/lite/.test(location.search))return;new IntersectionObserver(([e])=>{e.isIntersecting?(v.preload='auto',v.play().catch(()=>{})):v.pause()}).observe(v);});
 document.querySelector('.lscroll').addEventListener('dragstart',e=>e.preventDefault());
-const MAIL='sales@standardalloysindia.com', f=document.querySelector('[data-job]');
-document.querySelectorAll('[data-role]').forEach(a=>a.addEventListener('click',()=>{f.area.value=a.dataset.role;}));
+const MAIL='sales@standardalloysindia.com', wf=document.querySelector('[data-webform]');
+if(wf&&wf.dataset.webform){wf.innerHTML=`<iframe src="${wf.dataset.webform}" title="${wf.dataset.title}" loading="lazy"></iframe><p class="wfalt">Form not loading? Email your CV to <a href="mailto:${MAIL}?subject=Job%20application">${MAIL}</a>.</p>`;}
+const f=document.querySelector('[data-job]');
+if(f){document.querySelectorAll('[data-role]').forEach(a=>a.addEventListener('click',()=>{f.area.value=a.dataset.role;}));
 f.addEventListener('submit',e=>{e.preventDefault();let ok=true;['name','email'].forEach(n=>{const el=f[n],bad=!el.value.trim()||(n==='email'&&!/^\S+@\S+\.\S+$/.test(el.value));el.setAttribute('aria-invalid',bad);if(bad&&ok){el.focus();ok=false}});
  if(!ok){f.querySelector('.msg').textContent='Please add your name and email. Everything else is optional.';return}
  const v=n=>f[n].value.trim()||'-';const body=[`Area: ${v('area')}`,`Role: ${v('role')}`,`Experience: ${v('exp')}`,`Qualification: ${v('qual')}`,'',`Name: ${v('name')}`,`Email: ${v('email')}`,`Phone: ${v('phone')}`,`City: ${v('city')}`,'',v('notes'),'','CV attached.'].join('\n');
  location.href=`mailto:${MAIL}?subject=${encodeURIComponent('Job application: '+(f.area.value||'General')+(f.role.value?' – '+f.role.value:''))}&body=${encodeURIComponent(body)}`;
- f.querySelector('.msg').textContent='Your email app should now be open. Attach your CV and press send.';});"""
+ f.querySelector('.msg').textContent='Your email app should now be open. Attach your CV and press send.';});}"""
 page('careers', 'Careers', 'Careers at Standard Alloys India: technical and commercial roles, internships and industrial training in foundry, metallurgy, machining, quality and export.', 'Careers',
      hero('<a href="~R~about/">About</a> / Careers', 'Careers at Standard Alloys India', 'Join the people who melt, mould, treat, machine and test the castings that keep plants running around the world.', 'sparks') + f"""
 <section class="psec"><div class="wrap cg">
@@ -708,7 +710,7 @@ page('careers', 'Careers', 'Careers at Standard Alloys India: technical and comm
 <section class="psec soft" id="apply" aria-labelledby="ap-h"><div class="wrap">
   <div class="sh" data-r><h2 id="ap-h">Apply</h2><p>A few details and your CV. No vacancy listed for you? Apply anyway.</p></div>
   <!-- ERPNext Job Applicant web form: put its URL in data-webform to replace the email composer -->
-  <div data-webform="" data-title="Job application">{FORM}</div>
+  <div class="webform" data-webform="https://saconnect.frappe.cloud/job_application" data-title="Job application">{FORM}</div>
 </div></section>
 <section class="psec" aria-labelledby="ww-h"><div class="wrap"><div class="sh" data-r><h2 id="ww-h">Why work with us</h2></div><ul class="inits six">{whywork}</ul></div></section>""", js=CAREER_JS)
 
