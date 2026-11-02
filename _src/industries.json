@@ -8,13 +8,13 @@
    {"id": "crushing", "label": "Crushing", "name": "Crushing", "text": "Limestone, shale and additives are broken down before grinding. These parts take repeated heavy impact, so toughness comes first and hardness second.", "duty": ["Heavy impact", "Abrasion", "Ambient temperature"],
     "parts": ["apron-pans-and-sprockets", "hammers-and-beaters", "blow-bars", "impact-plates", "jaw-and-side-plates"]},
    {"id": "grinding", "label": "Grinding", "name": "Raw and cement grinding", "text": "Vertical roller mills and ball mills grind raw meal, coal and cement. Wear here is mostly sliding abrasion, so the harder white irons earn their place, with tough steels where the load is carried.", "duty": ["Sliding abrasion", "Ball impact", "Ambient to warm"],
-    "parts": ["vrm-rollers", "table-liners", "clamps-and-grinding-paths", "mill-liners", "diaphragms", "trunnions"]},
+    "parts": ["vrm-rollers", "table-liners", "clamps-and-grinding-paths", "mill-liners", "diaphragms", "trunnions", "spouts"]},
    {"id": "preheater", "label": "Preheater", "name": "Preheater", "text": "Raw meal meets hot kiln gas in the cyclone tower. Castings must keep their shape and resist oxidation and sulphur attack in the lower, hottest stages.", "duty": ["!High temperature", "Oxidation", "Erosion by meal"],
     "parts": ["dip-tubes", "dispersion-plates"]},
    {"id": "kiln", "label": "Kiln", "name": "Kiln ends", "text": "At the kiln inlet and outlet, castings protect the shell and hold the refractory. A failure here stops the whole plant, so we design for life between planned shutdowns.", "duty": ["!Very high temperature", "Thermal cycling", "Clinker abrasion"],
     "parts": ["tip-castings-and-sectors", "brd-segments"]},
    {"id": "cooler", "label": "Cooler", "name": "Clinker cooler", "text": "Grate plates and bars carry and move red-hot clinker under constant abrasion. The right alloy for each zone, and a design that resists warping, decide how long a grate lasts.", "duty": ["!Hot clinker", "Abrasion", "Thermal shock"],
-    "parts": ["grate-and-cooler-plates", "grate-bars-and-cross-bars", "hammers-and-beaters", "spouts"]}
+    "parts": ["grate-and-cooler-plates", "grate-bars-and-cross-bars", "conveying-elements", "hammers-and-beaters"]}
   ],
   "why_title": "Why cement plants choose us",
   "why": [["Both families, one foundry", "Wear-resistant and heat-resistant alloys poured, treated and tested in the same plant."],
@@ -74,7 +74,7 @@
    {"id": "coal-grinding", "label": "Coal grinding", "name": "Coal grinding", "text": "Vertical bowl and roller mills and tube mills grind coal to fine powder for the boiler. Sliding abrasion dominates, so white irons last longest.", "duty": ["Sliding abrasion", "Warm"],
     "parts": ["vrm-rollers", "table-liners", "clamps-and-grinding-paths", "mill-liners"]},
    {"id": "steel", "label": "Steel plants", "name": "Steel plant material handling", "text": "Ore, coke and flux are crushed, conveyed and fed through chutes and spouts that wear by impact and sliding, sometimes while hot.", "duty": ["Impact", "Abrasion", "!Hot material in places"],
-    "parts": ["hammers-and-beaters", "feed-chute-liners", "spouts", "wheels-and-rollers"]}
+    "parts": ["hammers-and-beaters", "feed-chute-liners", "wheels-and-rollers"]}
   ],
   "why_title": "Why power and steel plants choose us",
   "why": [["Wear and heat in one plant", "Abrasion-resistant irons, tough steels and heat-resistant steels under one roof."],
