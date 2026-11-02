@@ -731,3 +731,4 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 .webform iframe{display:block;width:100%;height:1150px;border:0;background:#fff}
 .wfalt{margin-top:12px;font-size:13px;color:var(--muted)}
 @media (max-width:700px){.webform iframe{height:1500px}}
+.wfcard{background:#fff;border:1px solid var(--line);padding:32px;max-width:640px}.wfcard p{margin:0 0 20px}.wfcard .wfalt{margin:20px 0 0}
