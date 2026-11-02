@@ -6,9 +6,9 @@
   "intro": "A cement line asks two opposite things of its castings. At the front, parts must survive impact and abrasion at ambient temperature. From the preheater onwards, they must hold their shape and resist scaling in hot, dusty gas. We pour both families, and we specify each part for the stage it works in.",
   "steps": [
    {"id": "crushing", "label": "Crushing", "name": "Crushing", "text": "Limestone, shale and additives are broken down before grinding. These parts take repeated heavy impact, so toughness comes first and hardness second.", "duty": ["Heavy impact", "Abrasion", "Ambient temperature"],
-    "parts": ["apron-pans-and-sprockets", "hammers-and-beaters", "blow-bars", "impact-plates", "jaw-and-side-plates"]},
+    "parts": ["apron-pans-and-sprockets", "hammers-and-beaters", "blow-bars", "impact-plates", "grinding-paths", "jaw-and-side-plates"]},
    {"id": "grinding", "label": "Grinding", "name": "Raw and cement grinding", "text": "Vertical roller mills and ball mills grind raw meal, coal and cement. Wear here is mostly sliding abrasion, so the harder white irons earn their place, with tough steels where the load is carried.", "duty": ["Sliding abrasion", "Ball impact", "Ambient to warm"],
-    "parts": ["vrm-rollers", "table-liners", "clamps-and-grinding-paths", "mill-liners", "diaphragms", "trunnions", "spouts"]},
+    "parts": ["vrm-rollers", "table-liners", "clamps", "mill-liners", "diaphragms", "trunnions", "spouts"]},
    {"id": "preheater", "label": "Preheater", "name": "Preheater", "text": "Raw meal meets hot kiln gas in the cyclone tower. Castings must keep their shape and resist oxidation and sulphur attack in the lower, hottest stages.", "duty": ["!High temperature", "Oxidation", "Erosion by meal"],
     "parts": ["dip-tubes", "dispersion-plates"]},
    {"id": "kiln", "label": "Kiln", "name": "Kiln ends", "text": "At the kiln inlet and outlet, castings protect the shell and hold the refractory. A failure here stops the whole plant, so we design for life between planned shutdowns.", "duty": ["!Very high temperature", "Thermal cycling", "Clinker abrasion"],
@@ -56,7 +56,7 @@
    {"id": "cone", "label": "Cone crushers", "name": "Cone crushers", "text": "Secondary and tertiary cones shape the final product. Liner life and profile decide both cost and product size.", "duty": ["Impact", "Abrasion"],
     "parts": ["concaves-and-mantles", "bowl-liners", "crusher-heads-and-sockets"]},
    {"id": "impact", "label": "Impact crushers", "name": "Impact crushers", "text": "Horizontal-shaft impactors throw rock against the aprons at speed. Blow bars need hardness for wear, and enough toughness to survive tramp metal.", "duty": ["High-speed impact", "Abrasion"],
-    "parts": ["blow-bars", "impact-plates", "hammers-and-beaters"]}
+    "parts": ["blow-bars", "impact-plates", "grinding-paths", "hammers-and-beaters"]}
   ],
   "why_title": "Why quarries choose us",
   "why": [["Alloy matched to the rock", "Limestone and granite need different liners, so we ask before we quote."],
@@ -72,7 +72,7 @@
    {"id": "coal-handling", "label": "Coal handling", "name": "Coal handling", "text": "Hammer crushers size coal before the mills, and chutes guide it between conveyors. Parts take impact and abrasion from coal, shale and stone.", "duty": ["Impact", "Abrasion"],
     "parts": ["hammers-and-beaters", "feed-chute-liners"]},
    {"id": "coal-grinding", "label": "Coal grinding", "name": "Coal grinding", "text": "Vertical bowl and roller mills and tube mills grind coal to fine powder for the boiler. Sliding abrasion dominates, so white irons last longest.", "duty": ["Sliding abrasion", "Warm"],
-    "parts": ["vrm-rollers", "table-liners", "clamps-and-grinding-paths", "mill-liners"]},
+    "parts": ["vrm-rollers", "table-liners", "clamps", "mill-liners"]},
    {"id": "steel", "label": "Steel plants", "name": "Steel plant material handling", "text": "Ore, coke and flux are crushed, conveyed and fed through chutes and spouts that wear by impact and sliding, sometimes while hot.", "duty": ["Impact", "Abrasion", "!Hot material in places"],
     "parts": ["hammers-and-beaters", "feed-chute-liners", "wheels-and-rollers"]}
   ],
