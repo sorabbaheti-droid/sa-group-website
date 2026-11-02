@@ -62,7 +62,7 @@ def footer(r, a):
     <nav aria-label="Industries"><h2>Industries</h2>{inds}</nav>
     <nav aria-label="Company"><h2>Company</h2>{co}</nav>
   </div>
-  <div class="wrap fbot"><span>© 2026 Standard Alloys India Pvt. Ltd.</span><span>ISO 9001:2015 · ISO 14001:2015 · ISO 45001:2018</span></div>
+  <div class="wrap fbot"><span>© 2026 Standard Alloys India Pvt. Ltd. · <a href="{r}privacy/">Privacy</a></span><span>ISO 9001:2015 · ISO 14001:2015 · ISO 45001:2018</span></div>
 </footer>'''
 
 def head(title, desc, r, a, extra=''):
@@ -268,7 +268,7 @@ def chain_html():
 DONTKNOW = '<aside class="dk" data-r><b>Don’t know which alloy you need?</b><p>Send the existing part, its drawing, photographs or the application details. Our metallurgists will recommend the grade and the manufacturing route.</p><a href="~R~contact/#quote">Ask a metallurgist</a></aside>'
 
 EXPORT = """<section class="psec soft" aria-labelledby="ex-h"><div class="wrap ex">
-  <div data-r><div class="sh"><h2 id="ex-h">For buyers outside India</h2><p>We ship to plants anywhere in the world. Every export order travels with the documents your receiving inspection and customs need.</p></div></div>
+  <div data-r><div class="sh"><h2 id="ex-h">For buyers outside India</h2><p>We ship to plants anywhere in the world. Every export order travels with the documents your receiving inspection and customs need.</p><p class="ctry"><b>Shipped to</b> France · Switzerland · USA · Canada · Australia · Kenya · Tanzania · Iraq · Costa Rica · Nepal · Bhutan</p></div></div>
   <ul class="exl" data-r><li><b>Material certificates</b>Chemistry and mechanical properties against the heat number</li><li><b>Dimensional reports</b>Checked against your drawing</li><li><b>NDT reports</b>UT, MPI or DPT, as specified</li><li><b>Export packing</b>Packed and marked for sea or air freight</li><li><b>Commercial documents</b>Invoice, packing list and certificate of origin</li><li><b>Lead time</b>Confirmed with the quotation, and faster when the pattern is already on file</li></ul>
 </div></section>"""
 
@@ -698,7 +698,7 @@ page('careers', 'Careers', 'Careers at Standard Alloys India: technical and comm
     <div class="acts" style="margin-top:28px"><a class="btn" href="#openings">Explore openings</a><a class="btn ghost" href="#apply">Apply now</a></div></div>
 </div></section>
 <section class="psec soft" id="openings" aria-labelledby="op-h"><div class="wrap">
-  <div class="sh" data-r><h2 id="op-h">Current openings</h2><p>Specific vacancies will be listed here. Until then, apply in the stream that suits you and we will contact you when a matching role opens.</p></div>
+  <div class="sh" data-r><h2 id="op-h">We are always hiring</h2><p>Good people are welcome at any time. Apply in the stream that suits you, and we will talk.</p></div>
   <div class="streams">{streams}
     <article class="stream intern" data-r><h3>Internships and industrial training</h3><p>For engineering, metallurgy and management students who want to see a working foundry from method to dispatch.</p><a class="btn ghost" href="#apply" data-role="Internship or industrial training">Ask about an internship</a></article></div>
 </div></section>
@@ -728,6 +728,21 @@ page('contact', 'Get a quote', 'Get a quote or discuss your part with Standard A
       <figcaption><b>Unit SP75</b><address>Unit SP75, Ajaymeru Industrial Area<br>Palra, Ajmer, Rajasthan, India</address><a href="https://maps.app.goo.gl/sSciMavsfMzPz3A56" target="_blank" rel="noopener">Open in Google Maps</a></figcaption></figure>
   </div>
 </div></section>""")
+
+# ---------------------------------------------------------------- privacy
+PRIV = [
+ ('Who we are', f'Standard Alloys India Pvt. Ltd., F-26B &amp; 27, Parbatpura Industrial Area, Ajmer 305002, Rajasthan, India. Questions about this notice: <a href="mailto:{MAIL}">{MAIL}</a>.'),
+ ('What we collect', 'Only what you choose to send us: your name, company, email, phone, country and the details of your enquiry or job application, with any drawings, photographs or CV you attach. We also count visits to the site in an anonymous, aggregated way.'),
+ ('Why we use it', 'To answer your enquiry, prepare a quotation, process your application and keep a record of our correspondence. We do not use it for anything else without asking you.'),
+ ('Drawings and technical data', 'Drawings, samples and specifications you send are used only to quote and make your parts. They are not shared outside the company except with partners who help us make or test that part, under confidentiality.'),
+ ('Sharing', 'We do not sell or rent your information. We share it only with service providers who run our email and business systems, and with authorities where the law requires it.'),
+ ('How long we keep it', 'For as long as we need it to deal with your enquiry or order, and afterwards for the period that business and tax law requires.'),
+ ('Your rights', 'You can ask to see, correct or delete the personal information we hold about you, or withdraw a consent you gave, by writing to the address above. We handle personal data in line with applicable law, including India’s Digital Personal Data Protection Act, 2023.'),
+ ('Changes', 'We may update this notice. The date below shows the latest version.'),
+]
+priv = ''.join(f'<section class="pv" data-r><h2>{a}</h2><p>{b}</p></section>' for a, b in PRIV)
+page('privacy', 'Privacy notice', 'How Standard Alloys India handles the information you send through this website.', '',
+     f'<section class="phero plain"><div class="wrap narrowl"><p class="crumbs"><a href="~R~">Home</a> / Privacy</p><h1>Privacy notice</h1><p class="lede">How we handle the information you send us through this website.</p></div></section><section class="psec"><div class="wrap narrowl">{priv}<p class="note">Last updated 3 November 2026.</p></div></section>')
 
 # ---------------------------------------------------------------- keep the hand-written home in step
 home = os.path.join(OUT, 'index.html')

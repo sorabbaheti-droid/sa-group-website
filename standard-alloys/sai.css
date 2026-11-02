@@ -702,3 +702,8 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 @keyframes drift{to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.ltrack{animation:none}.lrow{overflow-x:auto}}
 .lifesec{padding:clamp(48px,6vw,72px) 0}.lifesec .sh{margin-bottom:24px}
+.ctry{margin-top:18px;font-size:15px;color:var(--ink);line-height:1.8}.ctry b{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
+.fbot a{color:inherit}
+.narrowl{max-width:820px}
+.phero.plain{padding-bottom:24px;background:#fff}
+.pv+.pv{margin-top:36px}.pv h2{text-align:left;font-size:20px}.pv p{margin-top:10px}.pv a{color:var(--red)}
