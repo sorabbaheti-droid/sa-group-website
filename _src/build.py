@@ -684,7 +684,7 @@ FORM = """<form class="rfqf jobf" data-job novalidate aria-label="Job applicatio
 </form>"""
 CAREER_JS = r"""document.querySelectorAll('.lscroll video').forEach(v=>{if(/lite/.test(location.search))return;new IntersectionObserver(([e])=>{e.isIntersecting?(v.preload='auto',v.play().catch(()=>{})):v.pause()}).observe(v);});
 document.querySelector('.lscroll').addEventListener('dragstart',e=>e.preventDefault());
-const MAIL='sales@standardalloysindia.com', wf=document.querySelector('[data-webform]');
+const MAIL='hr@standardalloysindia.com', wf=document.querySelector('[data-webform]');
 if(wf&&wf.dataset.webform){wf.innerHTML=`<div class="wfcard"><p>Our application form opens in a new tab. Fill in your details and upload your CV there.</p><a class="btn" href="${wf.dataset.webform}" target="_blank" rel="noopener">Open the application form</a><p class="wfalt">Or email your CV to <a href="mailto:${MAIL}?subject=Job%20application">${MAIL}</a>.</p></div>`;}
 const f=document.querySelector('[data-job]');
 if(f){document.querySelectorAll('[data-role]').forEach(a=>a.addEventListener('click',()=>{f.area.value=a.dataset.role;}));
