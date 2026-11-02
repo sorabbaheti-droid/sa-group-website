@@ -86,6 +86,7 @@ export const PARTS = {
   jaw: scanned('jaw', 'Jaw plate', [0, 0, 0]),
   cheek: scanned('cheek', 'Cheek plate'),
   trunnion: scanned('trunnion', 'Ball mill trunnion'),
+  diptube: scanned('diptube', 'Cyclone dip tube segment', [0.12, 2.6, 0]),
   blowbar: {
     label: 'Impact crusher blow bar',
     weight: '310 kg',

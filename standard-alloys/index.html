@@ -305,10 +305,11 @@ const rfq = document.getElementById('rfq');
 if (rfq.dataset.webform) rfq.innerHTML = `<iframe src="${rfq.dataset.webform}" title="Request for quotation"></iframe>`;
 
 /* range: piece weight sets the casting */
-// eight parts, each gets an equal share of the slider; weight runs log-scale inside its own band
+// nine parts, each gets an equal share of the slider; weight runs log-scale inside its own band
 const PARTS = [
   { k: 'hammer',   lo: 3,    hi: 80,   name: 'Crusher hammer',       grade: 'Manganese steel',                 where: 'Impact crushers and hammer mills' },
-  { k: 'cheek',    lo: 80,   hi: 300,  name: 'Cheek plate',          grade: 'Manganese steel',                 where: 'Jaw crushers' },
+  { k: 'diptube',  lo: 80,   hi: 150,  name: 'Dip tube segment',     grade: 'Heat-resistant steel',            where: 'Preheater cyclones' },
+  { k: 'cheek',    lo: 150,  hi: 300,  name: 'Cheek plate',          grade: 'Manganese steel',                 where: 'Jaw crushers' },
   { k: 'blowbar',  lo: 300,  hi: 600,  name: 'Blow bar',             grade: 'Cr-Mo steel or high chrome iron', where: 'Horizontal-shaft impact crushers' },
   { k: 'head',     lo: 600,  hi: 900,  name: 'Cone crusher head',    grade: 'Cast steel, machined',            where: 'Cone crushers' },
   { k: 'mantle',   lo: 900,  hi: 1500, name: 'Cone crusher mantle',  grade: 'Manganese steel',                 where: 'Cone crushers' },
