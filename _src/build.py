@@ -619,10 +619,12 @@ page('sustainability', 'Sustainability', 'Absolute emission-reduction targets on
 </div></section>''' + cta('Talk to us about sustainability data', 'We can share our certificates and emission targets for your supplier assessment.', 'Sustainability information'))
 
 # ---------------------------------------------------------------- about
-LEAD = [('Shiv Das Baheti', 'Founder and Managing Director', 'More than 50 years in industry. BITS Pilani; National Institute of Foundry and Forge Technology.'),
-        ('Gaurav Baheti', 'Director', 'More than 15 years in the business. BITS Pilani; SP Jain Institute of Management.'),
-        ('Sorab Baheti', 'Director', 'More than 8 years in the business. IIT Kanpur, materials science; earlier with Tonbo Imaging and on thyssenkrupp cement plant projects.')]
-lead = ''.join(f'<article class="person" data-r><h3>{n}</h3><p class="role">{r}</p><p>{d}</p></article>' for n, r, d in LEAD)
+LEAD = [('shiv-das-baheti', 'Shiv Das Baheti', 'Founder and Managing Director', '50+ years', 'Manufacturing, marketing, and product and plant development for steel and alloy castings. B.E. (Hons) Mechanical and Chemical Engineering, BITS Pilani; Foundry and Forge Technology, NIFFT Ranchi; PG Diploma in Management. Former Chairman, Board of Governors, Government Engineering College, Bharatpur, and former Vice President, Employers Association of Rajasthan.'),
+        ('gaurav-baheti', 'Gaurav Baheti', 'Director', '15+ years', 'B.E. (Hons) Mechanical, BITS Pilani; PG in Family Business, S.P. Jain. Former Joint Secretary, Ajmer Zila Udyog Sangh.'),
+        ('sorab-baheti', 'Sorab Baheti', 'Director', '8+ years', 'B.Tech Materials Science, IIT Kanpur. Earlier in mechatronics at Tonbo Imaging and on cement plants at thyssenkrupp.'),
+        ('vineeta-baheti', 'Vineeta Baheti', 'Financial Advisor', '9+ years', 'Chartered Accountant (2013); Strategic Finance, IIM Lucknow. Earlier credit manager at ICICI Bank.'),
+        ('priyal-mantri-baheti', 'Priyal Mantri Baheti', 'Procurement', '3+ years', 'Chartered Accountant (2017). Earlier PE fund controller at Goldman Sachs and research analyst at J.P. Morgan.')]
+lead = ''.join(f'<article class="person{" lead1" if i == 0 else ""}" data-r><figure><img src="~A~assets/people/{f}.jpg" alt="{n}" loading="lazy" draggable="false"></figure><div><h3>{n}</h3><p class="role">{r} · {y}</p><p>{d}</p></div></article>' for i, (f, n, r, y, d) in enumerate(LEAD))
 page('about', 'About us', 'Standard Alloys India: a steel foundry since 1991, making wear- and heat-resistant castings for plants worldwide.', 'About',
      hero('About', 'Since 1991', 'A fabrication shop that became a specialist foundry for the parts that wear out first.', 'aerial') + '''
 <section class="intro"><div class="wrap narrow" data-r><p class="lit">Standard Alloys India began in 1991 as a fabrication shop in Ajmer, Rajasthan, and lit its first induction furnace in 1994. Over three decades we have built a foundry around one idea: a casting should be specified for the duty it will meet. Today our three facilities have about 14,000 tonnes a year of installed capacity, pouring single pieces from 3 kg to 7 tonnes for more than 500 industrial customers, in plants anywhere in the world.</p></div></section>
