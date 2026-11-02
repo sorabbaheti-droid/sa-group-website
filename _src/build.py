@@ -104,6 +104,7 @@ def page(path, title, desc, active, body, js='', three=False, ld=None):
 <main id="main">
 {tok(body)}
 </main>
+<a class="sidetab" href="{r}contact/#quote">Get a quote</a>
 {footer(r, a)}
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
