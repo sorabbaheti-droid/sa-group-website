@@ -171,7 +171,7 @@ PRODUCTS = [
    grades=[('crmo', 'General duty with moderate abrasion.'),
            ('hicr', 'Abrasive feed of controlled size, with no tramp metal.'),
            ('mn', 'Heavy impact from large or uncertain feed.')]),
- P(slug='grizzly-bars', name='Grizzly bars', fam='impact', img='grizzly-bars',
+ P(slug='grizzly-bars', name='Grizzly bars', fam='impact', img=None,
    inds=['mining', 'aggregate', 'cement'],
    where='Vibrating grizzly feeders and scalping screens ahead of primary crushers.',
    summary='Grizzly bars let the fines bypass the crusher and carry the rock to it. They take impact from falling rock and abrasion from everything that slides across them.',
