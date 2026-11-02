@@ -137,7 +137,7 @@
           </div>
           <div class="stage">
             <canvas id="part3d" role="img" aria-label="3D model of the casting; drag to turn it"></canvas>
-            <small>Illustrative models. Every part is made to the customer’s drawing.</small>
+            <small>Simplified 3D models. Every part is made to the customer’s drawing.</small>
           </div>
         </div>
       </div>
@@ -306,11 +306,11 @@ if (rfq.dataset.webform) rfq.innerHTML = `<iframe src="${rfq.dataset.webform}" t
 
 /* range: piece weight sets the casting */
 const PARTS = [
-  { k: 'hammer',  to: 150,  name: 'Crusher hammer',      grade: 'Manganese steel',                 where: 'Impact crushers and hammer mills' },
-  { k: 'blowbar', to: 700,  name: 'Blow bar',            grade: 'Cr-Mo steel or high chrome iron', where: 'Horizontal-shaft impact crushers' },
-  { k: 'table',   to: 2000, name: 'Table liner segment', grade: 'High chrome iron or Ni-Hard',     where: 'Vertical roller mills' },
-  { k: 'mantle',  to: 4500, name: 'Cone crusher mantle', grade: 'Manganese steel',                 where: 'Cone crushers' },
-  { k: 'concave', to: 1e9,  name: 'Concave ring',        grade: 'Manganese steel',                 where: 'Cone and gyratory crushers' },
+  { k: 'hammer',   to: 150,  name: 'Crusher hammer',     grade: 'Manganese steel',                 where: 'Impact crushers and hammer mills' },
+  { k: 'blowbar',  to: 700,  name: 'Blow bar',           grade: 'Cr-Mo steel or high chrome iron', where: 'Horizontal-shaft impact crushers' },
+  { k: 'head',     to: 1500, name: 'Cone crusher head',  grade: 'Cast steel, machined',            where: 'Cone crushers' },
+  { k: 'jaw',      to: 2500, name: 'Jaw plate',          grade: 'Manganese steel',                 where: 'Jaw crushers' },
+  { k: 'trunnion', to: 1e9,  name: 'Ball mill trunnion', grade: 'Cast steel, machined',            where: 'Ball and tube mills' },
 ];
 const w = document.getElementById('w'), kgEl = document.getElementById('kg');
 const pname = document.getElementById('pname'), pgrade = document.getElementById('pgrade'), pwhere = document.getElementById('pwhere');

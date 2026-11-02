@@ -372,8 +372,8 @@ for p in PRODUCTS:
         ON1 = ' class="on"'
         fbtn = ''.join(f'<button type="button" data-f="{k}"{ON1 if k == "cast" else ""}>{l}</button>' for k, l in FIN)
         vbtn = '<button type="button" class="view" data-v="photo">Photograph</button>' if p['img'] else ''
-        vis = f'''<div class="pvis three"><canvas id="p3d" data-part="{p['m3d']}" role="img" aria-label="Illustrative 3D model of {esc(p['name'].lower())}; drag to turn it"></canvas>{photo}
-      <div class="vctl"><div class="finish" role="group" aria-label="Surface finish">{fbtn}</div>{vbtn}</div><small>Illustrative model · drag to turn</small></div>'''
+        vis = f'''<div class="pvis three"><canvas id="p3d" data-part="{p['m3d']}" role="img" aria-label="Simplified 3D model of {esc(p['name'].lower())}; drag to turn it"></canvas>{photo}
+      <div class="vctl"><div class="finish" role="group" aria-label="Surface finish">{fbtn}</div>{vbtn}</div><small>Simplified 3D model · drag to turn</small></div>'''
     elif p['img']:
         vis = f'<div class="pvis"><img src="~A~assets/cutouts/{p["img"]}.png" alt="Photograph of {esc(p["name"].lower())}"></div>'
     else:

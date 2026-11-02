@@ -3,6 +3,30 @@
 // impact crusher blow bar, crusher hammer, VRM table liner) until CAD/scan models arrive.
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { toCreasedNormals } from 'three/addons/utils/BufferGeometryUtils.js';
+
+// ---------- scanned parts: simplified, scale-free shells (not the customer's CAD) ----------
+const MODELS = new URL('../models/', import.meta.url), cache = {};
+function loadModel(name) {
+  return cache[name] ||= fetch(new URL(name + '.bin', MODELS)).then(r => r.arrayBuffer()).then(buf => {
+    const dv = new DataView(buf), nv = dv.getUint32(4, true), nf = dv.getUint32(8, true);
+    const q = new Int16Array(buf, 12, nv * 3), pos = new Float32Array(nv * 3);
+    for (let i = 0; i < q.length; i++) pos[i] = q[i] * 1.3 / 32767;
+    const off = 12 + nv * 6, idx = nv < 65536 ? new Uint16Array(buf.slice(off, off + nf * 6)) : new Uint32Array(buf.slice(off, off + nf * 12));
+    let g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.BufferAttribute(pos, 3)); g.setIndex(new THREE.BufferAttribute(idx, 1));
+    g = toCreasedNormals(g, 0.6);
+    return g;
+  });
+}
+function scanned(name, label, rot = [0, 0, 0]) {
+  return { label, build() {
+    const grp = new THREE.Group(), mesh = new THREE.Mesh(new THREE.BufferGeometry());
+    mesh.rotation.set(...rot); grp.add(mesh);
+    loadModel(name).then(g => { mesh.geometry.dispose(); mesh.geometry = g; });
+    return grp;
+  } };
+}
 
 // ---------- surface textures drawn in code (cast skin vs machined) ----------
 function noiseCanvas(size, fn) {
@@ -56,24 +80,12 @@ function bevelExtrude(shape, depth, bevel = 0.04) {
 }
 
 export const PARTS = {
-  mantle: {
-    label: 'Cone crusher mantle',
-    weight: '1,850 kg',
-    build() {
-      // outer profile of a mantle: bottom skirt, long cone, top seat with bore
-      const p = [[0.18, 1.22], [0.34, 1.22], [0.36, 1.12], [0.42, 1.06], [1.05, -0.32], [1.16, -0.46], [1.2, -0.62], [1.14, -0.66], [0.98, -0.62], [0.6, 0.62], [0.24, 1.0], [0.18, 1.04], [0.18, 1.22]];
-      return new THREE.Mesh(lathe(p));
-    },
-  },
-  concave: {
-    label: 'Concave ring',
-    weight: '2,400 kg',
-    build() {
-      const p = [[1.0, 0.55], [1.22, 0.55], [1.22, 0.42], [1.3, 0.38], [1.3, -0.5], [1.22, -0.56], [1.08, -0.56], [0.86, 0.36], [0.9, 0.5], [1.0, 0.55]];
-      const m = new THREE.Mesh(lathe(p));
-      return m;
-    },
-  },
+  mantle: scanned('mantle', 'Cone crusher mantle'),
+  concave: scanned('concave', 'Cone crusher concave'),
+  head: scanned('head', 'Cone crusher head'),
+  jaw: scanned('jaw', 'Jaw plate', [0, 0, 0]),
+  cheek: scanned('cheek', 'Cheek plate'),
+  trunnion: scanned('trunnion', 'Ball mill trunnion'),
   blowbar: {
     label: 'Impact crusher blow bar',
     weight: '310 kg',
