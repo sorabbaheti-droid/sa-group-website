@@ -228,7 +228,7 @@ def rfq_html(title='Get a quote, or discuss your part'):
       <div class="row"><input name="name" aria-label="Name" placeholder="Name" autocomplete="name"><input name="company" aria-label="Company" placeholder="Company" autocomplete="organization"></div>
       <div class="row"><input name="email" type="email" aria-label="Email" placeholder="Email" autocomplete="email" required><input name="country" aria-label="Country" placeholder="Country" autocomplete="country-name"></div>
     </fieldset>
-    <div class="sub"><button class="btn" type="submit">Prepare my enquiry</button><p class="msg" role="status">Incomplete details are fine. Your email app opens with everything filled in, so you can attach files before sending.</p></div>
+    <div class="sub"><button class="btn" type="submit">Prepare my enquiry</button><p class="msg" role="status">Incomplete details are fine. Next you attach your drawing or photographs and submit.</p></div>
   </form>
 </div>"""
 

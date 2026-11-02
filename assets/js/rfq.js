@@ -2,6 +2,8 @@
 // Until the ERPNext Web Form is connected, it prepares the enquiry and offers Gmail, Outlook, email app or copy.
 (function () {
   const MAIL = 'sales@standardalloysindia.com';
+  // ERPNext web form: our form collects the details, then hands them over to be filed as a Lead
+  const WEBFORM = 'https://saconnect.frappe.cloud/request-a-quote/new', NOTE_FIELD = 'custom_enquiry_details';
   const part = new URLSearchParams(location.search).get('part');
   document.querySelectorAll('[data-rfq]').forEach(f => {
     if (part && f.part) f.part.value = part;
@@ -38,13 +40,17 @@
       ].join('\n');
       const sub = 'Request for quotation: ' + v('part'), eS = encodeURIComponent(sub), eB = encodeURIComponent(body);
       let box = f.querySelector('.sendbox');
-      if (!box) { box = document.createElement('div'); box.className = 'sendbox'; f.querySelector('.msg').after(box); }
-      box.innerHTML = `<p><b>Your enquiry is ready.</b> Send it from your email, then attach your drawing or photographs.</p>
-        <div class="sendrow"><a class="btn" target="_blank" rel="noopener" href="https://mail.google.com/mail/?view=cm&fs=1&to=${MAIL}&su=${eS}&body=${eB}">Gmail</a>
-        <a class="btn" target="_blank" rel="noopener" href="https://outlook.office.com/mail/deeplink/compose?to=${MAIL}&subject=${eS}&body=${eB}">Outlook</a>
-        <a class="btn ghost" href="mailto:${MAIL}?subject=${eS}&body=${eB}">Email app</a>
-        <button type="button" class="btn ghost" data-copy>Copy enquiry</button></div>
-        <p class="sendalt">Or write to <a href="mailto:${MAIL}">${MAIL}</a> and paste the enquiry.</p>`;
+      if (!box) { box = document.createElement('div'); box.className = 'sendbox'; f.append(box); }
+      const q = { first_name: v('name'), company_name: v('company'), email_id: v('email'), [NOTE_FIELD]: body };
+      if (v('country')) q.country = v('country');
+      const url = WEBFORM + '?' + Object.entries(q).filter(([, x]) => x).map(([k, x]) => k + '=' + encodeURIComponent(x)).join('&');
+      box.innerHTML = `<p><b>Last step:</b> check your details, attach your drawing or photographs, and submit.</p>
+        <iframe class="rfqframe" src="${url}" title="Request for quotation"></iframe>
+        <p class="sendalt">Form not showing? <a href="${url}" target="_blank" rel="noopener">Open it in a new tab</a>, or
+        <a target="_blank" rel="noopener" href="https://mail.google.com/mail/?view=cm&fs=1&to=${MAIL}&su=${eS}&body=${eB}">send by Gmail</a> ·
+        <a target="_blank" rel="noopener" href="https://outlook.office.com/mail/deeplink/compose?to=${MAIL}&subject=${eS}&body=${eB}">Outlook</a> ·
+        <a href="mailto:${MAIL}?subject=${eS}&body=${eB}">email app</a> · <button type="button" class="linkbtn" data-copy>copy enquiry</button></p>`;
+      [...f.children].forEach(el => { if (el !== box) el.hidden = true; });
       box.querySelector('[data-copy]').addEventListener('click', ev => {
         const t = `To: ${MAIL}\nSubject: ${sub}\n\n${body}`;
         (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => { ev.target.textContent = 'Copied'; }, () => { const ta = document.createElement('textarea'); ta.value = t; document.body.append(ta); ta.select(); document.execCommand('copy'); ta.remove(); ev.target.textContent = 'Copied'; });
