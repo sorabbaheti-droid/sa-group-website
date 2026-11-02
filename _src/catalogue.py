@@ -85,9 +85,10 @@ FAMILIES = {
  'jawcone': dict(name='Jaw and cone crushers', text='Jaws, toggles and cone liners, and the heads and sockets that carry them.', video='cones'),
  'mill':    dict(name='Mill parts', text='Wear parts and structural castings for vertical roller mills and ball mills.', video='rings'),
  'kiln':    dict(name='Kiln and cooler', text='Heat-resistant castings for the preheater, the kiln ends and the clinker cooler.', video='furnace'),
- 'spares':  dict(name='Critical spares', text='Feeder, track, running and chute parts that keep material moving.', video='machined'),
+ 'spares':  dict(name='Critical spares', text='Structural castings, feeder, track and running parts whose failure stops the plant.', video='machined'),
+ 'general': dict(name='General spares', text='Wear parts for chutes, hoppers and transfer points.', video='grind'),
 }
-FAMILY_ORDER = ['impact', 'jawcone', 'mill', 'kiln', 'spares']
+FAMILY_ORDER = ['impact', 'jawcone', 'mill', 'kiln', 'spares', 'general']
 
 # what we control, by family (each line is a fact about our process from the company profile)
 CONTROL = {
@@ -107,12 +108,16 @@ CONTROL = {
              ('Designed to stay straight', 'Ribs and sections arranged so the part can expand without warping.'),
              ('Fit-up checked', 'Segments, hangers and interlocks checked so sets assemble on site without rework.'),
              ('Traceable to the heat', 'Every casting carries its heat number, with the chemistry report to match.')],
+ 'general': [('Grade set by the duty', 'Sliding wear gets white iron; impact at the drop point gets tough steel.'),
+             ('Made to drawing', 'From the drawing, or from a worn liner reverse-engineered in-house.'),
+             ('Fixings to fit', 'Countersunk holes and fixing faces held so liners sit flush.'),
+             ('Tested and recorded', 'Chemistry and hardness reported for every heat.')],
  'spares':  [('Made to drawing', 'From the OEM drawing, a part number or a worn sample reverse-engineered in-house.'),
              ('Heat treated for the duty', 'Water quench for manganese steel; air or oil quench and temper for alloy steel.'),
              ('Machined to fit', 'Bores, pin holes and flanges machined so the part installs first time.'),
              ('Tested and recorded', 'Hardness, chemistry and NDT reported with the casting.')],
 }
-CONTROL_VIDEO = {'impact': 'quench', 'jawcone': 'vtl', 'mill': 'micro', 'kiln': 'pour2', 'spares': 'cnc'}
+CONTROL_VIDEO = {'impact': 'quench', 'jawcone': 'vtl', 'mill': 'micro', 'kiln': 'pour2', 'spares': 'cnc', 'general': 'grind'}
 
 ASK = ['Equipment make and model, or the OEM part number',
        'Drawing, or the worn part or photographs with key dimensions',
@@ -199,7 +204,7 @@ PRODUCTS = [
           ('Cracking at the top or bottom ring', 'Method designed for sound ends, and a full water quench.'),
           ('Movement in the bowl', 'Lugs and fit to drawing, with the backing space held.')],
    grades=[('mn', 'The standard, with higher-manganese types for hard, abrasive ore.')]),
- P(slug='crusher-heads-and-sockets', name='Crusher heads and sockets', fam='jawcone', img='crusher-head', m3d='head',
+ P(slug='crusher-heads-and-sockets', name='Crusher heads and sockets', fam='spares', img='crusher-head', m3d='head',
    inds=['mining', 'aggregate', 'equipment-makers'],
    where='Heads that carry the mantle, and sockets that carry the main shaft, in cone crushers.',
    summary='These are structural castings, not wear liners. They carry the crushing load on precisely machined seats, so soundness and machining accuracy matter more than hardness.',
@@ -255,7 +260,7 @@ PRODUCTS = [
           ('Cracking of plates and grates', 'Heat-treated Cr-Mo steel for toughness.')],
    grades=[('crmo', 'Grates and plates in most mills.'),
            ('hicr', 'Positions with high abrasion and low impact.')]),
- P(slug='trunnions', name='Trunnions', fam='mill', img='trunnion', m3d='trunnion',
+ P(slug='trunnions', name='Trunnions', fam='spares', img='trunnion', m3d='trunnion',
    inds=['cement', 'mining', 'equipment-makers'],
    where='Feed and discharge trunnions that carry ball and tube mills on their bearings.',
    summary='A trunnion carries the mill, its charge and its drive through the bearing journal. It is a structural casting whose life depends on internal soundness, strength and a precisely finished journal.',
@@ -297,7 +302,7 @@ PRODUCTS = [
           ('Heat distortion', 'Heat-resistant steel with ribbed sections.'),
           ('Burn-through at the edges', 'A higher-alloy type in the hottest riser ducts.')],
    grades=[('heat', 'HH or HK type, chosen by gas temperature.')]),
- P(slug='grate-bars-and-cross-bars', name='Grate bars and cross bars', fam='kiln', img='cross-bars',
+ P(slug='grate-bars-and-cross-bars', name='Grate bars and cross bars', fam='kiln', img=None,
    inds=['cement'],
    where='Clinker coolers: grate bars, and the cross bars that convey clinker in cross-bar coolers.',
    summary='These parts carry or move clinker straight from the kiln. They meet hot clinker above, cooling air below and constant abrasion.',
@@ -343,7 +348,7 @@ PRODUCTS = [
           ('Bore and seat wear', 'Bores machined to drawing.'),
           ('Cracking from internal defects', 'Method designed for soundness; ultrasonic testing on request.')],
    grades=[('steel', 'Carbon or low-alloy steel, quenched and tempered.')]),
- P(slug='conveying-elements', name='Cooler conveying elements', fam='spares', img=None,
+ P(slug='conveying-elements', name='Cooler conveying elements', fam='kiln', img='cross-bars',
    inds=['cement'],
    where='Clinker coolers: the cast elements that move the clinker bed along the grate.',
    summary='Conveying elements push hot clinker from the kiln outlet to the cooler discharge. They work in hot clinker under constant abrasion, so they must hold their shape at temperature and resist wear.',
@@ -352,7 +357,7 @@ PRODUCTS = [
           ('Wear at fixings', 'Fixing faces and bores to drawing.')],
    grades=[('heat', 'Hot inlet and recuperation zones.'),
            ('steel', 'Later zones, where wear rather than heat decides life.')]),
- P(slug='feed-chute-liners', name='Feed chute liners', fam='spares', img=None,
+ P(slug='feed-chute-liners', name='Feed chute liners', fam='general', img=None,
    inds=['cement', 'mining', 'aggregate', 'steel-power'],
    where='Chutes, hoppers and transfer points feeding crushers, mills and conveyors.',
    summary='Chute liners protect the structure where material falls and slides. The grade depends on whether the liner is struck by falling rock or rubbed by sliding material.',
@@ -363,7 +368,7 @@ PRODUCTS = [
            ('nihard', 'Sliding abrasion with little impact, as an alternative.'),
            ('crmo', 'Mixed impact and abrasion.'),
            ('mn', 'Heavy impact at the drop point.')]),
- P(slug='spouts', name='Mill feed spouts', fam='spares', img='spout',
+ P(slug='spouts', name='Mill feed spouts', fam='mill', img='spout',
    inds=['cement'],
    where='Feed spouts that deliver clinker and additives into ball mills.',
    summary='The feed spout carries the full feed of the mill at its point of heaviest wear. Cast spouts hold their shape where fabricated ones wear through, and keep the mill inlet sealed.',
