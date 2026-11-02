@@ -700,7 +700,7 @@ page('careers', 'Careers', 'Careers at Standard Alloys India: technical and comm
     <div class="acts" style="margin-top:28px"><a class="btn" href="#openings">Explore openings</a><a class="btn ghost" href="#apply">Apply now</a></div></div>
 </div></section>
 <section class="psec soft" id="openings" aria-labelledby="op-h"><div class="wrap">
-  <div class="sh" data-r><h2 id="op-h">We are always hiring</h2><p>Good people are welcome at any time. Apply in the stream that suits you, and we will talk.</p></div>
+  <div class="sh" data-r><h2 id="op-h">Openings</h2><p>Apply in the stream that suits you.</p></div>
   <div class="streams">{streams}
     <article class="stream intern" data-r><h3>Internships and industrial training</h3><p>For engineering, metallurgy and management students who want to see a working foundry from method to dispatch.</p><a class="btn ghost" href="#apply" data-role="Internship or industrial training">Ask about an internship</a></article></div>
 </div></section>
