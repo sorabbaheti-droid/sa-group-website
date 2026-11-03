@@ -9,7 +9,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from catalogue import GRADES, GRADE_ORDER, FAMILIES, FAMILY_ORDER, CONTROL, CONTROL_VIDEO, ASK, IND_NAMES, PRODUCTS, BY_SLUG
 
 OUT = 'standard-alloys'
-SITE = 'https://sorabbaheti-droid.github.io/sa-group-website/'   # change to the live domain at launch
+SITE = 'https://standardalloysindia.com/'
 NAV = [('About', 'about/'), ('Capabilities', 'capabilities/'), ('Industries', 'industries/'),
        ('Products', 'products/'), ('Grades', 'grades/'), ('Quality', 'quality/'), ('Careers', 'careers/'), ('Contact', 'contact/')]
 MAIL = 'sales@standardalloysindia.com'
@@ -71,7 +71,6 @@ def head(title, desc, r, a, extra=''):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(full)}</title>
 <meta name="description" content="{esc(desc)}">
-<meta name="robots" content="noindex">
 <meta name="theme-color" content="#0d0d0e">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Standard Alloys India">
@@ -92,7 +91,8 @@ def page(path, title, desc, active, body, js='', three=False, ld=None):
     a = '../' * (depth + 1)        # to repo root (assets)
     tok = lambda s: s.replace('~R~', r).replace('~A~', a)
     imap = '\n<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>' if three else ''
-    ldj = f'\n<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>' if ld else ''
+    canon = f'\n<link rel="canonical" href="{SITE}standard-alloys/{path + "/" if path else ""}">'
+    ldj = canon + f'\n<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>' if ld else ''
     doc = f'''<!doctype html>
 <html lang="en">
 <head>
@@ -770,12 +770,19 @@ p{margin-top:16px;max-width:46ch;margin-inline:auto;line-height:1.7}
 .acts a{display:inline-flex;align-items:center;min-height:46px;padding:0 24px;font:600 13px/1 inherit;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;background:#d42a2a;color:#fff}
 .acts a+a{background:none;color:#1d1d1f;box-shadow:inset 0 0 0 1px #1d1d1f}
 </style></head><body><main>
-<a class="mark" data-href="standard-alloys/"><img data-src="assets/saipl-logo.png" alt="">STANDARD ALLOYS INDIA</a>
+<a class="mark" data-href="/standard-alloys/"><img data-src="/assets/saipl-logo.png" alt="">STANDARD ALLOYS INDIA</a>
 <h1>This page has moved or never existed</h1>
 <p>The part you are looking for may be under a new address. Start from our products, or send us the drawing and we will take it from there.</p>
-<div class="acts"><a data-href="standard-alloys/products/">See all products</a><a data-href="standard-alloys/contact/#quote">Send a drawing</a></div>
+<div class="acts"><a data-href="/standard-alloys/products/">See all products</a><a data-href="/standard-alloys/contact/#quote">Send a drawing</a></div>
 </main>
 <script>const b=location.pathname.startsWith('/sa-group-website/')?'/sa-group-website/':'/';document.querySelectorAll('[data-href]').forEach(a=>a.href=b+a.dataset.href);document.querySelectorAll('[data-src]').forEach(i=>i.src=b+i.dataset.src);</script>
 </body></html>
 ''')
 print('wrote 404.html')
+import os as _os
+_urls=[SITE, SITE+'standard-alloys/']
+for _d,_s,_f in _os.walk('standard-alloys'):
+    if 'index.html' in _f and _d!='standard-alloys': _urls.append(SITE+_d.replace(_os.sep,'/')+'/')
+open('sitemap.xml','w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'<url><loc>{u}</loc></url>\n' for u in sorted(set(_urls)))+'</urlset>\n')
+open('robots.txt','w').write(f'User-agent: *\nDisallow: /concepts/\nDisallow: /review/\nSitemap: {SITE}sitemap.xml\n')
+print('wrote sitemap', len(set(_urls)))

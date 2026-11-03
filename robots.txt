@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /concepts/
+Disallow: /review/
+Sitemap: https://standardalloysindia.com/sitemap.xml
