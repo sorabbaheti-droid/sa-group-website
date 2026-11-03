@@ -784,5 +784,4 @@ _urls=[SITE, SITE+'standard-alloys/']
 for _d,_s,_f in _os.walk('standard-alloys'):
     if 'index.html' in _f and _d!='standard-alloys': _urls.append(SITE+_d.replace(_os.sep,'/')+'/')
 open('sitemap.xml','w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'<url><loc>{u}</loc></url>\n' for u in sorted(set(_urls)))+'</urlset>\n')
-open('robots.txt','w').write(f'User-agent: *\nDisallow: /concepts/\nDisallow: /review/\nSitemap: {SITE}sitemap.xml\n')
 print('wrote sitemap', len(set(_urls)))
