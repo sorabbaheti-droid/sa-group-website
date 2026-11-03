@@ -5,6 +5,18 @@
   // ERPNext web form: our form collects the details, then hands them over to be filed as a Lead
   const WEBFORM = 'https://saconnect.frappe.cloud/request-a-quote/new', NOTE_FIELD = 'notes';
   const part = new URLSearchParams(location.search).get('part');
+  // One step: the ERPNext web form itself is the quote form. The part from ?part= lands in its notes.
+  const EMBED = true;
+  if (EMBED) {
+    const src = WEBFORM + (part ? '?' + NOTE_FIELD + '=' + encodeURIComponent('Part: ' + part + '\n') : '');
+    document.querySelectorAll('[data-rfq]').forEach(f => {
+      const w = document.createElement('div'); w.className = 'rfqembed';
+      w.innerHTML = `<iframe class="rfqframe" src="${src}" title="Request for quotation"></iframe>
+        <p class="sendalt">Form not showing? <a href="${src}" target="_blank" rel="noopener">Open it in a new tab</a>, or write to <a href="mailto:${MAIL}?subject=Request%20for%20quotation">${MAIL}</a>.</p>`;
+      f.replaceWith(w);
+    });
+    return;
+  }
   document.querySelectorAll('[data-rfq]').forEach(f => {
     if (part && f.part) f.part.value = part;
     let cond = 'Not sure';
