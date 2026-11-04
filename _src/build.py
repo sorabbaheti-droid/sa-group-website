@@ -54,7 +54,7 @@ def footer(r, a):
   <div class="wrap fgrid">
     <div class="fb">
       <a class="brand" href="{r}"><img src="{a}assets/saipl-logo.png" alt="" width="34" height="30">STANDARD ALLOYS INDIA</a>
-      <p>Wear- and heat-resistant steel castings from 3 kg to 7 tonnes, engineered, cast and machined in India for plants worldwide.</p>
+      <p>Wear and heat-resistant steel castings from 3 kg to 7 tonnes, engineered, cast and machined in India for plants worldwide.</p>
       <address>F-26B &amp; 27, Parbatpura Industrial Area<br>Ajmer 305002, Rajasthan, India</address>
       <p class="fc"><a href="{TEL}">{PHONE}</a><a href="mailto:{MAIL}">{MAIL}</a></p>
     </div>
