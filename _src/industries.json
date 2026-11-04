@@ -3,7 +3,7 @@
   "tile_text": "Crusher and mill wear parts and heat-resistant castings for the preheater, kiln and clinker cooler.",
   "desc": "Wear and heat-resistant castings for every stage of a cement plant: crushing, grinding, preheater, kiln and clinker cooler.",
   "lede": "Castings for every stage of the line, from the limestone crusher to the clinker cooler, each specified for the wear, impact and heat it will meet.",
-  "intro": "A cement line asks two opposite things of its castings. At the front, parts must survive impact and abrasion at ambient temperature. From the preheater onwards, they must hold their shape and resist scaling in hot, dusty gas. We pour both families. We specify each part for the stage it works in.",
+  "intro": "A cement line asks two opposite things of its castings. At the front, parts must survive impact and abrasion at ambient temperature. From the preheater onwards, they must hold their shape and resist scaling in hot, dusty gas. We pour both families and specify each part for the stage it works in.",
   "steps": [
    {"id": "crushing", "label": "Crushing", "name": "Crushing", "text": "Limestone, shale and additives are broken down before grinding. These parts take repeated heavy impact, so toughness comes first and hardness second.", "duty": ["Heavy impact", "Abrasion", "Ambient temperature"],
     "parts": ["apron-pans-and-sprockets", "hammers-and-beaters", "blow-bars", "impact-plates", "grinding-paths", "jaw-and-side-plates"]},
@@ -13,13 +13,13 @@
     "parts": ["dip-tubes", "dispersion-plates"]},
    {"id": "kiln", "label": "Kiln", "name": "Kiln ends", "text": "At the kiln inlet and outlet, castings protect the shell and hold the refractory. A failure here stops the whole plant, so we design for life between planned shutdowns.", "duty": ["!Very high temperature", "Thermal cycling", "Clinker abrasion"],
     "parts": ["tip-castings-and-sectors", "brd-segments"]},
-   {"id": "cooler", "label": "Cooler", "name": "Clinker cooler", "text": "Grate plates and bars carry and move red-hot clinker under constant abrasion. The right alloy for each zone and a design that resists warping, decide how long a grate lasts.", "duty": ["!Hot clinker", "Abrasion", "Thermal shock"],
+   {"id": "cooler", "label": "Cooler", "name": "Clinker cooler", "text": "Grate plates and bars carry and move red-hot clinker under constant abrasion. The right alloy for each zone and a design that resists warping decide how long a grate lasts.", "duty": ["!Hot clinker", "Abrasion", "Thermal shock"],
     "parts": ["grate-and-cooler-plates", "grate-bars-and-cross-bars", "conveying-elements", "hammers-and-beaters"]}
   ],
   "why_title": "Why cement plants choose us",
   "why": [["Both families, one foundry", "Wear-resistant and heat-resistant alloys poured, treated and tested in the same plant."],
           ["Grade set by duty", "We ask where the part runs and what it meets before we recommend a grade."],
-          ["Ready for the shutdown", "More than 10,000 patterns on file and parts machined and fit-checked before dispatch."]]},
+          ["Ready for the shutdown", "More than 10,000 patterns on file. Parts machined and fit-checked before dispatch."]]},
 
  {"slug": "mining", "name": "Mining", "video": "mining", "tile": "mining",
   "tile_text": "Feeder, crusher and mill wear parts for moving ore from the pit to the plant.",

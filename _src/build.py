@@ -181,7 +181,7 @@ def hero(crumb, h1, lede, video, short=False):
   </div>
 </section>'''
 
-def cta(title='Have a casting problem? Send it to us', sub='A drawing, photographs of the worn part, or just the equipment model: any of them is enough to start. Our metallurgists recommend the grade if you don’t know it.', subject='Request for quotation'):
+def cta(title='Have a casting problem? Send it to us', sub='A drawing, photographs of the worn part or just the equipment model: any of them is enough to start. Our metallurgists recommend the grade if you don’t know it.', subject='Request for quotation'):
     return f'''<section class="cta" id="contact" aria-labelledby="cta-h">
   <div class="wrap narrow" data-r>
     <h2 id="cta-h">{title}</h2>
@@ -204,7 +204,7 @@ def pcard(p, mode='where'):
 
 
 # ---------------------------------------------------------------- shared conversion blocks
-def rfq_html(title='Get a quote, or discuss your part'):
+def rfq_html(title='Get a quote or discuss your part'):
     return f"""<div class="rfqwrap">
   <div class="routes">
     <div><b>Have a drawing?</b>Attach it as PDF, DWG, DXF or STEP.</div>
@@ -232,8 +232,8 @@ def rfq_html(title='Get a quote, or discuss your part'):
   </form>
 </div>"""
 
-WHY = [('35+', 'years', 'Foundry experience in Ajmer, since 1991.'),
-       ('~14,000', 't a year', 'Installed capacity across our three Ajmer facilities.'),
+WHY = [('35+', 'years', 'Foundry experience in Ajmer since 1991.'),
+       ('~14,000', 'tonnes a year', 'Installed capacity across our three Ajmer facilities.'),
        ('3 kg–7 tonnes', '', 'Single pieces, with up to 10 tonnes of metal in one pour.'),
        ('500+', 'customers', 'Industrial customers in cement, mining, aggregate, power and steel.'),
        ('10,000+', 'patterns', 'Already on file, so repeat orders start at moulding.'),
@@ -269,7 +269,7 @@ DONTKNOW = '<aside class="dk" data-r><b>Don’t know which alloy you need?</b><p
 
 EXPORT = """<section class="psec soft" aria-labelledby="ex-h"><div class="wrap ex">
   <div data-r><div class="sh"><h2 id="ex-h">For buyers outside India</h2><p>We ship to plants anywhere in the world. Every export order travels with the documents your receiving inspection and customs need.</p><p class="ctry"><b>Shipped to</b> France · Switzerland · USA · Canada · Australia · Kenya · Tanzania · Iraq · Costa Rica · Nepal · Bhutan</p></div></div>
-  <ul class="exl" data-r><li><b>Material certificates</b>Chemistry and mechanical properties against the heat number</li><li><b>Dimensional reports</b>Checked against your drawing</li><li><b>NDT reports</b>UT, MPI or DPT, as specified</li><li><b>Export packing</b>Packed and marked for sea or air freight</li><li><b>Commercial documents</b>Invoice, packing list and certificate of origin</li><li><b>Lead time</b>Confirmed with the quotation and faster when the pattern is already on file</li></ul>
+  <ul class="exl" data-r><li><b>Material certificates</b>Chemistry and mechanical properties against the heat number</li><li><b>Dimensional reports</b>Checked against your drawing</li><li><b>NDT reports</b>UT, MPI or DPT, as specified</li><li><b>Export packing</b>Packed and marked for sea or air freight</li><li><b>Commercial documents</b>Invoice, packing list and certificate of origin</li><li><b>Lead time</b>Confirmed with the quotation; shorter when the pattern is already on file</li></ul>
 </div></section>"""
 
 # ---------------------------------------------------------------- industries
@@ -299,10 +299,10 @@ for ind in IND:
 <div class="wrap">{DONTKNOW}</div>
 <section class="why" aria-labelledby="why-h"><div class="wrap"><div class="narrow" data-r><h2 id="why-h">{ind['why_title']}</h2></div><ul>{why}</ul></div></section>
 ''' + cta(subject=f'Request for quotation: {ind["name"].lower()} part')
-    page(f'industries/{ind["slug"]}', f'{ind["name"]} castings', ind['desc'], 'Industries', body)
+    page(f'industries/{ind["slug"]}', (f'Castings for {ind["name"].lower()}' if ind['slug'] == 'equipment-makers' else f'{ind["name"]} castings'), ind['desc'], 'Industries', body)
 
 tiles = ''.join(f'''<a class="tile" href="~R~industries/{i['slug']}/" data-r><video src="~A~assets/media/{i['tile']}.mp4" poster="~A~assets/media/{i['tile']}.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><div class="t"><h3><i>{ARROW}</i>{i['name']}</h3><p>{i['tile_text']}</p></div></a>''' for i in IND)
-page('industries', 'Industries', 'Castings for cement, mining, aggregate, thermal power and steel plants and for the equipment makers who build them.', 'Industries',
+page('industries', 'Industries', 'Castings for cement, mining, aggregate, thermal power and steel plants, as well as the equipment makers who build them.', 'Industries',
      hero('Industries', 'Industries we serve', 'Parts for equipment that runs around the clock, where an early failure can stop an entire production line.', 'mining') +
      f'<section class="sectors"><div class="tiles" style="margin-top:0">{tiles}</div></section>' + cta())
 
@@ -317,7 +317,7 @@ for k in FAMILY_ORDER:
   <div class="pcards">{''.join(pcard(p) for p in ps)}</div>
 </section>'''
 page('products', 'Products', 'Every wear- and heat-resistant part we cast, searchable by type of casting.', 'Products',
-     hero('Products', 'Products', f'{len(PRODUCTS)} parts in five families. Search by type of casting, or browse by industry.', 'rings') + f'''
+     hero('Products', 'Products', f'{len(PRODUCTS)} parts in six families. Search by type of casting, or browse by industry.', 'rings') + f'''
 <section class="catalogue"><div class="wrap">
   <form class="bigsearch" role="search" onsubmit="return false" data-r>
     <label for="q">Search by type of casting</label>
@@ -358,7 +358,7 @@ def hb_bar(g):
     lo, hi = G['hb']; L, H = 100, 750
     x = lambda v: (v - L) / (H - L) * 100
     extra = f'<b style="left:{x(hi):.1f}%;width:{x(G["hb_service"]) - x(hi):.1f}%" title="Work-hardened face in service"></b>' if G.get('hb_service') else ''
-    v = f'{lo}–{hi} HB' + (f' · {G["hb_service"]}+ in service' if G.get('hb_service') else '')
+    v = f'{lo}–{hi} HB' + (f' · over {G["hb_service"] - 50} HB in service' if G.get('hb_service') else '')
     return f'<div class="bars" role="img" aria-label="Typical hardness {v}"><div class="bar"><span class="tr"><i style="left:{x(lo):.1f}%;width:{x(hi) - x(lo):.1f}%"></i>{extra}</span><span class="v">{v}</span></div><div class="ax"><span>100</span><span>400</span><span>750 HB</span></div></div>'
 
 for p in PRODUCTS:
@@ -377,7 +377,7 @@ for p in PRODUCTS:
     elif p['img']:
         vis = f'<div class="pvis"><img src="~A~assets/cutouts/{p["img"]}.png" alt="Photograph of {esc(p["name"].lower())}"></div>'
     else:
-        vis = f'''<aside class="pvis none qcard"><span class="k">{F['name']}</span><h2>Get a quote for {p['name'].lower()}</h2><ul class="chk"><li>A drawing, photographs, or only the equipment model</li><li>Grade recommended if you don’t know it</li><li>As cast, or machined to drawing</li></ul><a class="btn" href="{qhref}">Get a quote</a><p>Or call <a href="{TEL}">{PHONE}</a></p></aside>'''
+        vis = f'''<aside class="pvis none qcard"><span class="k">{F['name']}</span><h2>Get a quote for {p['name'] if p['name'][:3].isupper() else p['name'][0].lower() + p['name'][1:]}</h2><ul class="chk"><li>A drawing, photographs or just the equipment model</li><li>Grade recommended if you don’t know it</li><li>As cast, or machined to drawing</li></ul><a class="btn" href="{qhref}">Get a quote</a><p>Or call <a href="{TEL}">{PHONE}</a></p></aside>'''
     fails = ''.join(f'<li data-r><span class="n">{i:02d}</span><b>{a}</b><span class="r">{b}</span></li>' for i, (a, b) in enumerate(p['fails'], 1))
     gcards = ''
     for i, (g, when) in enumerate(p['grades']):
@@ -394,7 +394,7 @@ for p in PRODUCTS:
       <p class="crumbs reveal"><a href="~R~">Home</a> / <a href="~R~products/">Products</a> / <a href="~R~products/#{fam}">{F['name']}</a></p>
       <h1 id="h1" class="reveal">{p['name']}</h1>
       <p class="lede reveal">{p['summary']}</p>
-      <dl class="pfacts reveal"><dt>Works in</dt><dd>{p['where']}</dd><dt>Industries</dt><dd>{inds}</dd><dt>Materials</dt><dd>{gl}</dd><dt>Size</dt><dd>Single pieces from 3 kg to 7 tonnes, to drawing</dd><dt>Supplied</dt><dd>As cast, or machined to drawing</dd><dt>Inspection</dt><dd>Chemistry and hardness on every heat; UT, MPI or DPT and a dimensional report as specified</dd><dt>From a worn part</dt><dd>Yes. Send the part, or photographs with key dimensions and we reverse-engineer it</dd></dl>
+      <dl class="pfacts reveal"><dt>Works in</dt><dd>{p['where']}</dd><dt>Industries</dt><dd>{inds}</dd><dt>Materials</dt><dd>{gl}</dd><dt>Size</dt><dd>Single pieces from 3 kg to 7 tonnes, to drawing</dd><dt>Supplied</dt><dd>As cast, or machined to drawing</dd><dt>Inspection</dt><dd>Chemistry and hardness on every heat; UT, MPI or DPT and a dimensional report as specified</dd><dt>From a worn part</dt><dd>Yes. Send the part or photographs with key dimensions and we will reverse-engineer it</dd></dl>
       <div class="acts reveal"><a class="btn" href="{qhref}">Get a quote for this part</a><a class="btn ghost" href="#grade">Choose the grade</a></div>
     </div>
     {vis}
@@ -422,7 +422,7 @@ for p in PRODUCTS:
     <p class="tel">Or call <a href="{TEL}">{PHONE}</a></p></div>
 </div></section>
 <section class="psec rel" aria-labelledby="rel-h"><div class="wrap">
-  <div class="sh" data-r><h2 id="rel-h">More {F['name'].lower()} parts</h2><a class="more" href="~R~products/#{fam}">All {F['name'].lower()} parts {ARROW}</a></div>
+  <div class="sh" data-r><h2 id="rel-h">More {F.get('plural', F['name'].lower())}</h2><a class="more" href="~R~products/#{fam}">All {F.get('plural', F['name'].lower())} {ARROW}</a></div>
   <div class="pcards">{''.join(pcard(x) for x in rel)}</div>
 </div></section>'''
     js = ''
@@ -508,7 +508,7 @@ document.getElementById('gq').addEventListener('input',look);'''
 heatbars = ''.join(f'<div class="crow t" data-r><a href="#heat">{n}</a><span class="tr"><i style="left:0;width:{t / 1200 * 100:.1f}%"></i></span><span class="v">about {t:,} °C</span></div>' for n, t in GRADES['heat']['temp'])
 page('grades', 'Materials and grades', 'The alloys we pour for wear and heat, the standards we pour them to, typical hardness and temperature limits and where each one works best.', 'Grades',
      hero('Grades', 'Materials and grades', 'Six alloy families, poured to IS, ASTM, EN or your own specification and chosen for the duty rather than the catalogue.', 'micro') + f'''
-<section class="intro"><div class="wrap narrow" data-r><p class="lit">The right grade is decided by what the part meets in service: impact, sliding abrasion, heat, or all three at once. Our metallurgists confirm the grade with every quotation. Every heat is analysed before the casting ships.</p></div></section>
+<section class="intro"><div class="wrap narrow" data-r><p class="lit">The right grade is decided by what the part meets in service: impact, sliding abrasion, heat or all three at once. Our metallurgists confirm the grade with every quotation. Every heat is analysed before the casting ships.</p></div></section>
 <section class="psec" aria-labelledby="look-h"><div class="wrap">
   <div class="sh" data-r><span class="k">01</span><h2 id="look-h">I know my grade: can you make it?</h2><p>Type a designation from your drawing or specification.</p></div>
   <div class="lookup" data-r>
@@ -544,7 +544,7 @@ CAP = [
   ['10,000+ patterns on file', 'Wood, polystyrene and aluminium', 'CNC router pattern making']),
  ('melting', 'Melting', 'pour2', 'Induction melting in crucibles from 500 kg to 6 tonnes. A dual-track power supply brings up to 10 tonnes of liquid metal to a single pour, so heavy pieces are cast in one go.',
   ['Crucibles of 500, 1,500, 3,000 and 6,000 kg', 'Up to 10 tonnes of liquid metal per pour', 'Spectrometer analysis on every heat']),
- ('moulding', 'Moulding', 'meltshop', 'Alphaset no-bake moulding gives strong, dimensionally stable moulds for pieces from 3 kg to 7,000 kg. Sand is mechanically reclaimed and reused.',
+ ('moulding', 'Moulding', 'meltshop', 'Alphaset no-bake moulding gives strong, dimensionally stable moulds for pieces from 3 kg to 7 tonnes. Sand is mechanically reclaimed and reused.',
   ['Alphaset mixers of 8 and 20 tonnes an hour', 'Mould pre-heater and shell core shooter', 'Sand reclamation of 6 and 12 tonnes an hour']),
  ('heat-treatment', 'Heat treatment', 'quench', 'Gas-fired box furnaces with water quench and bogie-hearth furnaces with air and oil quench. Manganese steel goes from furnace to water in about 45 seconds.',
   ['Two 10-tonne box furnaces, water quench', 'Two 12-tonne bogie-hearth furnaces, air and oil quench', 'Solution treatment, hardening and tempering']),
@@ -570,7 +570,7 @@ page('capabilities', 'Capabilities', 'Engineering, pattern making, induction mel
   <div class="units">{units}</div>
 </div></section>
 <section class="psec" aria-labelledby="f-h"><div class="wrap"><div class="sh" data-r><h2 id="f-h">In figures</h2></div>
-<ul class="figs"><li data-r><b>~<span data-count="14000">14000</span> t</b>Installed capacity a year, three facilities</li><li data-r><b><span data-count="10">10</span> t</b>Liquid metal in one pour</li><li data-r><b><span data-count="7000">7000</span> kg</b>Heaviest single piece</li><li data-r><b><span data-count="10000">10000</span>+</b>Patterns on file</li></ul>
+<ul class="figs"><li data-r><b>~<span data-count="14000">14000</span> tonnes</b>Installed capacity a year, three facilities</li><li data-r><b><span data-count="10">10</span> tonnes</b>Liquid metal in one pour</li><li data-r><b><span data-count="7">7</span> tonnes</b>Heaviest single piece</li><li data-r><b><span data-count="10000">10000</span>+</b>Patterns on file</li></ul>
 <p class="note" data-r>Laboratory, NDT and inspection are described on the <a href="~R~quality/">quality page</a>.</p></div></section>''' + cta(),
      js=r'''const vs=[...document.querySelectorAll('.capmedia video')];
 document.querySelectorAll('.cblock').forEach(b=>ScrollTrigger.create({trigger:b,start:'top 60%',end:'bottom 60%',onToggle:st=>{if(!st.isActive)return;
@@ -585,7 +585,7 @@ page('quality', 'Quality', 'Laboratory testing, NDT, dimensional checks and trac
 <ol class="chain">{chain}</ol></div></section>
 <section class="qblocks"><div class="wrap qb">
   <figure data-r><video src="~A~assets/media/micro.mp4" poster="~A~assets/media/micro.jpg" muted loop playsinline preload="none" aria-label="Microstructure examination"></video></figure>
-  <div data-r><h2>Laboratory</h2><ul><li>Chemical analysis on an Ametek spectrometer, for every heat</li><li>Optical microscope with image analyser for microstructure</li><li>Tensile, impact and bench hardness testing</li><li>Sand laboratory: grain size, clay and loss on ignition, compression and shear strength</li></ul></div>
+  <div data-r><h2>Laboratory</h2><ul><li>Chemical analysis on an Ametek spectrometer, for every heat</li><li>Optical microscope with image analyser for microstructure</li><li>Tensile, impact and bench hardness testing</li><li>Sand laboratory: grain size, clay content, loss on ignition, compression and shear strength</li></ul></div>
   <div data-r><h2>Non-destructive testing</h2><ul><li>Ultrasonic testing of critical sections</li><li>Magnetic particle inspection</li><li>Dye penetrant testing</li></ul><p class="aside">Manganese steel is non-magnetic and coarse-grained, so its surface is checked with dye penetrant and its soundness is built in through the method.</p></div>
   <figure data-r><video src="~A~assets/media/mpi.mp4" poster="~A~assets/media/mpi.jpg" muted loop playsinline preload="none" aria-label="Magnetic particle inspection"></video></figure>
   <figure data-r><video src="~A~assets/media/cnc.mp4" poster="~A~assets/media/cnc.jpg" muted loop playsinline preload="none" aria-label="Machining and dimensional check"></video></figure>
@@ -627,7 +627,7 @@ LEAD = [('shiv-das-baheti', 'Shiv Das Baheti', 'Founder and Managing Director', 
 lead = ''.join(f'<article class="person{" lead1" if i == 0 else ""}" data-r><figure><img src="~A~assets/people/{f}.jpg" alt="{n}" loading="lazy" draggable="false"></figure><div><h3>{n}</h3><p class="role">{r} · {y}</p><p>{d}</p></div></article>' for i, (f, n, r, y, d) in enumerate(LEAD))
 page('about', 'About us', 'Standard Alloys India: a steel foundry since 1991, making wear- and heat-resistant castings for plants worldwide.', 'About',
      hero('About', 'Since 1991', 'A fabrication shop that became a specialist foundry for the parts that take the hardest wear and heat.', 'aerial') + '''
-<section class="intro"><div class="wrap narrow" data-r><p class="lit">Standard Alloys India began in 1991 as a fabrication shop in Ajmer, Rajasthan. It lit its first induction furnace in 1994. Over three decades we have built a foundry around one idea: a casting should be specified for the duty it will meet. Today our three facilities have about 14,000 tonnes a year of installed capacity, pouring single pieces from 3 kg to 7 tonnes for more than 500 industrial customers, in plants anywhere in the world.</p></div></section>
+<section class="intro"><div class="wrap narrow" data-r><p class="lit">Standard Alloys India began in 1991 as a fabrication shop in Ajmer, Rajasthan. It lit its first induction furnace in 1994. Over three decades we have built a foundry around one idea: a casting should be specified for the duty it will meet. Today our three facilities have about 14,000 tonnes a year of installed capacity, pouring single pieces from 3 kg to 7 tonnes for more than 500 industrial customers in plants anywhere in the world.</p></div></section>
 <section><div class="wrap timeline">
 <div data-r><b>1991</b><span>Starts as a fabrication shop in Ajmer</span></div>
 <div data-r><b>1994</b><span>First induction furnace, the start of the foundry</span></div>
@@ -715,10 +715,10 @@ page('careers', 'Careers', 'Careers at Standard Alloys India: technical and comm
 <section class="psec" aria-labelledby="ww-h"><div class="wrap"><div class="sh" data-r><h2 id="ww-h">Why work with us</h2></div><ul class="inits six">{whywork}</ul></div></section>""", js=CAREER_JS)
 
 # ---------------------------------------------------------------- contact
-page('contact', 'Get a quote', 'Get a quote or discuss your part with Standard Alloys India. A drawing, photographs or only the equipment model is enough to start.', 'Contact',
-     hero('Contact', 'Get a quote', 'A drawing, photographs of the worn part, or only the equipment model: any of them is enough to start. A metallurgist replies with a price, a lead time or the right questions.', 'drill') + f"""
+page('contact', 'Get a quote', 'Get a quote or discuss your part with Standard Alloys India. A drawing, photographs or just the equipment model is enough to start.', 'Contact',
+     hero('Contact', 'Get a quote', 'A drawing, photographs of the worn part or just the equipment model: any of them is enough to start. A metallurgist replies with a price, a lead time or the right questions.', 'drill') + f"""
 <section class="quote" id="quote" aria-labelledby="q-h"><div class="wrap">
-  <div class="sh" data-r><h2 id="q-h">Discuss your part</h2><p>Don’t know the material? That’s fine. Tell us where the part works and how it fails and our metallurgists will recommend it.</p></div>
+  <div class="sh" data-r><h2 id="q-h">Discuss your part</h2><p>Don’t know the material? That’s fine. Tell us where the part works and how it fails. Our metallurgists will recommend the grade.</p></div>
   <!-- ERPNext Web Form: when the URL from saconnect.frappe.cloud is ready, put it in data-webform below and the upload form replaces the email composer -->
   <div data-webform="" data-title="Request for quotation">{rfq_html()}</div>
 </div></section>

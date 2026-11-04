@@ -29,11 +29,11 @@ GRADES = {
     hb=(300, 550),
     hardness='Typically 300–400 HB for pearlitic mill-liner grades and 450–550 HB or more for martensitic grades, set by heat treatment.',
     treat='Normalised or hardened in air or oil, then tempered to the required balance of hardness and toughness.',
-    strong='The middle ground: harder than manganese steel without needing impact to work and much tougher than white iron.',
+    strong='The middle ground: harder than manganese steel without needing impact, yet much tougher than white iron.',
     limit='Outworn by white iron under pure abrasion and less forgiving than manganese steel when tramp metal enters.',
  ),
  'hicr': dict(
-    name='High-chromium white iron', short='High chrome iron',
+    name='High-chromium white iron', short='High-chromium iron',
     aka='Chromium–molybdenum white irons, typically 15–28% Cr.',
     standards=['ASTM A532 Class II and III', 'IS 4771', 'ISO 21988 / EN 12513'],
     chem='About 2–3.6% carbon with 11–30% chromium, plus molybdenum, nickel or copper so that heavy sections harden through.',
@@ -81,12 +81,12 @@ GRADE_ORDER = ['mn', 'crmo', 'hicr', 'nihard', 'heat', 'steel']
 
 # ------------------------------------------------------------------ families
 FAMILIES = {
- 'impact':  dict(name='Impact crushers', text='Hammers, blow bars, impact plates and grizzly bars for crushers that break rock by impact.', video='jaws'),
- 'jawcone': dict(name='Jaw and cone crushers', text='Jaws, toggles and cone liners and the heads and sockets that carry them.', video='cones'),
- 'mill':    dict(name='Mill parts', text='Wear parts and structural castings for vertical roller mills and ball mills.', video='rings'),
- 'kiln':    dict(name='Kiln and cooler', text='Heat-resistant castings for the preheater, the kiln ends and the clinker cooler.', video='furnace'),
- 'spares':  dict(name='Critical spares', text='Structural castings, feeder, track and running parts whose failure stops the plant.', video='machined'),
- 'general': dict(name='General spares', text='Wear parts for chutes, hoppers and transfer points.', video='grind'),
+ 'impact':  dict(name='Impact crushers', plural='impact crusher parts', text='Hammers, blow bars, impact plates and grizzly bars for crushers that break rock by impact.', video='jaws'),
+ 'jawcone': dict(name='Jaw and cone crushers', plural='jaw and cone crusher parts', text='Jaws, toggles and cone liners, plus the heads and sockets that carry them.', video='cones'),
+ 'mill':    dict(name='Mill parts', plural='mill parts', text='Wear parts and structural castings for vertical roller mills and ball mills.', video='rings'),
+ 'kiln':    dict(name='Kiln and cooler', plural='kiln and cooler parts', text='Heat-resistant castings for the preheater, the kiln ends and the clinker cooler.', video='furnace'),
+ 'spares':  dict(name='Critical spares', plural='critical spares', text='Structural castings, feeder, track and running parts whose failure stops the plant.', video='machined'),
+ 'general': dict(name='General spares', plural='general spares', text='Wear parts for chutes, hoppers and transfer points.', video='grind'),
 }
 FAMILY_ORDER = ['impact', 'jawcone', 'mill', 'kiln', 'spares', 'general']
 
@@ -232,7 +232,7 @@ PRODUCTS = [
           ('Spalling and cracking', 'Alloy and heat treatment designed for the section thickness.'),
           ('Uneven wear that forces an early change', 'Segments made reversible where the design allows.')],
    grades=[('hicr', 'Raw meal, cement and slag grinding.'),
-           ('nihard', 'Coal grinding, where its long record and thermal tolerance suit.')]),
+           ('nihard', 'Coal grinding, where it has a long service record.')]),
  P(slug='table-liners', name='Table liners', fam='mill', img='vrm-roller',
    inds=['cement', 'steel-power'],
    where='Grinding table segments of vertical roller mills and bull ring segments of bowl mills.',
@@ -298,7 +298,7 @@ PRODUCTS = [
  P(slug='dip-tubes', name='Dip tubes', fam='kiln', img='dip-tube', m3d='diptube',
    inds=['cement'],
    where='Segmented dip tubes, also called vortex finders or thimbles, in preheater cyclones.',
-   summary='The dip tube stops raw meal short-cutting the cyclone. When segments distort or drop, separation falls, more meal circulates to the upper stages and fuel and fan power rise.',
+   summary='The dip tube stops raw meal short-cutting the cyclone. When segments distort or drop, separation falls and more meal circulates to the upper stages. Fuel and fan power rise with it.',
    fails=[('Distortion and creep', 'Section and hanger design that carries the segment at temperature.'),
           ('Scaling and oxidation', 'HK type in the lowest, hottest cyclones.'),
           ('Segments dropping out', 'Hanger lugs and interlocks cast to drawing and checked on a fit-up set.')],
