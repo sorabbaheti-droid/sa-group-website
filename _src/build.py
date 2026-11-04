@@ -460,7 +460,7 @@ for g in GRADE_ORDER:
   <div class="gu"><h3>Parts we make in it</h3><div class="links">{uses(g)}</div></div>
 </article>'''
 MIST = [('Grade picked by habit, not by duty', 'Match the alloy to the feed, the impact and the temperature the part will meet.'),
-        ('Manganese steel quenched too slowly', 'A slow transfer from furnace to water leaves brittle carbides. Ask how many seconds it takes.'),
+        ('Manganese steel quenched too slowly', 'A slow transfer from furnace to water leaves brittle carbides.'),
         ('No method before the pattern', 'Gating and feeding should be designed and simulated for critical parts, before metal is poured.'),
         ('Wrong alloy in the hot zone', 'HH and HK look alike on a drawing. Ask for the spectrometer report against the heat.'),
         ('Raw tolerances accepted', 'Proof-machine and check the fit, so the part installs first time in a shutdown.'),
@@ -621,9 +621,9 @@ page('sustainability', 'Sustainability', 'Absolute emission-reduction targets on
 # ---------------------------------------------------------------- about
 LEAD = [('shiv-das-baheti', 'Shiv Das Baheti', 'Founder and Managing Director', '50+ years', 'Manufacturing, marketing, product and plant development for steel and alloy castings. B.E. (Hons) Mechanical and Chemical Engineering, BITS Pilani; Foundry and Forge Technology, NIFFT Ranchi; PG Diploma in Management. Former Chairman, Board of Governors, Government Engineering College, Bharatpur; former Vice President, Employers Association of Rajasthan.'),
         ('gaurav-baheti', 'Gaurav Baheti', 'Director', '15+ years', 'B.E. (Hons) Mechanical, BITS Pilani; PG in Family Business, S.P. Jain. Former Joint Secretary, Ajmer Zila Udyog Sangh.'),
-        ('sorab-baheti', 'Sorab Baheti', 'Director', '8+ years', 'B.Tech Materials Science, IIT Kanpur. Earlier in mechatronics at Tonbo Imaging and on cement plants at thyssenkrupp.'),
-        ('vineeta-baheti', 'Vineeta Baheti', 'Finance Head', '9+ years', 'Chartered Accountant (2013); Strategic Finance, IIM Lucknow. Earlier credit manager at ICICI Bank.'),
-        ('priyal-mantri-baheti', 'Priyal Mantri Baheti', 'Purchase Head', '3+ years', 'Chartered Accountant (2017). Earlier PE fund controller at Goldman Sachs and research analyst at J.P. Morgan.')]
+        ('sorab-baheti', 'Sorab Baheti', 'Director', '9+ years', 'B.Tech Materials Science, IIT Kanpur. Earlier in mechatronics at Tonbo Imaging and on cement plants at thyssenkrupp.'),
+        ('vineeta-baheti', 'Vineeta Baheti', 'Finance Head', '10+ years', 'Chartered Accountant (2013); Strategic Finance, IIM Lucknow. Earlier credit manager at ICICI Bank.'),
+        ('priyal-mantri-baheti', 'Priyal Mantri Baheti', 'Purchase Head', '4+ years', 'Chartered Accountant (2017). Earlier PE fund controller at Goldman Sachs and research analyst at J.P. Morgan.')]
 lead = ''.join(f'<article class="person{" lead1" if i == 0 else ""}" data-r><figure><img src="~A~assets/people/{f}.jpg" alt="{n}" loading="lazy" draggable="false"></figure><div><h3>{n}</h3><p class="role">{r} · {y}</p><p>{d}</p></div></article>' for i, (f, n, r, y, d) in enumerate(LEAD))
 page('about', 'About us', 'Standard Alloys India: a steel foundry since 1991, making wear- and heat-resistant castings for plants worldwide.', 'About',
      hero('About', 'Since 1991', 'A fabrication shop that became a specialist foundry for the parts that take the hardest wear and heat.', 'aerial') + '''
