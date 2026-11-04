@@ -243,7 +243,7 @@ WHY = [('35+', 'years', 'Foundry experience in Ajmer, since 1991.'),
 def why_html():
     li = ''.join(f'<li data-r><b>{a}{(" <small>" + u + "</small>") if u else ""}</b><span>{t}</span></li>' for a, u, t in WHY)
     return f"""<section class="whysa" id="why" aria-labelledby="why-sa"><div class="wrap">
-  <div class="sh" data-r><h2 id="why-sa">Why trust us with a critical casting</h2><p>Because the part, its grade and every step that decides its life are in one set of hands, and every heat is tested before it ships.</p></div>
+  <div class="sh" data-r><h2 id="why-sa">Why trust us with a critical casting</h2><p>Because the part, its grade and every step that decides its life are in one set of hands. Every heat is tested before it ships.</p></div>
   <ul class="proof">{li}</ul>
 </div></section>"""
 
@@ -260,7 +260,7 @@ CHAIN2 = [('Engineering', 'Drawing review, or reverse engineering from the worn 
 def chain_html():
     li = ''.join(f'<li><i>{k:02d}</i><b>{a}</b><span>{b}</span></li>' for k, (a, b) in enumerate(CHAIN2, 1))
     return f"""<section class="mchain" aria-labelledby="mc-h"><div class="wrap">
-  <div class="sh" data-r><h2 id="mc-h">One supplier. One manufacturing chain. One responsibility.</h2><p>From your problem to the finished part, every step that decides the life of a casting is ours to control, and ours to answer for.</p></div>
+  <div class="sh" data-r><h2 id="mc-h">One supplier. One manufacturing chain. One responsibility.</h2><p>From your problem to the finished part, every step that decides the life of a casting is ours to control and ours to answer for.</p></div>
   <div class="mtrack"><ol>{li}</ol></div>
   <p class="note">*Casting simulation for critical parts is run with a specialist partner; method design is in-house.</p>
 </div></section>"""
@@ -269,7 +269,7 @@ DONTKNOW = '<aside class="dk" data-r><b>Don’t know which alloy you need?</b><p
 
 EXPORT = """<section class="psec soft" aria-labelledby="ex-h"><div class="wrap ex">
   <div data-r><div class="sh"><h2 id="ex-h">For buyers outside India</h2><p>We ship to plants anywhere in the world. Every export order travels with the documents your receiving inspection and customs need.</p><p class="ctry"><b>Shipped to</b> France · Switzerland · USA · Canada · Australia · Kenya · Tanzania · Iraq · Costa Rica · Nepal · Bhutan</p></div></div>
-  <ul class="exl" data-r><li><b>Material certificates</b>Chemistry and mechanical properties against the heat number</li><li><b>Dimensional reports</b>Checked against your drawing</li><li><b>NDT reports</b>UT, MPI or DPT, as specified</li><li><b>Export packing</b>Packed and marked for sea or air freight</li><li><b>Commercial documents</b>Invoice, packing list and certificate of origin</li><li><b>Lead time</b>Confirmed with the quotation, and faster when the pattern is already on file</li></ul>
+  <ul class="exl" data-r><li><b>Material certificates</b>Chemistry and mechanical properties against the heat number</li><li><b>Dimensional reports</b>Checked against your drawing</li><li><b>NDT reports</b>UT, MPI or DPT, as specified</li><li><b>Export packing</b>Packed and marked for sea or air freight</li><li><b>Commercial documents</b>Invoice, packing list and certificate of origin</li><li><b>Lead time</b>Confirmed with the quotation and faster when the pattern is already on file</li></ul>
 </div></section>"""
 
 # ---------------------------------------------------------------- industries
@@ -302,7 +302,7 @@ for ind in IND:
     page(f'industries/{ind["slug"]}', f'{ind["name"]} castings', ind['desc'], 'Industries', body)
 
 tiles = ''.join(f'''<a class="tile" href="~R~industries/{i['slug']}/" data-r><video src="~A~assets/media/{i['tile']}.mp4" poster="~A~assets/media/{i['tile']}.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><div class="t"><h3><i>{ARROW}</i>{i['name']}</h3><p>{i['tile_text']}</p></div></a>''' for i in IND)
-page('industries', 'Industries', 'Castings for cement, mining, aggregate, thermal power and steel plants, and for the equipment makers who build them.', 'Industries',
+page('industries', 'Industries', 'Castings for cement, mining, aggregate, thermal power and steel plants and for the equipment makers who build them.', 'Industries',
      hero('Industries', 'Industries we serve', 'Parts for equipment that runs around the clock, where an early failure can stop an entire production line.', 'mining') +
      f'<section class="sectors"><div class="tiles" style="margin-top:0">{tiles}</div></section>' + cta())
 
@@ -330,7 +330,7 @@ page('products', 'Products', 'Every wear- and heat-resistant part we cast, searc
   </div>
   <p class="count" id="count" aria-live="polite">{len(PRODUCTS)} parts</p>
   {fsecs}
-  <div class="empty" id="empty" hidden><h3>No exact match, but we probably make it</h3><p>We cast to drawing, sample or sketch. Tell us the part and the equipment it fits, and a metallurgist will come back to you.</p><a class="btn" href="~R~contact/#quote">Get a quote for this part</a></div>
+  <div class="empty" id="empty" hidden><h3>No exact match, but we probably make it</h3><p>We cast to drawing, sample or sketch. Tell us the part and the equipment it fits. A metallurgist will come back to you.</p><a class="btn" href="~R~contact/#quote">Get a quote for this part</a></div>
   <p class="after" data-r>Your part not listed? We cast to drawing, sample or sketch, with more than 10,000 patterns already on file.</p>
 </div></section>''' + cta(),
      js=r'''const chips=[...document.querySelectorAll('.chip')], cards=[...document.querySelectorAll('.catalogue .pcard')], secs=[...document.querySelectorAll('.catalogue .fam')];
@@ -394,7 +394,7 @@ for p in PRODUCTS:
       <p class="crumbs reveal"><a href="~R~">Home</a> / <a href="~R~products/">Products</a> / <a href="~R~products/#{fam}">{F['name']}</a></p>
       <h1 id="h1" class="reveal">{p['name']}</h1>
       <p class="lede reveal">{p['summary']}</p>
-      <dl class="pfacts reveal"><dt>Works in</dt><dd>{p['where']}</dd><dt>Industries</dt><dd>{inds}</dd><dt>Materials</dt><dd>{gl}</dd><dt>Size</dt><dd>Single pieces from 3 kg to 7 tonnes, to drawing</dd><dt>Supplied</dt><dd>As cast, or machined to drawing</dd><dt>Inspection</dt><dd>Chemistry and hardness on every heat; UT, MPI or DPT and a dimensional report as specified</dd><dt>From a worn part</dt><dd>Yes. Send the part, or photographs with key dimensions, and we reverse-engineer it</dd></dl>
+      <dl class="pfacts reveal"><dt>Works in</dt><dd>{p['where']}</dd><dt>Industries</dt><dd>{inds}</dd><dt>Materials</dt><dd>{gl}</dd><dt>Size</dt><dd>Single pieces from 3 kg to 7 tonnes, to drawing</dd><dt>Supplied</dt><dd>As cast, or machined to drawing</dd><dt>Inspection</dt><dd>Chemistry and hardness on every heat; UT, MPI or DPT and a dimensional report as specified</dd><dt>From a worn part</dt><dd>Yes. Send the part, or photographs with key dimensions and we reverse-engineer it</dd></dl>
       <div class="acts reveal"><a class="btn" href="{qhref}">Get a quote for this part</a><a class="btn ghost" href="#grade">Choose the grade</a></div>
     </div>
     {vis}
@@ -402,7 +402,7 @@ for p in PRODUCTS:
 </section>
 <nav class="ptabs" aria-label="On this page"><div class="wrap"><a href="#fails">How it fails</a><a href="#grade">Grade</a><a href="#control">What we control</a><a href="#ask">Quotation</a></div></nav>
 <section class="psec" id="fails" aria-labelledby="fails-h"><div class="wrap">
-  <div class="sh" data-r><span class="k">01</span><h2 id="fails-h">How it fails, and what we do about it</h2></div>
+  <div class="sh" data-r><span class="k">01</span><h2 id="fails-h">How it fails and what we do about it</h2></div>
   <ol class="fl"><li class="hd" aria-hidden="true"><span></span><b>Failure</b><span class="r">Our answer</span></li>{fails}</ol>
 </div></section>
 <section class="psec soft" id="grade" aria-labelledby="grade-h"><div class="wrap">
@@ -416,7 +416,7 @@ for p in PRODUCTS:
 </div></section>
 <section class="psec ask" id="ask" aria-labelledby="ask-h"><div class="wrap ag">
   <div data-r><div class="sh"><span class="k">04</span><h2 id="ask-h">For a quotation, send any of these</h2></div><ul class="chk">{ask}</ul>
-    <p class="note">No drawing? Send the worn part or photographs with key dimensions, and we will reverse-engineer it.</p></div>
+    <p class="note">No drawing? Send the worn part or photographs with key dimensions and we will reverse-engineer it.</p></div>
   <div class="askbox" data-r><h3>{p['name']}</h3><p>A metallurgist reviews every enquiry and replies with a price, a lead time or the right questions.</p>
     <div class="acts"><a class="btn" href="{qhref}">Get a quote for this part</a><a class="btn ghost" href="{mailto('Request for quotation: ' + p['name'])}">Email us instead</a></div>
     <p class="tel">Or call <a href="{TEL}">{PHONE}</a></p></div>
@@ -461,7 +461,7 @@ for g in GRADE_ORDER:
 </article>'''
 MIST = [('Grade picked by habit, not by duty', 'Match the alloy to the feed, the impact and the temperature the part will meet.'),
         ('Manganese steel quenched too slowly', 'A slow transfer from furnace to water leaves brittle carbides. Ask how many seconds it takes.'),
-        ('No method before the pattern', 'Gating and feeding should be designed, and simulated for critical parts, before metal is poured.'),
+        ('No method before the pattern', 'Gating and feeding should be designed and simulated for critical parts, before metal is poured.'),
         ('Wrong alloy in the hot zone', 'HH and HK look alike on a drawing. Ask for the spectrometer report against the heat.'),
         ('Raw tolerances accepted', 'Proof-machine and check the fit, so the part installs first time in a shutdown.'),
         ('No record of the heat', 'Insist on chemistry, hardness and NDT reports traceable to the heat number.'),
@@ -506,9 +506,9 @@ function look(){const v=norm(document.getElementById('gq').value),out=document.g
   else out.innerHTML=`<div class="no"><b>Not in our quick list.</b> We also pour to customer specifications within our six alloy families. Send the specification and a metallurgist will confirm. <a class="btn ghost" href="~R~contact/#quote">Ask a metallurgist</a></div>`;}
 document.getElementById('gq').addEventListener('input',look);'''
 heatbars = ''.join(f'<div class="crow t" data-r><a href="#heat">{n}</a><span class="tr"><i style="left:0;width:{t / 1200 * 100:.1f}%"></i></span><span class="v">about {t:,} °C</span></div>' for n, t in GRADES['heat']['temp'])
-page('grades', 'Materials and grades', 'The alloys we pour for wear and heat, the standards we pour them to, typical hardness and temperature limits, and where each one works best.', 'Grades',
-     hero('Grades', 'Materials and grades', 'Six alloy families, poured to IS, ASTM, EN or your own specification, and chosen for the duty rather than the catalogue.', 'micro') + f'''
-<section class="intro"><div class="wrap narrow" data-r><p class="lit">The right grade is decided by what the part meets in service: impact, sliding abrasion, heat, or all three at once. Our metallurgists confirm the grade with every quotation, and every heat is analysed before the casting ships.</p></div></section>
+page('grades', 'Materials and grades', 'The alloys we pour for wear and heat, the standards we pour them to, typical hardness and temperature limits and where each one works best.', 'Grades',
+     hero('Grades', 'Materials and grades', 'Six alloy families, poured to IS, ASTM, EN or your own specification and chosen for the duty rather than the catalogue.', 'micro') + f'''
+<section class="intro"><div class="wrap narrow" data-r><p class="lit">The right grade is decided by what the part meets in service: impact, sliding abrasion, heat, or all three at once. Our metallurgists confirm the grade with every quotation. Every heat is analysed before the casting ships.</p></div></section>
 <section class="psec" aria-labelledby="look-h"><div class="wrap">
   <div class="sh" data-r><span class="k">01</span><h2 id="look-h">I know my grade: can you make it?</h2><p>Type a designation from your drawing or specification.</p></div>
   <div class="lookup" data-r>
@@ -546,7 +546,7 @@ CAP = [
   ['Crucibles of 500, 1,500, 3,000 and 6,000 kg', 'Up to 10 tonnes of liquid metal per pour', 'Spectrometer analysis on every heat']),
  ('moulding', 'Moulding', 'meltshop', 'Alphaset no-bake moulding gives strong, dimensionally stable moulds for pieces from 3 kg to 7,000 kg. Sand is mechanically reclaimed and reused.',
   ['Alphaset mixers of 8 and 20 tonnes an hour', 'Mould pre-heater and shell core shooter', 'Sand reclamation of 6 and 12 tonnes an hour']),
- ('heat-treatment', 'Heat treatment', 'quench', 'Gas-fired box furnaces with water quench, and bogie-hearth furnaces with air and oil quench. Manganese steel goes from furnace to water in about 45 seconds.',
+ ('heat-treatment', 'Heat treatment', 'quench', 'Gas-fired box furnaces with water quench and bogie-hearth furnaces with air and oil quench. Manganese steel goes from furnace to water in about 45 seconds.',
   ['Two 10-tonne box furnaces, water quench', 'Two 12-tonne bogie-hearth furnaces, air and oil quench', 'Solution treatment, hardening and tempering']),
  ('machining', 'Fettling and machining', 'vtl', 'Castings are fettled, proof-machined and finished to drawing on CNC and conventional vertical lathes, machining centres and a 6,500 mm special-purpose machine.',
   ['Two CNC vertical lathes and a 1,350 mm VTL', 'Machining centres to 1,600 × 800 mm', 'Plano miller, lathes and radial drills']),
@@ -580,13 +580,13 @@ document.querySelectorAll('.cblock').forEach(x=>x.classList.toggle('on',x===b));
 CHAIN = ['Heat number', 'Chemistry', 'Mould', 'Heat treatment', 'Machining', 'Inspection', 'Dispatch']
 chain = ''.join(f'<li data-r><i></i><span>{c}</span></li>' for c in CHAIN)
 page('quality', 'Quality', 'Laboratory testing, NDT, dimensional checks and traceability from heat to dispatch. ISO 9001, ISO 14001 and ISO 45001 certified.', 'Quality',
-     hero('Quality', 'Traceable to the heat', 'Every heat is analysed in our own laboratory, and every casting carries its heat number from the mould to your plant.', 'ut') + f'''
+     hero('Quality', 'Traceable to the heat', 'Every heat is analysed in our own laboratory. Every casting carries its heat number from the mould to your plant.', 'ut') + f'''
 <section class="trace"><div class="wrap"><div class="narrow" data-r><h2>From melt to dispatch</h2><p>One heat number follows the casting through every step, so any report can be traced back to the metal it came from.</p></div>
 <ol class="chain">{chain}</ol></div></section>
 <section class="qblocks"><div class="wrap qb">
   <figure data-r><video src="~A~assets/media/micro.mp4" poster="~A~assets/media/micro.jpg" muted loop playsinline preload="none" aria-label="Microstructure examination"></video></figure>
   <div data-r><h2>Laboratory</h2><ul><li>Chemical analysis on an Ametek spectrometer, for every heat</li><li>Optical microscope with image analyser for microstructure</li><li>Tensile, impact and bench hardness testing</li><li>Sand laboratory: grain size, clay and loss on ignition, compression and shear strength</li></ul></div>
-  <div data-r><h2>Non-destructive testing</h2><ul><li>Ultrasonic testing of critical sections</li><li>Magnetic particle inspection</li><li>Dye penetrant testing</li></ul><p class="aside">Manganese steel is non-magnetic and coarse-grained, so its surface is checked with dye penetrant, and its soundness is built in through the method.</p></div>
+  <div data-r><h2>Non-destructive testing</h2><ul><li>Ultrasonic testing of critical sections</li><li>Magnetic particle inspection</li><li>Dye penetrant testing</li></ul><p class="aside">Manganese steel is non-magnetic and coarse-grained, so its surface is checked with dye penetrant and its soundness is built in through the method.</p></div>
   <figure data-r><video src="~A~assets/media/mpi.mp4" poster="~A~assets/media/mpi.jpg" muted loop playsinline preload="none" aria-label="Magnetic particle inspection"></video></figure>
   <figure data-r><video src="~A~assets/media/cnc.mp4" poster="~A~assets/media/cnc.jpg" muted loop playsinline preload="none" aria-label="Machining and dimensional check"></video></figure>
   <div data-r><h2>Dimensions and fit</h2><ul><li>Dimensional inspection against the drawing</li><li>Profile and thread gauges; surface roughness</li><li>Assembly and segment fit checks</li><li>Wet and dry film thickness of the paint</li><li>3D laser scanning and portable CMM through partners</li></ul></div>
@@ -619,7 +619,7 @@ page('sustainability', 'Sustainability', 'Absolute emission-reduction targets on
 </div></section>''' + cta('Talk to us about sustainability data', 'We can share our certificates and emission targets for your supplier assessment.', 'Sustainability information'))
 
 # ---------------------------------------------------------------- about
-LEAD = [('shiv-das-baheti', 'Shiv Das Baheti', 'Founder and Managing Director', '50+ years', 'Manufacturing, marketing, and product and plant development for steel and alloy castings. B.E. (Hons) Mechanical and Chemical Engineering, BITS Pilani; Foundry and Forge Technology, NIFFT Ranchi; PG Diploma in Management. Former Chairman, Board of Governors, Government Engineering College, Bharatpur, and former Vice President, Employers Association of Rajasthan.'),
+LEAD = [('shiv-das-baheti', 'Shiv Das Baheti', 'Founder and Managing Director', '50+ years', 'Manufacturing, marketing, product and plant development for steel and alloy castings. B.E. (Hons) Mechanical and Chemical Engineering, BITS Pilani; Foundry and Forge Technology, NIFFT Ranchi; PG Diploma in Management. Former Chairman, Board of Governors, Government Engineering College, Bharatpur; former Vice President, Employers Association of Rajasthan.'),
         ('gaurav-baheti', 'Gaurav Baheti', 'Director', '15+ years', 'B.E. (Hons) Mechanical, BITS Pilani; PG in Family Business, S.P. Jain. Former Joint Secretary, Ajmer Zila Udyog Sangh.'),
         ('sorab-baheti', 'Sorab Baheti', 'Director', '8+ years', 'B.Tech Materials Science, IIT Kanpur. Earlier in mechatronics at Tonbo Imaging and on cement plants at thyssenkrupp.'),
         ('vineeta-baheti', 'Vineeta Baheti', 'Finance Head', '9+ years', 'Chartered Accountant (2013); Strategic Finance, IIM Lucknow. Earlier credit manager at ICICI Bank.'),
@@ -627,7 +627,7 @@ LEAD = [('shiv-das-baheti', 'Shiv Das Baheti', 'Founder and Managing Director', 
 lead = ''.join(f'<article class="person{" lead1" if i == 0 else ""}" data-r><figure><img src="~A~assets/people/{f}.jpg" alt="{n}" loading="lazy" draggable="false"></figure><div><h3>{n}</h3><p class="role">{r} · {y}</p><p>{d}</p></div></article>' for i, (f, n, r, y, d) in enumerate(LEAD))
 page('about', 'About us', 'Standard Alloys India: a steel foundry since 1991, making wear- and heat-resistant castings for plants worldwide.', 'About',
      hero('About', 'Since 1991', 'A fabrication shop that became a specialist foundry for the parts that take the hardest wear and heat.', 'aerial') + '''
-<section class="intro"><div class="wrap narrow" data-r><p class="lit">Standard Alloys India began in 1991 as a fabrication shop in Ajmer, Rajasthan, and lit its first induction furnace in 1994. Over three decades we have built a foundry around one idea: a casting should be specified for the duty it will meet. Today our three facilities have about 14,000 tonnes a year of installed capacity, pouring single pieces from 3 kg to 7 tonnes for more than 500 industrial customers, in plants anywhere in the world.</p></div></section>
+<section class="intro"><div class="wrap narrow" data-r><p class="lit">Standard Alloys India began in 1991 as a fabrication shop in Ajmer, Rajasthan. It lit its first induction furnace in 1994. Over three decades we have built a foundry around one idea: a casting should be specified for the duty it will meet. Today our three facilities have about 14,000 tonnes a year of installed capacity, pouring single pieces from 3 kg to 7 tonnes for more than 500 industrial customers, in plants anywhere in the world.</p></div></section>
 <section><div class="wrap timeline">
 <div data-r><b>1991</b><span>Starts as a fabrication shop in Ajmer</span></div>
 <div data-r><b>1994</b><span>First induction furnace, the start of the foundry</span></div>
@@ -642,7 +642,7 @@ page('about', 'About us', 'Standard Alloys India: a steel foundry since 1991, ma
 <a href="~R~quality/" data-r><video src="~A~assets/media/ut.mp4" poster="~A~assets/media/ut.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span>Quality</span></a>
 <a href="~R~sustainability/" data-r><video src="~A~assets/media/solar.mp4" poster="~A~assets/media/solar.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span>Sustainability</span></a>
 <a href="~R~careers/" data-r><video src="~A~assets/media/grind.mp4" poster="~A~assets/media/grind.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><span>Careers</span></a>
-</div></section>''' + cta('Work with us', 'Send a drawing, a sample or a worn part, and we will take it from there.'))
+</div></section>''' + cta('Work with us', 'Send a drawing, a sample or a worn part and we will take it from there.'))
 
 # ---------------------------------------------------------------- careers
 WHYWORK = [('Learn on real parts', 'Training on the shop floor and in the laboratory, on castings that go into working plants.'),
@@ -698,7 +698,7 @@ page('careers', 'Careers', 'Careers at Standard Alloys India: technical and comm
 <section class="psec"><div class="wrap cg">
   <figure data-r><video src="~A~assets/media/pour2.mp4" poster="~A~assets/media/pour2.jpg" muted loop playsinline preload="none" aria-hidden="true"></video></figure>
   <div data-r><div class="sh"><h2>A culture of craft, rigour and responsibility</h2></div>
-    <p>A foundry runs on skill. We look for people who take pride in exact work, from the melt shop to the laboratory, and we train them on real parts for real plants.</p>
+    <p>A foundry runs on skill. We look for people who take pride in exact work, from the melt shop to the laboratory. We train them on real parts for real plants.</p>
     <div class="acts" style="margin-top:28px"><a class="btn" href="#openings">Explore openings</a><a class="btn ghost" href="#apply">Apply now</a></div></div>
 </div></section>
 <section class="psec soft" id="openings" aria-labelledby="op-h"><div class="wrap">
@@ -718,7 +718,7 @@ page('careers', 'Careers', 'Careers at Standard Alloys India: technical and comm
 page('contact', 'Get a quote', 'Get a quote or discuss your part with Standard Alloys India. A drawing, photographs or only the equipment model is enough to start.', 'Contact',
      hero('Contact', 'Get a quote', 'A drawing, photographs of the worn part, or only the equipment model: any of them is enough to start. A metallurgist replies with a price, a lead time or the right questions.', 'drill') + f"""
 <section class="quote" id="quote" aria-labelledby="q-h"><div class="wrap">
-  <div class="sh" data-r><h2 id="q-h">Discuss your part</h2><p>Don’t know the material? That’s fine. Tell us where the part works and how it fails, and our metallurgists will recommend it.</p></div>
+  <div class="sh" data-r><h2 id="q-h">Discuss your part</h2><p>Don’t know the material? That’s fine. Tell us where the part works and how it fails and our metallurgists will recommend it.</p></div>
   <!-- ERPNext Web Form: when the URL from saconnect.frappe.cloud is ready, put it in data-webform below and the upload form replaces the email composer -->
   <div data-webform="" data-title="Request for quotation">{rfq_html()}</div>
 </div></section>
@@ -739,8 +739,8 @@ PRIV = [
  ('What we collect', 'Only what you choose to send us: your name, company, email, phone, country and the details of your enquiry or job application, with any drawings, photographs or CV you attach. We also count visits to the site in an anonymous, aggregated way.'),
  ('Why we use it', 'To answer your enquiry, prepare a quotation, process your application and keep a record of our correspondence. We do not use it for anything else without asking you.'),
  ('Drawings and technical data', 'Drawings, samples and specifications you send are used only to quote and make your parts. They are not shared outside the company except with partners who help us make or test that part, under confidentiality.'),
- ('Sharing', 'We do not sell or rent your information. We share it only with service providers who run our email and business systems, and with authorities where the law requires it.'),
- ('How long we keep it', 'For as long as we need it to deal with your enquiry or order, and afterwards for the period that business and tax law requires.'),
+ ('Sharing', 'We do not sell or rent your information. We share it only with service providers who run our email and business systems and with authorities where the law requires it.'),
+ ('How long we keep it', 'For as long as we need it to deal with your enquiry or order and afterwards for the period that business and tax law requires.'),
  ('Your rights', 'You can ask to see, correct or delete the personal information we hold about you, or withdraw a consent you gave, by writing to the address above. We handle personal data in line with applicable law, including India’s Digital Personal Data Protection Act, 2023.'),
  ('Changes', 'We may update this notice. The date below shows the latest version.'),
 ]
