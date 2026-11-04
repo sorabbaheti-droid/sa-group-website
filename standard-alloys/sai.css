@@ -574,7 +574,7 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 @media (max-width:480px){.proof{grid-template-columns:1fr}}
 
 .mchain{padding:clamp(80px,10vw,130px) 0;overflow:hidden}
-.mtrack{overflow-x:auto;scrollbar-width:thin;padding-bottom:10px}
+.mtrack{overflow-x:auto;scrollbar-width:thin;padding:6px 6px 10px;margin:0 -6px}
 .mtrack ol{list-style:none;display:grid;grid-template-columns:repeat(10,minmax(150px,1fr));position:relative;min-width:1100px}
 .mtrack ol::before{content:"";position:absolute;left:0;right:0;top:19px;height:2px;background:linear-gradient(90deg,var(--red),var(--red-deep))}
 .mtrack li{position:relative;padding-right:18px;display:grid;gap:6px;align-content:start}
