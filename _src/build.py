@@ -303,7 +303,7 @@ for ind in IND:
 
 tiles = ''.join(f'''<a class="tile" href="~R~industries/{i['slug']}/" data-r><video src="~A~assets/media/{i['tile']}.mp4" poster="~A~assets/media/{i['tile']}.jpg" muted loop playsinline preload="none" aria-hidden="true"></video><div class="t"><h3><i>{ARROW}</i>{i['name']}</h3><p>{i['tile_text']}</p></div></a>''' for i in IND)
 page('industries', 'Industries', 'Castings for cement, mining, aggregate, thermal power and steel plants, and for the equipment makers who build them.', 'Industries',
-     hero('Industries', 'Industries we serve', 'Parts for equipment that runs around the clock, where one early failure stops a whole line.', 'mining') +
+     hero('Industries', 'Industries we serve', 'Parts for equipment that runs around the clock, where an early failure can stop an entire production line.', 'mining') +
      f'<section class="sectors"><div class="tiles" style="margin-top:0">{tiles}</div></section>' + cta())
 
 # ---------------------------------------------------------------- products A–Z
