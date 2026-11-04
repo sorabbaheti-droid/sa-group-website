@@ -234,7 +234,7 @@ def rfq_html(title='Get a quote, or discuss your part'):
 
 WHY = [('35+', 'years', 'Foundry experience in Ajmer, since 1991.'),
        ('~14,000', 't a year', 'Installed capacity across our three Ajmer facilities.'),
-       ('3 kg–7 t', '', 'Single pieces, with up to 10 tonnes of metal in one pour.'),
+       ('3 kg–7 tonnes', '', 'Single pieces, with up to 10 tonnes of metal in one pour.'),
        ('500+', 'customers', 'Industrial customers in cement, mining, aggregate, power and steel.'),
        ('10,000+', 'patterns', 'Already on file, so repeat orders start at moulding.'),
        ('End to end', '', 'Method, patterns, melting, moulding, heat treatment and machining in our own plants.'),
@@ -543,11 +543,11 @@ CAP = [
  ('patterns', 'Pattern shop', 'moulds', 'Patterns are made in-house in wood, polystyrene and aluminium, cut on a CNC router. More than 10,000 patterns are already on file, so repeat orders go straight to moulding.',
   ['10,000+ patterns on file', 'Wood, polystyrene and aluminium', 'CNC router pattern making']),
  ('melting', 'Melting', 'pour2', 'Induction melting in crucibles from 500 kg to 6 tonnes. A dual-track power supply brings up to 10 tonnes of liquid metal to a single pour, so heavy pieces are cast in one go.',
-  ['Crucibles of 500, 1,500, 3,000 and 6,000 kg', 'Up to 10 t liquid metal per pour', 'Spectrometer analysis on every heat']),
+  ['Crucibles of 500, 1,500, 3,000 and 6,000 kg', 'Up to 10 tonnes of liquid metal per pour', 'Spectrometer analysis on every heat']),
  ('moulding', 'Moulding', 'meltshop', 'Alphaset no-bake moulding gives strong, dimensionally stable moulds for pieces from 3 kg to 7,000 kg. Sand is mechanically reclaimed and reused.',
-  ['Alphaset mixers of 8 and 20 t/h', 'Mould pre-heater and shell core shooter', 'Sand reclamation of 6 and 12 t/h']),
+  ['Alphaset mixers of 8 and 20 tonnes an hour', 'Mould pre-heater and shell core shooter', 'Sand reclamation of 6 and 12 tonnes an hour']),
  ('heat-treatment', 'Heat treatment', 'quench', 'Gas-fired box furnaces with water quench, and bogie-hearth furnaces with air and oil quench. Manganese steel goes from furnace to water in about 45 seconds.',
-  ['Two 10 t box furnaces, water quench', 'Two 12 t bogie-hearth furnaces, air and oil quench', 'Solution treatment, hardening and tempering']),
+  ['Two 10-tonne box furnaces, water quench', 'Two 12-tonne bogie-hearth furnaces, air and oil quench', 'Solution treatment, hardening and tempering']),
  ('machining', 'Fettling and machining', 'vtl', 'Castings are fettled, proof-machined and finished to drawing on CNC and conventional vertical lathes, machining centres and a 6,500 mm special-purpose machine.',
   ['Two CNC vertical lathes and a 1,350 mm VTL', 'Machining centres to 1,600 × 800 mm', 'Plano miller, lathes and radial drills']),
 ]
@@ -555,9 +555,9 @@ blocks = ''.join(f'''<article class="cblock" id="{k}" data-v="{i}"><span class="
 ONV = 'class="on" '
 vids = ''.join(f'<video {ONV if i == 0 else ""}src="~A~assets/media/{v}.mp4" poster="~A~assets/media/{v}.jpg" muted loop playsinline preload="{"auto" if i == 0 else "none"}" aria-hidden="true"></video>' for i, (k, t, v, d, l) in enumerate(CAP))
 UNITS = [('Unit 1', '150', 'Smaller and mid-size castings, where precision and short runs matter.',
-          ['Crucibles of 500 and 1,500 kg', '8 t/h Alphaset mixer', 'Shell core shooter', '6 t/h sand reclamation']),
+          ['Crucibles of 500 and 1,500 kg', 'Alphaset mixer, 8 tonnes an hour', 'Shell core shooter', 'Sand reclamation, 6 tonnes an hour']),
          ('Unit SP75', '600', 'Heavy castings to 7 tonnes, with heat treatment and machining on site.',
-          ['Crucibles of 3,000 and 6,000 kg; 10 t per pour', '20 t/h Alphaset mixer and mould pre-heater', '12 t/h sand reclamation', 'Box and bogie-hearth furnaces; machine shop'])]
+          ['Crucibles of 3,000 and 6,000 kg; 10 tonnes per pour', 'Alphaset mixer (20 tonnes an hour) and mould pre-heater', 'Sand reclamation, 12 tonnes an hour', 'Box and bogie-hearth furnaces; machine shop'])]
 units = ''.join(f'''<article class="unit" data-r><h3>{n}</h3><p class="cap"><b>{c}</b> tonnes a month</p><p>{d}</p><ul>{''.join(f'<li>{x}</li>' for x in l)}</ul></article>''' for n, c, d, l in UNITS)
 page('capabilities', 'Capabilities', 'Engineering, pattern making, induction melting, no-bake moulding, heat treatment and machining, in our own plants.', 'Capabilities',
      hero('Capabilities', 'Everything that decides the life of a casting', 'From the method to the machined part, in our own plants.', 'furnace') + chain_html() + f'''
@@ -631,7 +631,7 @@ page('about', 'About us', 'Standard Alloys India: a steel foundry since 1991, ma
 <section><div class="wrap timeline">
 <div data-r><b>1991</b><span>Starts as a fabrication shop in Ajmer</span></div>
 <div data-r><b>1994</b><span>First induction furnace, the start of the foundry</span></div>
-<div data-r><b>Today</b><span>About 14,000 t a year of capacity, castings to 7 tonnes, shipped worldwide</span></div></div></section>
+<div data-r><b>Today</b><span>About 14,000 tonnes a year of capacity, castings to 7 tonnes, shipped worldwide</span></div></div></section>
 <section class="why"><div class="wrap"><div class="narrow" data-r><h2>How we work</h2></div>
 <ul><li data-r><b>Duty first</b>We ask where a part runs and how it fails before we recommend a grade.</li>
 <li data-r><b>In-house control</b>Method, pattern, melt, heat treatment, machining and testing in our own plant.</li>
