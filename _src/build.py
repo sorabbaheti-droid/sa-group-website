@@ -626,7 +626,7 @@ LEAD = [('shiv-das-baheti', 'Shiv Das Baheti', 'Founder and Managing Director', 
         ('priyal-mantri-baheti', 'Priyal Mantri Baheti', 'Purchase Head', '3+ years', 'Chartered Accountant (2017). Earlier PE fund controller at Goldman Sachs and research analyst at J.P. Morgan.')]
 lead = ''.join(f'<article class="person{" lead1" if i == 0 else ""}" data-r><figure><img src="~A~assets/people/{f}.jpg" alt="{n}" loading="lazy" draggable="false"></figure><div><h3>{n}</h3><p class="role">{r} · {y}</p><p>{d}</p></div></article>' for i, (f, n, r, y, d) in enumerate(LEAD))
 page('about', 'About us', 'Standard Alloys India: a steel foundry since 1991, making wear- and heat-resistant castings for plants worldwide.', 'About',
-     hero('About', 'Since 1991', 'A fabrication shop that became a specialist foundry for the parts that wear out first.', 'aerial') + '''
+     hero('About', 'Since 1991', 'A fabrication shop that became a specialist foundry for the parts that take the hardest wear and heat.', 'aerial') + '''
 <section class="intro"><div class="wrap narrow" data-r><p class="lit">Standard Alloys India began in 1991 as a fabrication shop in Ajmer, Rajasthan, and lit its first induction furnace in 1994. Over three decades we have built a foundry around one idea: a casting should be specified for the duty it will meet. Today our three facilities have about 14,000 tonnes a year of installed capacity, pouring single pieces from 3 kg to 7 tonnes for more than 500 industrial customers, in plants anywhere in the world.</p></div></section>
 <section><div class="wrap timeline">
 <div data-r><b>1991</b><span>Starts as a fabrication shop in Ajmer</span></div>
