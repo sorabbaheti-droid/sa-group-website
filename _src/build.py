@@ -98,7 +98,7 @@ def page(path, title, desc, active, body, js='', three=False, ld=None):
         if len(_parts) > 1: _items.append((_names.get(_parts[0], _parts[0].title()), f'{SITE}standard-alloys/{_parts[0]}/'))
         _items.append((title.split(':')[0], f'{SITE}standard-alloys/{path}/'))
         canon += '\n<script type="application/ld+json">' + json.dumps({'@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'name': n, 'item': u} for i, (n, u) in enumerate(_items)]}, ensure_ascii=False) + '</script>'
-    ldj = canon + f'\n<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>' if ld else ''
+    ldj = canon + (f'\n<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>' if ld else '')
     doc = f'''<!doctype html>
 <html lang="en">
 <head>
