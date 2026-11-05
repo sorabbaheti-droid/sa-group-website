@@ -68,6 +68,8 @@ def footer(r, a):
 def head(title, desc, r, a, extra=''):
     full = title if 'Standard Alloys India' in title else f'{title} · Standard Alloys India'
     return f'''<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' https://cdn.jsdelivr.net; frame-src https://saconnect.frappe.cloud https://maps.google.com https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://saconnect.frappe.cloud">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(full)}</title>
 <meta name="description" content="{esc(desc)}">
@@ -106,9 +108,9 @@ def page(path, title, desc, active, body, js='', three=False, ld=None):
 </main>
 <a class="sidetab" href="{r}contact/#quote">Get a quote</a>
 {footer(r, a)}
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" integrity="sha384-tKsJDT6PlUI0pSBt9/sBKJluKgA19/a6mBrDsZaXotLB4ZYfMGM6xt6/WgGpYhTm" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" integrity="sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh" crossorigin="anonymous"></script>
 <script>{COMMON_JS}</script>
 {f'<script src="{a}assets/js/rfq.js"></script>' if 'data-rfq' in body else ''}
 {('<script type="module">' + tok(js) + '</script>') if js else ''}
@@ -345,7 +347,7 @@ chips.forEach(c=>c.addEventListener('click',()=>{fam=c.dataset.f;chips.forEach(x
 indf.addEventListener('change',apply);q.addEventListener('input',apply);
 document.querySelectorAll('.eg button').forEach(b=>b.addEventListener('click',()=>{q.value=b.textContent;apply();q.focus();}));
 const sp=new URLSearchParams(location.search);if(sp.get('q')){q.value=sp.get('q');}if(sp.get('ind')&&indf.querySelector('option[value="'+sp.get('ind')+'"]'))indf.value=sp.get('ind');
-const h=location.hash.slice(1);if(document.querySelector('.chip[data-f="'+h+'"]'))document.querySelector('.chip[data-f="'+h+'"]').click();else apply();''')
+const h=location.hash.slice(1),hc=[...document.querySelectorAll('.chip')].find(c=>c.dataset.f===h);if(hc)hc.click();else apply();''')
 
 # ---------------------------------------------------------------- product pages
 FIN = [('cast', 'As cast'), ('machined', 'Machined'), ('primer', 'Primer')]
