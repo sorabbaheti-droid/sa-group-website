@@ -9,7 +9,7 @@
 [hidden]{display:none!important}
 html,body{overflow-x:clip}
 body{font-family:var(--font);color:var(--text);background:var(--white);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
-img,video,canvas{display:block;max-width:100%}
+img,video,canvas{display:block;max-width:100%}img{height:auto}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--red);outline-offset:3px}
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}

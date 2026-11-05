@@ -94,6 +94,12 @@ def page(path, title, desc, active, body, js='', three=False, ld=None):
     tok = lambda s: s.replace('~R~', r).replace('~A~', a)
     imap = '\n<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>' if three else ''
     canon = f'\n<link rel="canonical" href="{SITE}standard-alloys/{path + "/" if path else ""}">'
+    if path:
+        _parts = path.split('/'); _items = [('Standard Alloys India', f'{SITE}standard-alloys/')]
+        _names = {'products': 'Products', 'industries': 'Industries'}
+        if len(_parts) > 1: _items.append((_names.get(_parts[0], _parts[0].title()), f'{SITE}standard-alloys/{_parts[0]}/'))
+        _items.append((title.split(':')[0], f'{SITE}standard-alloys/{path}/'))
+        canon += '\n<script type="application/ld+json">' + json.dumps({'@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'name': n, 'item': u} for i, (n, u) in enumerate(_items)]}, ensure_ascii=False) + '</script>'
     ldj = canon + f'\n<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>' if ld else ''
     doc = f'''<!doctype html>
 <html lang="en">
@@ -197,7 +203,7 @@ def gnames(p): return ', '.join(GRADES[g]['short'] for g, _ in p['grades'])
 def pcard(p, mode='where'):
     """A product card that links to the product page. mode: 'where' (catalogue) or 'fails' (industry pages)."""
     fam = p['fam']
-    pic = f'<div class="pic"><img src="~A~assets/cutouts/{p["img"]}.png" alt="" loading="lazy"></div>' if p['img'] else f'<div class="pic type" aria-hidden="true"><span>{p["name"]}</span></div>'
+    pic = f'<div class="pic"><img src="~A~assets/cutouts/{p["img"]}.webp" alt="{esc(p['name'])}" loading="lazy"></div>' if p['img'] else f'<div class="pic type" aria-hidden="true"><span>{p["name"]}</span></div>'
     if mode == 'fails':
         body = f'<dl><dt>Fails by</dt><dd>{p["fails"][0][0]}</dd><dt>Usual grade</dt><dd>{gnames(p)}</dd></dl>'
     else:
@@ -370,14 +376,14 @@ for p in PRODUCTS:
     gl = ', '.join(f'<a href="~R~grades/#{g}">{GRADES[g]["short"]}</a>' for g, _ in p['grades'])
     # visual: 3D model when we have one, the photograph otherwise, a placeholder last
     if p.get('m3d'):
-        photo = f'<img class="alt" src="~A~assets/cutouts/{p["img"]}.png" alt="Photograph of {esc(p["name"].lower())}" hidden>' if p['img'] else ''
+        photo = f'<img class="alt" src="~A~assets/cutouts/{p["img"]}.webp" alt="Photograph of {esc(p["name"].lower())}" hidden>' if p['img'] else ''
         ON1 = ' class="on"'
         fbtn = ''.join(f'<button type="button" data-f="{k}"{ON1 if k == "cast" else ""}>{l}</button>' for k, l in FIN)
         vbtn = '<button type="button" class="view" data-v="photo">Photograph</button>' if p['img'] else ''
         vis = f'''<div class="pvis three"><canvas id="p3d" data-part="{p['m3d']}" role="img" aria-label="Simplified 3D model of {esc(p['name'].lower())}; drag to turn it"></canvas>{photo}
       <div class="vctl"><div class="finish" role="group" aria-label="Surface finish">{fbtn}</div>{vbtn}</div><small>Simplified 3D model · drag to turn</small></div>'''
     elif p['img']:
-        vis = f'<div class="pvis"><img src="~A~assets/cutouts/{p["img"]}.png" alt="Photograph of {esc(p["name"].lower())}"></div>'
+        vis = f'<div class="pvis"><img src="~A~assets/cutouts/{p["img"]}.webp" alt="Photograph of {esc(p["name"].lower())}"></div>'
     else:
         vis = f'''<aside class="pvis none qcard"><span class="k">{F['name']}</span><h2>Get a quote for {p['name'] if p['name'][:3].isupper() else p['name'][0].lower() + p['name'][1:]}</h2><ul class="chk"><li>A drawing, photographs or just the equipment model</li><li>Grade recommended if you don’t know it</li><li>As cast, or machined to drawing</li></ul><a class="btn" href="{qhref}">Get a quote</a><p>Or call <a href="{TEL}">{PHONE}</a></p></aside>'''
     fails = ''.join(f'<li data-r><span class="n">{i:02d}</span><b>{a}</b><span class="r">{b}</span></li>' for i, (a, b) in enumerate(p['fails'], 1))
@@ -439,7 +445,7 @@ if (vb) vb.addEventListener('click', () => { const photo = img.hidden; img.hidde
     ld = {'@context': 'https://schema.org', '@type': 'Product', 'name': p['name'], 'description': p['summary'], 'category': F['name'],
           'brand': {'@type': 'Brand', 'name': 'Standard Alloys India'}, 'manufacturer': {'@type': 'Organization', 'name': 'Standard Alloys India Pvt. Ltd.'},
           'material': ', '.join(GRADES[g]['name'] for g, _ in p['grades'])}
-    page(f'products/{p["slug"]}', f'{p["name"]}: {F["name"].lower()}', f'{p["summary"].split(". ")[0]}. Cast in {gnames(p).lower()} by Standard Alloys India.', 'Products', body, js=js, three=bool(p.get('m3d')), ld=ld)
+    page(f'products/{p["slug"]}', f'{p["name"]}: {F["name"].lower()}', (lambda d1, d2: d1 + ' ' + d2 if len(d1 + ' ' + d2) <= 160 else d1)(p["summary"].split(". ")[0].rstrip('.') + '.', f'Cast in {gnames(p).lower()} by Standard Alloys India.'), 'Products', body, js=js, three=bool(p.get('m3d')), ld=ld)
 
 # ---------------------------------------------------------------- grades
 def uses(g): return ''.join(f'<a href="~R~products/{p["slug"]}/">{p["name"]}</a>' for p in PRODUCTS if any(x == g for x, _ in p['grades']))
@@ -787,3 +793,29 @@ for _d,_s,_f in _os.walk('standard-alloys'):
     if 'index.html' in _f and _d!='standard-alloys': _urls.append(SITE+_d.replace(_os.sep,'/')+'/')
 open('sitemap.xml','w').write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'<url><loc>{u}</loc></url>\n' for u in sorted(set(_urls)))+'</urlset>\n')
 print('wrote sitemap', len(set(_urls)))
+
+
+# ---- add width/height to local images (prevents layout shift) ----
+import re as _re, os as _os
+from PIL import Image as _Img
+_dims = {}
+def _dim(src_abs):
+    if src_abs not in _dims:
+        try: _dims[src_abs] = _Img.open(src_abs).size
+        except Exception: _dims[src_abs] = None
+    return _dims[src_abs]
+for _d, _s, _f in _os.walk('.'):
+    if '.git' in _d: continue
+    for _n in _f:
+        if not _n.endswith('.html'): continue
+        _p = _os.path.join(_d, _n); _t = open(_p, encoding='utf-8').read()
+        def _fix(m):
+            tag = m.group(0)
+            if 'width=' in tag: return tag
+            src = _re.search(r'src="([^"$]+)"', tag)
+            if not src or src.group(1).startswith('http'): return tag
+            wh = _dim(_os.path.normpath(_os.path.join(_d, src.group(1))))
+            return tag.replace('<img ', f'<img width="{wh[0]}" height="{wh[1]}" ', 1) if wh else tag
+        _n2 = _re.sub(r'<img [^>]*>', _fix, _t)
+        if _n2 != _t: open(_p, 'w', encoding='utf-8').write(_n2)
+print('image sizes added')
