@@ -68,7 +68,7 @@ def footer(r, a):
 def head(title, desc, r, a, extra=''):
     full = title if 'Standard Alloys India' in title else f'{title} · Standard Alloys India'
     return f'''<meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' https://cdn.jsdelivr.net; frame-src https://saconnect.frappe.cloud https://maps.google.com https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://saconnect.frappe.cloud">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' https://cdn.jsdelivr.net; frame-src https://saconnect.frappe.cloud https://maps.google.com https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://saconnect.frappe.cloud">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(full)}</title>
@@ -82,9 +82,7 @@ def head(title, desc, r, a, extra=''):
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="{a}assets/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="{a}assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="{a}assets/fonts/fonts.css" rel="stylesheet">
 <link rel="stylesheet" href="{r}sai.css">{extra}'''
 
 def page(path, title, desc, active, body, js='', three=False, ld=None):
@@ -159,6 +157,8 @@ document.querySelectorAll('.lit').forEach(p => {
 /* counters */
 document.querySelectorAll('[data-count]').forEach(b => { const end = +b.dataset.count, dec = +(b.dataset.dec || 0); if (reduce) return; const o = { v: 0 };
   ScrollTrigger.create({ trigger: b, start: 'top 90%', once: true, onEnter: () => gsap.to(o, { v: end, duration: 1.6, ease: 'power3.out', onUpdate: () => b.textContent = o.v.toLocaleString('en-IN', { minimumFractionDigits: dec, maximumFractionDigits: dec }) }) }); b.textContent = (0).toFixed(dec); });
+/* maps load only when asked */
+document.querySelectorAll('.mapload').forEach(b => b.addEventListener('click', () => { const f = document.createElement('iframe'); f.title = b.dataset.title; f.src = b.dataset.src.replace(/&amp;/g, '&'); f.referrerPolicy = 'no-referrer-when-downgrade'; b.replaceWith(f); }));
 /* ERPNext web form slots */
 document.querySelectorAll('[data-webform]').forEach(s => { if (s.dataset.webform) s.innerHTML = `<iframe src="${s.dataset.webform}" title="${s.dataset.title || 'Form'}"></iframe>`; });
 /* range bars fill when seen */
@@ -269,7 +269,7 @@ def chain_html():
     li = ''.join(f'<li><i>{k:02d}</i><b>{a}</b><span>{b}</span></li>' for k, (a, b) in enumerate(CHAIN2, 1))
     return f"""<section class="mchain" aria-labelledby="mc-h"><div class="wrap">
   <div class="sh" data-r><h2 id="mc-h">One supplier. One manufacturing chain. One responsibility.</h2><p>From your problem to the finished part, every step that decides the life of a casting is ours to control and ours to answer for.</p></div>
-  <div class="mtrack"><ol>{li}</ol></div>
+  <div class="mtrack" tabindex="0" aria-label="Manufacturing steps, scroll sideways"><ol>{li}</ol></div>
   <p class="note">*Casting simulation for critical parts is run with a specialist partner; method design is in-house.</p>
 </div></section>"""
 
@@ -693,7 +693,7 @@ FORM = """<form class="rfqf jobf" data-job novalidate aria-label="Job applicatio
 CAREER_JS = r"""document.querySelectorAll('.lscroll video').forEach(v=>{if(/lite/.test(location.search))return;new IntersectionObserver(([e])=>{e.isIntersecting?(v.preload='auto',v.play().catch(()=>{})):v.pause()}).observe(v);});
 document.querySelector('.lscroll').addEventListener('dragstart',e=>e.preventDefault());
 const MAIL='hr@standardalloysindia.com', wf=document.querySelector('[data-webform]');
-if(wf&&wf.dataset.webform){wf.innerHTML=`<iframe src="${wf.dataset.webform}" title="${wf.dataset.title}" loading="lazy"></iframe><p class="wfalt">Form not showing? <a href="${wf.dataset.webform}" target="_blank" rel="noopener">Open it in a new tab</a>, or email your CV to <a href="mailto:${MAIL}?subject=Job%20application">${MAIL}</a>.</p>`;}
+if(wf&&wf.dataset.webform){wf.innerHTML=`<iframe src="${wf.dataset.webform}" title="${wf.dataset.title}" loading="lazy"></iframe><p class="wfalt">By applying you agree to our <a href="${(document.querySelector('a[href$="privacy/"]') || {}).href || '/standard-alloys/privacy/'}">privacy notice</a>. Form not showing? <a href="${wf.dataset.webform}" target="_blank" rel="noopener">Open it in a new tab</a>, or email your CV to <a href="mailto:${MAIL}?subject=Job%20application">${MAIL}</a>.</p>`;}
 const f=document.querySelector('[data-job]');
 if(f){document.querySelectorAll('[data-role]').forEach(a=>a.addEventListener('click',()=>{f.area.value=a.dataset.role;}));
 f.addEventListener('submit',e=>{e.preventDefault();let ok=true;['name','email'].forEach(n=>{const el=f[n],bad=!el.value.trim()||(n==='email'&&!/^\S+@\S+\.\S+$/.test(el.value));el.setAttribute('aria-invalid',bad);if(bad&&ok){el.focus();ok=false}});
@@ -734,9 +734,9 @@ page('contact', 'Get a quote', 'Get a quote or discuss your part with Standard A
 <section class="visit"><div class="wrap">
   <div class="sh" data-r><h2>Visit the foundry</h2><p><a href="{TEL}">{PHONE}</a> · <a href="mailto:{MAIL}">{MAIL}</a></p></div>
   <div class="maps">
-    <figure data-r><iframe title="Map of Standard Alloys India Unit 1, Parbatpura Industrial Area, Ajmer" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=26.4138148,74.662982&amp;z=15&amp;output=embed"></iframe>
+    <figure data-r><button type="button" class="mapload" data-src="https://maps.google.com/maps?q=26.4138148,74.662982&amp;z=15&amp;output=embed" data-title="Map of Standard Alloys India Unit 1, Parbatpura Industrial Area, Ajmer"><span>Show map</span><small>Loads Google Maps, which may set its own cookies</small></button>
       <figcaption><b>Unit 1</b><address>F-26B &amp; 27, Parbatpura Industrial Area<br>Ajmer 305002, Rajasthan, India</address><a href="https://maps.app.goo.gl/eiyeFoDQeCdKW6zdA" target="_blank" rel="noopener">Open in Google Maps</a></figcaption></figure>
-    <figure data-r><iframe title="Map of Standard Alloys India Unit SP75, Ajmer" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=26.4351518,74.6963154&amp;z=15&amp;output=embed"></iframe>
+    <figure data-r><button type="button" class="mapload" data-src="https://maps.google.com/maps?q=26.4351518,74.6963154&amp;z=15&amp;output=embed" data-title="Map of Standard Alloys India Unit SP75, Ajmer"><span>Show map</span><small>Loads Google Maps, which may set its own cookies</small></button>
       <figcaption><b>Unit SP75</b><address>Unit SP75, Ajaymeru Industrial Area<br>Palra, Ajmer, Rajasthan, India</address><a href="https://maps.app.goo.gl/sSciMavsfMzPz3A56" target="_blank" rel="noopener">Open in Google Maps</a></figcaption></figure>
   </div>
 </div></section>""")
@@ -744,17 +744,18 @@ page('contact', 'Get a quote', 'Get a quote or discuss your part with Standard A
 # ---------------------------------------------------------------- privacy
 PRIV = [
  ('Who we are', f'Standard Alloys India Pvt. Ltd., F-26B &amp; 27, Parbatpura Industrial Area, Ajmer 305002, Rajasthan, India. Questions about this notice: <a href="mailto:{MAIL}">{MAIL}</a>.'),
- ('What we collect', 'Only what you choose to send us: your name, company, email, phone, country and the details of your enquiry or job application, with any drawings, photographs or CV you attach. We also count visits to the site in an anonymous, aggregated way.'),
+ ('What we collect', 'Only what you choose to send us: your name, company, email, phone, country and the details of your enquiry or job application, with any drawings, photographs or CV you attach. We do not use advertising or tracking cookies.'),
  ('Why we use it', 'To answer your enquiry, prepare a quotation, process your application and keep a record of our correspondence. We do not use it for anything else without asking you.'),
  ('Drawings and technical data', 'Drawings, samples and specifications you send are used only to quote and make your parts. They are not shared outside the company except with partners who help us make or test that part, under confidentiality.'),
  ('Sharing', 'We do not sell or rent your information. We share it only with service providers who run our email and business systems and with authorities where the law requires it.'),
  ('How long we keep it', 'For as long as we need it to deal with your enquiry or order and afterwards for the period that business and tax law requires.'),
  ('Your rights', 'You can ask to see, correct or delete the personal information we hold about you, or withdraw a consent you gave, by writing to the address above. We handle personal data in line with applicable law, including India’s Digital Personal Data Protection Act, 2023.'),
+ ('Cookies and embedded content', 'This website sets no advertising or tracking cookies, and its fonts are served from our own site. The quotation and job application forms are provided by our business system (saconnect.frappe.cloud), which sets only the cookies it needs to submit the form. Maps load from Google only when you click to show them, and Google may then set its own cookies. Page scripts are loaded from jsDelivr.'),
  ('Changes', 'We may update this notice. The date below shows the latest version.'),
 ]
 priv = ''.join(f'<section class="pv" data-r><h2>{a}</h2><p>{b}</p></section>' for a, b in PRIV)
 page('privacy', 'Privacy notice', 'How Standard Alloys India handles the information you send through this website.', '',
-     f'<section class="phero plain"><div class="wrap narrowl"><p class="crumbs"><a href="~R~">Home</a> / Privacy</p><h1>Privacy notice</h1><p class="lede">How we handle the information you send us through this website.</p></div></section><section class="psec"><div class="wrap narrowl">{priv}<p class="note">Last updated 3 November 2026.</p></div></section>')
+     f'<section class="phero plain"><div class="wrap narrowl"><p class="crumbs"><a href="~R~">Home</a> / Privacy</p><h1>Privacy notice</h1><p class="lede">How we handle the information you send us through this website.</p></div></section><section class="psec"><div class="wrap narrowl">{priv}<p class="note">Last updated 5 November 2026.</p></div></section>')
 
 # ---------------------------------------------------------------- keep the hand-written home in step
 home = os.path.join(OUT, 'index.html')
@@ -768,7 +769,7 @@ open(home, 'w').write(src); print('footer synced', home)
 # ---------------------------------------------------------------- 404 (site root; works on any path depth)
 open('404.html', 'w').write('''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Page not found · Standard Alloys India</title><meta name="robots" content="noindex">
+<title>Page not found · Standard Alloys India</title><meta name="robots" content="noindex"><link href="/assets/fonts/fonts.css" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}body{font-family:"Open Sans",system-ui,sans-serif;color:#4a4a4f;background:#fff;min-height:100svh;display:grid;place-items:center;padding:40px 24px;text-align:center}
 .mark{display:inline-flex;align-items:center;gap:12px;color:#1d1d1f;text-decoration:none;font-weight:700;letter-spacing:.02em}.mark img{width:40px}

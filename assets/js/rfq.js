@@ -12,7 +12,7 @@
     document.querySelectorAll('[data-rfq]').forEach(f => {
       const w = document.createElement('div'); w.className = 'rfqembed';
       w.innerHTML = `<iframe class="rfqframe" src="${src}" title="Request for quotation"></iframe>
-        <p class="sendalt">Form not showing? <a href="${src}" target="_blank" rel="noopener">Open it in a new tab</a>, or write to <a href="mailto:${MAIL}?subject=Request%20for%20quotation">${MAIL}</a>.</p>`;
+        <p class="sendalt">By sending this form you agree to our <a href="${(document.querySelector('a[href$="privacy/"]') || {}).href || '/standard-alloys/privacy/'}">privacy notice</a>. Form not showing? <a href="${src}" target="_blank" rel="noopener">Open it in a new tab</a>, or write to <a href="mailto:${MAIL}?subject=Request%20for%20quotation">${MAIL}</a>.</p>`;
       f.replaceWith(w);
     });
     return;

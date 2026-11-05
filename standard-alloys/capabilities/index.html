@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' https://cdn.jsdelivr.net; frame-src https://saconnect.frappe.cloud https://maps.google.com https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://saconnect.frappe.cloud">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' https://cdn.jsdelivr.net; frame-src https://saconnect.frappe.cloud https://maps.google.com https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://saconnect.frappe.cloud">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Capabilities · Standard Alloys India</title>
@@ -16,9 +16,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../../assets/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="../../assets/fonts/fonts.css" rel="stylesheet">
 <link rel="stylesheet" href="../sai.css">
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -41,7 +39,7 @@
   </div>
 </section><section class="mchain" aria-labelledby="mc-h"><div class="wrap">
   <div class="sh" data-r><h2 id="mc-h">One supplier. One manufacturing chain. One responsibility.</h2><p>From your problem to the finished part, every step that decides the life of a casting is ours to control and ours to answer for.</p></div>
-  <div class="mtrack"><ol><li><i>01</i><b>Engineering</b><span>Drawing review, or reverse engineering from the worn part</span></li><li><i>02</i><b>Method and simulation</b><span>Gating and feeding designed; critical parts simulated*</span></li><li><i>03</i><b>Pattern and tooling</b><span>Wood, polystyrene and aluminium patterns</span></li><li><i>04</i><b>Melting</b><span>Induction furnaces, chemistry checked every heat</span></li><li><i>05</i><b>Moulding</b><span>Alphaset no-bake moulds</span></li><li><i>06</i><b>Casting</b><span>Single pieces from 3 kg to 7 tonnes</span></li><li><i>07</i><b>Heat treatment</b><span>Water, oil or air quench; tempering</span></li><li><i>08</i><b>Machining</b><span>Vertical lathes, machining centres, plano miller</span></li><li><i>09</i><b>NDT and inspection</b><span>UT, MPI, DPT, hardness and dimensions</span></li><li><i>10</i><b>Dispatch</b><span>Reports traceable to the heat, packed for export</span></li></ol></div>
+  <div class="mtrack" tabindex="0" aria-label="Manufacturing steps, scroll sideways"><ol><li><i>01</i><b>Engineering</b><span>Drawing review, or reverse engineering from the worn part</span></li><li><i>02</i><b>Method and simulation</b><span>Gating and feeding designed; critical parts simulated*</span></li><li><i>03</i><b>Pattern and tooling</b><span>Wood, polystyrene and aluminium patterns</span></li><li><i>04</i><b>Melting</b><span>Induction furnaces, chemistry checked every heat</span></li><li><i>05</i><b>Moulding</b><span>Alphaset no-bake moulds</span></li><li><i>06</i><b>Casting</b><span>Single pieces from 3 kg to 7 tonnes</span></li><li><i>07</i><b>Heat treatment</b><span>Water, oil or air quench; tempering</span></li><li><i>08</i><b>Machining</b><span>Vertical lathes, machining centres, plano miller</span></li><li><i>09</i><b>NDT and inspection</b><span>UT, MPI, DPT, hardness and dimensions</span></li><li><i>10</i><b>Dispatch</b><span>Reports traceable to the heat, packed for export</span></li></ol></div>
   <p class="note">*Casting simulation for critical parts is run with a specialist partner; method design is in-house.</p>
 </div></section>
 <section class="caps"><div class="wrap capgrid">
@@ -111,6 +109,8 @@ document.querySelectorAll('.lit').forEach(p => {
 /* counters */
 document.querySelectorAll('[data-count]').forEach(b => { const end = +b.dataset.count, dec = +(b.dataset.dec || 0); if (reduce) return; const o = { v: 0 };
   ScrollTrigger.create({ trigger: b, start: 'top 90%', once: true, onEnter: () => gsap.to(o, { v: end, duration: 1.6, ease: 'power3.out', onUpdate: () => b.textContent = o.v.toLocaleString('en-IN', { minimumFractionDigits: dec, maximumFractionDigits: dec }) }) }); b.textContent = (0).toFixed(dec); });
+/* maps load only when asked */
+document.querySelectorAll('.mapload').forEach(b => b.addEventListener('click', () => { const f = document.createElement('iframe'); f.title = b.dataset.title; f.src = b.dataset.src.replace(/&amp;/g, '&'); f.referrerPolicy = 'no-referrer-when-downgrade'; b.replaceWith(f); }));
 /* ERPNext web form slots */
 document.querySelectorAll('[data-webform]').forEach(s => { if (s.dataset.webform) s.innerHTML = `<iframe src="${s.dataset.webform}" title="${s.dataset.title || 'Form'}"></iframe>`; });
 /* range bars fill when seen */

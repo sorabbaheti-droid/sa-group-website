@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' https://cdn.jsdelivr.net; frame-src https://saconnect.frappe.cloud https://maps.google.com https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://saconnect.frappe.cloud">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' https://cdn.jsdelivr.net; frame-src https://saconnect.frappe.cloud https://maps.google.com https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://saconnect.frappe.cloud">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Materials and grades · Standard Alloys India</title>
@@ -16,9 +16,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../../assets/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="../../assets/fonts/fonts.css" rel="stylesheet">
 <link rel="stylesheet" href="../sai.css">
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -72,7 +70,7 @@
   <div class="gfams"><article class="gfam" id="mn" data-r>
   <div class="gh"><h2>Austenitic manganese steel</h2><p>Hadfield steel. Standard 12–14% Mn, with 18% and 22% Mn types for heavier work hardening.</p><div class="stds"><span>ASTM A128</span><span>IS 276</span><span>EN 10349</span></div></div>
   <dl class="gd"><dt>Chemistry</dt><dd>About 1.0–1.4% carbon with 11–14% manganese; higher-manganese types and chromium or molybdenum additions for harder, more abrasive rock.</dd><dt>Hardness</dt><dd>About 190–240 HB as water-quenched. The working face hardens to over 500 HB under repeated impact while the core stays tough.</dd><dt>Heat treatment</dt><dd>Solution-treated above 1,000 °C and quenched in water. Our castings leave the furnace and enter the quench in about 45 seconds.</dd>
-  <dt>Strength</dt><dd>Unmatched toughness. The part gets harder where it is struck, so it resists gouging without becoming brittle.</dd><dt>Limits</dt><dd>Needs impact to harden: under sliding abrasion with little impact it wears quickly. It is non-magnetic, so surfaces are checked with dye penetrant, not magnetic particles.</dd></dl>
+  <dt>Strength</dt><dd>Very high toughness. The part gets harder where it is struck, so it resists gouging without becoming brittle.</dd><dt>Limits</dt><dd>Needs impact to harden: under sliding abrasion with little impact it wears quickly. It is non-magnetic, so surfaces are checked with dye penetrant, not magnetic particles.</dd></dl>
   <div class="gu"><h3>Parts we make in it</h3><div class="links"><a href="../products/hammers-and-beaters/">Hammers and beaters</a><a href="../products/blow-bars/">Blow bars</a><a href="../products/impact-plates/">Impact plates</a><a href="../products/grinding-paths/">Grinding paths</a><a href="../products/grizzly-bars/">Grizzly bars</a><a href="../products/jaw-and-side-plates/">Jaw and side plates</a><a href="../products/concaves-and-mantles/">Concaves and mantles</a><a href="../products/bowl-liners/">Bowl liners</a><a href="../products/track-shoes/">Track shoes</a><a href="../products/apron-pans-and-sprockets/">Apron pans and sprockets</a><a href="../products/feed-chute-liners/">Feed chute liners</a></div></div>
 </article><article class="gfam" id="crmo" data-r>
   <div class="gh"><h2>Cr-Mo and martensitic steels</h2><p>Pearlitic and martensitic low-alloy wear steels.</p><div class="stds"><span>IS 4896</span><span>Customer specification</span></div></div>
@@ -160,6 +158,8 @@ document.querySelectorAll('.lit').forEach(p => {
 /* counters */
 document.querySelectorAll('[data-count]').forEach(b => { const end = +b.dataset.count, dec = +(b.dataset.dec || 0); if (reduce) return; const o = { v: 0 };
   ScrollTrigger.create({ trigger: b, start: 'top 90%', once: true, onEnter: () => gsap.to(o, { v: end, duration: 1.6, ease: 'power3.out', onUpdate: () => b.textContent = o.v.toLocaleString('en-IN', { minimumFractionDigits: dec, maximumFractionDigits: dec }) }) }); b.textContent = (0).toFixed(dec); });
+/* maps load only when asked */
+document.querySelectorAll('.mapload').forEach(b => b.addEventListener('click', () => { const f = document.createElement('iframe'); f.title = b.dataset.title; f.src = b.dataset.src.replace(/&amp;/g, '&'); f.referrerPolicy = 'no-referrer-when-downgrade'; b.replaceWith(f); }));
 /* ERPNext web form slots */
 document.querySelectorAll('[data-webform]').forEach(s => { if (s.dataset.webform) s.innerHTML = `<iframe src="${s.dataset.webform}" title="${s.dataset.title || 'Form'}"></iframe>`; });
 /* range bars fill when seen */

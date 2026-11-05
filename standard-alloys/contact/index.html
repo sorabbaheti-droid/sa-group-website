@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' https://cdn.jsdelivr.net; frame-src https://saconnect.frappe.cloud https://maps.google.com https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://saconnect.frappe.cloud">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' https://cdn.jsdelivr.net; frame-src https://saconnect.frappe.cloud https://maps.google.com https://www.google.com; object-src 'none'; base-uri 'self'; form-action 'self' https://saconnect.frappe.cloud">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Get a quote · Standard Alloys India</title>
@@ -16,9 +16,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../../assets/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="../../assets/fonts/fonts.css" rel="stylesheet">
 <link rel="stylesheet" href="../sai.css">
 <script>document.documentElement.classList.add('js')</script>
 </head>
@@ -77,9 +75,9 @@
 <section class="visit"><div class="wrap">
   <div class="sh" data-r><h2>Visit the foundry</h2><p><a href="tel:+911452695110">+91 145 269 5110</a> · <a href="mailto:sales@standardalloysindia.com">sales@standardalloysindia.com</a></p></div>
   <div class="maps">
-    <figure data-r><iframe title="Map of Standard Alloys India Unit 1, Parbatpura Industrial Area, Ajmer" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=26.4138148,74.662982&amp;z=15&amp;output=embed"></iframe>
+    <figure data-r><button type="button" class="mapload" data-src="https://maps.google.com/maps?q=26.4138148,74.662982&amp;z=15&amp;output=embed" data-title="Map of Standard Alloys India Unit 1, Parbatpura Industrial Area, Ajmer"><span>Show map</span><small>Loads Google Maps, which may set its own cookies</small></button>
       <figcaption><b>Unit 1</b><address>F-26B &amp; 27, Parbatpura Industrial Area<br>Ajmer 305002, Rajasthan, India</address><a href="https://maps.app.goo.gl/eiyeFoDQeCdKW6zdA" target="_blank" rel="noopener">Open in Google Maps</a></figcaption></figure>
-    <figure data-r><iframe title="Map of Standard Alloys India Unit SP75, Ajmer" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=26.4351518,74.6963154&amp;z=15&amp;output=embed"></iframe>
+    <figure data-r><button type="button" class="mapload" data-src="https://maps.google.com/maps?q=26.4351518,74.6963154&amp;z=15&amp;output=embed" data-title="Map of Standard Alloys India Unit SP75, Ajmer"><span>Show map</span><small>Loads Google Maps, which may set its own cookies</small></button>
       <figcaption><b>Unit SP75</b><address>Unit SP75, Ajaymeru Industrial Area<br>Palra, Ajmer, Rajasthan, India</address><a href="https://maps.app.goo.gl/sSciMavsfMzPz3A56" target="_blank" rel="noopener">Open in Google Maps</a></figcaption></figure>
   </div>
 </div></section>
@@ -133,6 +131,8 @@ document.querySelectorAll('.lit').forEach(p => {
 /* counters */
 document.querySelectorAll('[data-count]').forEach(b => { const end = +b.dataset.count, dec = +(b.dataset.dec || 0); if (reduce) return; const o = { v: 0 };
   ScrollTrigger.create({ trigger: b, start: 'top 90%', once: true, onEnter: () => gsap.to(o, { v: end, duration: 1.6, ease: 'power3.out', onUpdate: () => b.textContent = o.v.toLocaleString('en-IN', { minimumFractionDigits: dec, maximumFractionDigits: dec }) }) }); b.textContent = (0).toFixed(dec); });
+/* maps load only when asked */
+document.querySelectorAll('.mapload').forEach(b => b.addEventListener('click', () => { const f = document.createElement('iframe'); f.title = b.dataset.title; f.src = b.dataset.src.replace(/&amp;/g, '&'); f.referrerPolicy = 'no-referrer-when-downgrade'; b.replaceWith(f); }));
 /* ERPNext web form slots */
 document.querySelectorAll('[data-webform]').forEach(s => { if (s.dataset.webform) s.innerHTML = `<iframe src="${s.dataset.webform}" title="${s.dataset.title || 'Form'}"></iframe>`; });
 /* range bars fill when seen */

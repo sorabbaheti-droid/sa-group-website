@@ -18,7 +18,7 @@ GRADES = {
     hb=(190, 240), hb_service=550,
     hardness='About 190–240 HB as water-quenched. The working face hardens to over 500 HB under repeated impact while the core stays tough.',
     treat='Solution-treated above 1,000 °C and quenched in water. Our castings leave the furnace and enter the quench in about 45 seconds.',
-    strong='Unmatched toughness. The part gets harder where it is struck, so it resists gouging without becoming brittle.',
+    strong='Very high toughness. The part gets harder where it is struck, so it resists gouging without becoming brittle.',
     limit='Needs impact to harden: under sliding abrasion with little impact it wears quickly. It is non-magnetic, so surfaces are checked with dye penetrant, not magnetic particles.',
  ),
  'crmo': dict(
