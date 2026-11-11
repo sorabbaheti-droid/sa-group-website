@@ -41,7 +41,7 @@
   </div>
 </section><section class="mchain" aria-labelledby="mc-h"><div class="wrap">
   <div class="sh" data-r><h2 id="mc-h">One supplier. One manufacturing chain. One responsibility.</h2><p>From your problem to the finished part, every step that decides the life of a casting is ours to control and ours to answer for.</p></div>
-  <div class="mtrack" tabindex="0" aria-label="Manufacturing steps, scroll sideways"><ol><li><i>01</i><b>Engineering</b><span>Drawing review, or reverse engineering from the worn part</span></li><li><i>02</i><b>Method and simulation</b><span>Gating and feeding designed; critical parts simulated*</span></li><li><i>03</i><b>Pattern and tooling</b><span>Wood, polystyrene and aluminium patterns</span></li><li><i>04</i><b>Melting</b><span>Induction furnaces, chemistry checked every heat</span></li><li><i>05</i><b>Moulding</b><span>Alphaset no-bake moulds</span></li><li><i>06</i><b>Casting</b><span>Single pieces from 3 kg to 7 tonnes</span></li><li><i>07</i><b>Heat treatment</b><span>Water, oil or air quench; tempering</span></li><li><i>08</i><b>Machining</b><span>Vertical lathes, machining centres, plano miller</span></li><li><i>09</i><b>NDT and inspection</b><span>UT, MPI, DPT, hardness and dimensions</span></li><li><i>10</i><b>Dispatch</b><span>Reports traceable to the heat, packed for export</span></li></ol></div>
+  <div class="mtrack"><ol><li><i>01</i><b>Engineering</b><span>Drawing review, or reverse engineering from the worn part</span></li><li><i>02</i><b>Method and simulation</b><span>Gating and feeding designed; critical parts simulated*</span></li><li><i>03</i><b>Pattern and tooling</b><span>Wood, polystyrene and aluminium patterns</span></li><li><i>04</i><b>Melting</b><span>Induction furnaces, chemistry checked every heat</span></li><li><i>05</i><b>Moulding</b><span>Alphaset no-bake moulds</span></li><li><i>06</i><b>Casting</b><span>Single pieces from 3 kg to 7 tonnes</span></li><li><i>07</i><b>Heat treatment</b><span>Water, oil or air quench; tempering</span></li><li><i>08</i><b>Machining</b><span>Vertical lathes, machining centres, plano miller</span></li><li><i>09</i><b>NDT and inspection</b><span>UT, MPI, DPT, hardness and dimensions</span></li><li><i>10</i><b>Dispatch</b><span>Reports traceable to the heat, packed for export</span></li></ol></div>
   <p class="note">*Casting simulation for critical parts is run with a specialist partner; method design is in-house.</p>
 </div></section>
 <section class="caps"><div class="wrap capgrid">
@@ -111,6 +111,10 @@ document.querySelectorAll('.lit').forEach(p => {
 /* counters */
 document.querySelectorAll('[data-count]').forEach(b => { const end = +b.dataset.count, dec = +(b.dataset.dec || 0); if (reduce) return; const o = { v: 0 };
   ScrollTrigger.create({ trigger: b, start: 'top 90%', once: true, onEnter: () => gsap.to(o, { v: end, duration: 1.6, ease: 'power3.out', onUpdate: () => b.textContent = o.v.toLocaleString('en-IN', { minimumFractionDigits: dec, maximumFractionDigits: dec }) }) }); b.textContent = (0).toFixed(dec); });
+/* part photo travels with you from a card to its page */
+document.addEventListener('click', e => { const l = e.target.closest('a[href*="products/"]'); if (!l) return; const im = l.querySelector('img'); if (!im) return;
+  document.querySelectorAll('[style*="view-transition-name"]').forEach(x => x.style.viewTransitionName = ''); const h = document.querySelector('.phero .pvis'); if (h) h.style.viewTransitionName = 'none';
+  im.style.viewTransitionName = 'part'; try { sessionStorage.setItem('vtPart', '1'); } catch (_) {} });
 /* maps load only when asked */
 document.querySelectorAll('.mapload').forEach(b => b.addEventListener('click', () => { const f = document.createElement('iframe'); f.title = b.dataset.title; f.src = b.dataset.src.replace(/&amp;/g, '&'); f.referrerPolicy = 'no-referrer-when-downgrade'; b.replaceWith(f); }));
 /* ERPNext web form slots */
@@ -122,11 +126,12 @@ document.querySelectorAll('.mtrack').forEach(t => { if (reduce) { t.classList.ad
 if (matchMedia('(hover:hover)').matches && !reduce) document.querySelectorAll('.pcard:not(.noimg) .pic img').forEach(img => { const c = img.closest('.pcard');
   c.addEventListener('pointermove', e => { const r = c.getBoundingClientRect(); img.style.transform = `scale(1.07) rotateY(${((e.clientX - r.left) / r.width - .5) * 14}deg) rotateX(${-((e.clientY - r.top) / r.height - .5) * 14}deg)`; });
   c.addEventListener('pointerleave', () => img.style.transform = ''); });
+try { window.__vtPart = sessionStorage.getItem('vtPart') === '1'; sessionStorage.removeItem('vtPart'); } catch (_) {}
 if (!reduce) {
   gsap.from('.ihero h1 .ln > span', { yPercent: 105, duration: 1.1, ease: 'power4.out', delay: .15 });
   gsap.from('.ihero .crumbs, .ihero p:not(.crumbs)', { y: 18, opacity: 0, duration: .9, ease: 'power3.out', stagger: .1, delay: .35 });
   gsap.from('.phero .reveal', { y: 26, opacity: 0, duration: 1, ease: 'power3.out', stagger: .07, delay: .1 });
-  gsap.from('.phero .pvis', { scale: .94, opacity: 0, duration: 1.3, ease: 'power3.out', delay: .2 });
+  if (!window.__vtPart) gsap.from('.phero .pvis', { scale: .94, opacity: 0, duration: 1.3, ease: 'power3.out', delay: .2 });
   gsap.to('.ihero video', { yPercent: 12, scale: 1.08, ease: 'none', scrollTrigger: { trigger: '.ihero', start: 'top top', end: 'bottom top', scrub: true } });
   gsap.utils.toArray('[data-r]').forEach(el => gsap.to(el, { opacity: 1, y: 0, duration: .8, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true } }));
   ScrollTrigger.batch('.pcard', { start: 'top 94%', once: true, onEnter: b => gsap.from(b, { y: 28, opacity: 0, duration: .8, ease: 'power3.out', stagger: .05, clearProps: 'transform,opacity' }) });

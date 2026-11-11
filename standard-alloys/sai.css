@@ -741,3 +741,41 @@ input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;bac
 .mapload span{font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:13px;border:1px solid var(--ink);padding:10px 18px;justify-self:center}
 .mapload small{font-size:12px;color:var(--muted)}
 .mapload:hover span{background:var(--ink);color:#fff}
+
+/* ---- pages glide into each other; the part photo travels from its card to its page ---- */
+@media (prefers-reduced-motion:no-preference){@view-transition{navigation:auto}}
+.top{view-transition-name:site-top}
+.sidetab{view-transition-name:site-tab}
+.phero .pvis{view-transition-name:part}
+::view-transition-old(root){animation-duration:.22s}
+::view-transition-new(root){animation-duration:.38s}
+::view-transition-group(part){animation-duration:.6s;animation-timing-function:cubic-bezier(.2,.7,.1,1)}
+::view-transition-old(part),::view-transition-new(part){height:100%;object-fit:contain}
+
+/* ---- manufacturing chain: two rows of five, the line draws itself step by step ---- */
+@media (min-width:821px){
+.mtrack{overflow:visible;padding:0;margin:0}
+.mtrack ol{grid-template-columns:repeat(5,minmax(0,1fr));min-width:0;row-gap:48px}
+.mtrack ol::before{display:none}
+.mtrack li::before,.mtrack li::after{content:"";position:absolute;left:0;right:0;top:19px;height:2px;background:var(--line)}
+.mtrack li::after{background:linear-gradient(90deg,var(--red),var(--red-deep));transform:scaleX(0);transform-origin:left}
+.mtrack i{border-color:var(--line);color:var(--muted)}
+.mtrack.in li::after{transform:scaleX(1);transition:transform .5s linear calc(var(--k)*.22s)}
+.mtrack.in i{border-color:var(--red);color:var(--red);transition:border-color .3s calc(var(--k)*.22s),color .3s calc(var(--k)*.22s),background .3s,transform .4s var(--ease)}
+.mtrack li:hover i{color:#fff}
+}
+.mtrack li:nth-child(1){--k:0}.mtrack li:nth-child(2){--k:1}.mtrack li:nth-child(3){--k:2}.mtrack li:nth-child(4){--k:3}.mtrack li:nth-child(5){--k:4}
+.mtrack li:nth-child(6){--k:5}.mtrack li:nth-child(7){--k:6}.mtrack li:nth-child(8){--k:7}.mtrack li:nth-child(9){--k:8}.mtrack li:nth-child(10){--k:9}
+
+/* ---- home search: results as you type ---- */
+.bigsearch.home{position:relative;z-index:6}
+.ta{position:absolute;left:0;right:0;top:100%;z-index:20;margin-top:6px;background:#fff;border:1px solid var(--ink);box-shadow:0 24px 60px -20px rgba(0,0,0,.28);max-height:min(70vh,520px);overflow:auto;text-align:left}
+.ta a{display:flex;align-items:center;gap:16px;padding:10px 18px;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--line)}
+.ta a:last-child{border-bottom:0}
+.ta a:hover,.ta a.on{background:var(--soft)}
+.ta img,.ta i{width:64px;height:48px;object-fit:contain;flex:none}
+.ta i{background:var(--soft)}
+.ta b{display:block;font-weight:600;font-size:15px;text-transform:uppercase;letter-spacing:.03em}
+.ta small{font-size:13px;color:var(--muted)}
+.ta mark{background:none;color:var(--red)}
+.ta .all{font-size:13px;font-weight:600;color:var(--red);padding:14px 18px}

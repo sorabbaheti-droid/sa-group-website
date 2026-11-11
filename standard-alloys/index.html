@@ -112,7 +112,7 @@
 <!--chain-->
 <section class="mchain" aria-labelledby="mc-h"><div class="wrap">
   <div class="sh" data-r><h2 id="mc-h">One supplier. One manufacturing chain. One responsibility.</h2><p>From your problem to the finished part, every step that decides the life of a casting is ours to control and ours to answer for.</p></div>
-  <div class="mtrack" tabindex="0" aria-label="Manufacturing steps, scroll sideways"><ol><li><i>01</i><b>Engineering</b><span>Drawing review, or reverse engineering from the worn part</span></li><li><i>02</i><b>Method and simulation</b><span>Gating and feeding designed; critical parts simulated*</span></li><li><i>03</i><b>Pattern and tooling</b><span>Wood, polystyrene and aluminium patterns</span></li><li><i>04</i><b>Melting</b><span>Induction furnaces, chemistry checked every heat</span></li><li><i>05</i><b>Moulding</b><span>Alphaset no-bake moulds</span></li><li><i>06</i><b>Casting</b><span>Single pieces from 3 kg to 7 tonnes</span></li><li><i>07</i><b>Heat treatment</b><span>Water, oil or air quench; tempering</span></li><li><i>08</i><b>Machining</b><span>Vertical lathes, machining centres, plano miller</span></li><li><i>09</i><b>NDT and inspection</b><span>UT, MPI, DPT, hardness and dimensions</span></li><li><i>10</i><b>Dispatch</b><span>Reports traceable to the heat, packed for export</span></li></ol></div>
+  <div class="mtrack"><ol><li><i>01</i><b>Engineering</b><span>Drawing review, or reverse engineering from the worn part</span></li><li><i>02</i><b>Method and simulation</b><span>Gating and feeding designed; critical parts simulated*</span></li><li><i>03</i><b>Pattern and tooling</b><span>Wood, polystyrene and aluminium patterns</span></li><li><i>04</i><b>Melting</b><span>Induction furnaces, chemistry checked every heat</span></li><li><i>05</i><b>Moulding</b><span>Alphaset no-bake moulds</span></li><li><i>06</i><b>Casting</b><span>Single pieces from 3 kg to 7 tonnes</span></li><li><i>07</i><b>Heat treatment</b><span>Water, oil or air quench; tempering</span></li><li><i>08</i><b>Machining</b><span>Vertical lathes, machining centres, plano miller</span></li><li><i>09</i><b>NDT and inspection</b><span>UT, MPI, DPT, hardness and dimensions</span></li><li><i>10</i><b>Dispatch</b><span>Reports traceable to the heat, packed for export</span></li></ol></div>
   <p class="note">*Casting simulation for critical parts is run with a specialist partner; method design is in-house.</p>
 </div></section>
 <!--/chain-->
@@ -375,5 +375,6 @@ if (!reduce) {
   gsap.utils.toArray('[data-r]').forEach(el => gsap.to(el, { opacity: 1, y: 0, duration: .9, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } }));
 } else document.querySelectorAll('[data-r]').forEach(e => { e.style.opacity = 1; e.style.transform = 'none'; });
 </script>
+<script src="../assets/js/find.js" defer></script>
 </body>
 </html>

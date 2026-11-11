@@ -157,6 +157,10 @@ document.querySelectorAll('.lit').forEach(p => {
 /* counters */
 document.querySelectorAll('[data-count]').forEach(b => { const end = +b.dataset.count, dec = +(b.dataset.dec || 0); if (reduce) return; const o = { v: 0 };
   ScrollTrigger.create({ trigger: b, start: 'top 90%', once: true, onEnter: () => gsap.to(o, { v: end, duration: 1.6, ease: 'power3.out', onUpdate: () => b.textContent = o.v.toLocaleString('en-IN', { minimumFractionDigits: dec, maximumFractionDigits: dec }) }) }); b.textContent = (0).toFixed(dec); });
+/* part photo travels with you from a card to its page */
+document.addEventListener('click', e => { const l = e.target.closest('a[href*="products/"]'); if (!l) return; const im = l.querySelector('img'); if (!im) return;
+  document.querySelectorAll('[style*="view-transition-name"]').forEach(x => x.style.viewTransitionName = ''); const h = document.querySelector('.phero .pvis'); if (h) h.style.viewTransitionName = 'none';
+  im.style.viewTransitionName = 'part'; try { sessionStorage.setItem('vtPart', '1'); } catch (_) {} });
 /* maps load only when asked */
 document.querySelectorAll('.mapload').forEach(b => b.addEventListener('click', () => { const f = document.createElement('iframe'); f.title = b.dataset.title; f.src = b.dataset.src.replace(/&amp;/g, '&'); f.referrerPolicy = 'no-referrer-when-downgrade'; b.replaceWith(f); }));
 /* ERPNext web form slots */
@@ -168,11 +172,12 @@ document.querySelectorAll('.mtrack').forEach(t => { if (reduce) { t.classList.ad
 if (matchMedia('(hover:hover)').matches && !reduce) document.querySelectorAll('.pcard:not(.noimg) .pic img').forEach(img => { const c = img.closest('.pcard');
   c.addEventListener('pointermove', e => { const r = c.getBoundingClientRect(); img.style.transform = `scale(1.07) rotateY(${((e.clientX - r.left) / r.width - .5) * 14}deg) rotateX(${-((e.clientY - r.top) / r.height - .5) * 14}deg)`; });
   c.addEventListener('pointerleave', () => img.style.transform = ''); });
+try { window.__vtPart = sessionStorage.getItem('vtPart') === '1'; sessionStorage.removeItem('vtPart'); } catch (_) {}
 if (!reduce) {
   gsap.from('.ihero h1 .ln > span', { yPercent: 105, duration: 1.1, ease: 'power4.out', delay: .15 });
   gsap.from('.ihero .crumbs, .ihero p:not(.crumbs)', { y: 18, opacity: 0, duration: .9, ease: 'power3.out', stagger: .1, delay: .35 });
   gsap.from('.phero .reveal', { y: 26, opacity: 0, duration: 1, ease: 'power3.out', stagger: .07, delay: .1 });
-  gsap.from('.phero .pvis', { scale: .94, opacity: 0, duration: 1.3, ease: 'power3.out', delay: .2 });
+  if (!window.__vtPart) gsap.from('.phero .pvis', { scale: .94, opacity: 0, duration: 1.3, ease: 'power3.out', delay: .2 });
   gsap.to('.ihero video', { yPercent: 12, scale: 1.08, ease: 'none', scrollTrigger: { trigger: '.ihero', start: 'top top', end: 'bottom top', scrub: true } });
   gsap.utils.toArray('[data-r]').forEach(el => gsap.to(el, { opacity: 1, y: 0, duration: .8, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true } }));
   ScrollTrigger.batch('.pcard', { start: 'top 94%', once: true, onEnter: b => gsap.from(b, { y: 28, opacity: 0, duration: .8, ease: 'power3.out', stagger: .05, clearProps: 'transform,opacity' }) });
@@ -269,7 +274,7 @@ def chain_html():
     li = ''.join(f'<li><i>{k:02d}</i><b>{a}</b><span>{b}</span></li>' for k, (a, b) in enumerate(CHAIN2, 1))
     return f"""<section class="mchain" aria-labelledby="mc-h"><div class="wrap">
   <div class="sh" data-r><h2 id="mc-h">One supplier. One manufacturing chain. One responsibility.</h2><p>From your problem to the finished part, every step that decides the life of a casting is ours to control and ours to answer for.</p></div>
-  <div class="mtrack" tabindex="0" aria-label="Manufacturing steps, scroll sideways"><ol>{li}</ol></div>
+  <div class="mtrack"><ol>{li}</ol></div>
   <p class="note">*Casting simulation for critical parts is run with a specialist partner; method design is in-house.</p>
 </div></section>"""
 
@@ -788,6 +793,7 @@ p{margin-top:16px;max-width:46ch;margin-inline:auto;line-height:1.7}
 </body></html>
 ''')
 print('wrote 404.html')
+json.dump([{'n': p['name'], 's': p['slug'], 'f': FAMILIES[p['fam']]['name'], 'i': p['img'] or '', 'k': p['search']} for p in PRODUCTS], open('assets/parts.json', 'w'), ensure_ascii=False, separators=(',', ':'))
 import os as _os
 _urls=[SITE, SITE+'standard-alloys/']
 for _d,_s,_f in _os.walk('standard-alloys'):
